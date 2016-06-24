@@ -1,0 +1,13 @@
+.login {
+  display: block;
+	width: 400px;
+	margin: 20px auto;
+	padding: 16px;
+	border-radius: 2px;
+	background: #FFFFFF;
+}
+
+#about {
+  max-width: Calc(100% - 64px);
+  width: 700px;
+}
