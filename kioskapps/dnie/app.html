@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title data-i18n="htmlTitle"></title>
+    <script src="app.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="bower_components/material-design-lite/material.min.css">
+    <script src="bower_components/material-design-lite/material.min.js"></script>
+
+    <script src="bower_components/qr-js/qr.min.js"></script>
+
+    <link rel="stylesheet" href="css/app.css">
+
+    <!--<script src="bower_components/dialog-polyfill/dialog-polyfill.js"></script>
+  	<link rel="stylesheet" type="text/css" href="bower_components/dialog-polyfill/dialog-polyfill.css">-->
+  </head>
+  <body class="mdl-color--green">
+    <div class="login mdl-shadow--4dp" id="login">
+      <h2 data-i18n="htmlTitle"></h2>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="url" name="api" id="api" autocomplete="off">
+        <label class="mdl-textfield__label" for="api" data-i18n="htmlApiURL"></label>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" name="secretKey" id="secretKey" autocomplete="off">
+        <label class="mdl-textfield__label" for="secretKey" data-i18n="htmlSecretKey"></label>
+      </div>
+      <p><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" data-i18n="htmlSetUp" id="setup"></button></p>
+    </div>
+    <div class="main withfab mdl-shadow--4dp" id="welcome">
+      <h2 data-i18n="appName"></h2>
+      <p id="welcomeIntro"></p>
+      <p data-i18n="welcomeIntro2"></p>
+      <button class="next mdl-button md-js-button mdl-button--raised mdl-button--fab mdl-js-ripple-effect mdl-button--accent" id="welcomeNext"><i class="material-icons">arrow_forward</i><span class="mdl-ripple"></span></button>
+    </div>
+    <div class="main mdl-shadow--4dp" id="insertdni" style="padding-top: 32px;">
+      <div id="waitinginsertdni" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--4-col"><img src="img/insertcard.jpg" class="insertcardimg"></div>
+        <div class="mdl-cell mdl-cell--8-col insertcardtxtcontainer"><span data-i18n="insertCard"></span></div>
+      </div>
+    </div>
+    <div class="main withfab mdl-shadow--4dp" id="data">
+      <div id="savingData" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+      <h2 data-i18n="dataTitle"></h2>
+      <ul>
+        <li><b><span data-i18n="dataName"></span></b>: <span id="dataName"></span></li>
+        <li><b><span data-i18n="dataDni"></span></b>: <span id="dataDni"></span></li>
+        <li><b><span data-i18n="dataBirthday"></span></b>: <span id="dataBirthday"></span></li>
+      </ul>
+      <p data-i18n="dataConfirmation"></p>
+      <button class="next mdl-button md-js-button mdl-button--raised mdl-button--fab mdl-js-ripple-effect mdl-button--accent" id="dataNext"><i class="material-icons">done</i><span class="mdl-ripple"></span></button>
+    </div>
+    <div class="main mdl-shadow--4dp" id="showcode">
+      <h2 data-i18n="showcodeTitle"></h2>
+      <p id="showcodeIntro"></p>
+      <canvas id="qrPlaceholder"></canvas>
+      <p><button class="mdl-button md-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="showcodeDone" data-i18n="showcodeDone"></button> <button class="mdl-button md-js-button mdl-js-ripple-effect" id="showcodePrint" data-i18n="showcodePrint"></button></p>
+    </div>
+    <div class="main mdl-shadow--4dp" id="printing">
+      <div class="mdl-spinner mdl-js-spinner is-active printingCircle"></div>
+      <h4 data-i18n="printing" id="printingtxt"></h4>
+    </div>
+    <div class="main mdl-shadow--4dp" id="done">
+      <h4 id="doneTitle"><i class="material-icons mdl-color-text--green doneVertical">done</i> <span data-i18n="doneTitle" class="doneVertical"></span></h4>
+    </div>
+    <div id="reset_container"><button id="reset" class="mdl-button mdl-button--icon md-js-button"><i class="material-icons doneicon">clear</i></button></div>
+  </body>
+</html>

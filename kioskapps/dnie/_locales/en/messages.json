@@ -1,0 +1,74 @@
+{
+  "appShortName": {
+    "message": "DNI-E code generator"
+  },
+  "appName": {
+    "message": "DNI-E code generator for votings"
+  },
+  "appDescription": {
+    "message": "Kiosk app used to be able to generate codes used in votings."
+  },
+  "htmlTitle": {
+    "message": "Code generator"
+  },
+  "htmlSecretKey": {
+    "message": "Secret key"
+  },
+  "htmlApiURL": {
+    "message": "Api URL"
+  },
+  "htmlSetUp": {
+    "message": "Set Up"
+  },
+  "welcomeIntro": {
+    "message": "Welcome! In this kiosk you can generate your code for the following voting: \"$voting$\".",
+    "placeholders": {
+      "voting": {
+        "content": "$1",
+        "example": "Election of the committee"
+      }
+    }
+  },
+  "welcomeIntro2": {
+    "message": "To continue, click the arrow button in the bottom left corner and follow the steps."
+  },
+  "insertCard": {
+    "message": "Insert your DNI-E as shown in the picture, please."
+  },
+  "dataTitle": {
+    "message": "Data extracted from the DNI"
+  },
+  "dataName": {
+    "message": "Name"
+  },
+  "dataDni": {
+    "message": "DNI"
+  },
+  "dataBirthday": {
+    "message": "Birthday"
+  },
+  "dataConfirmation": {
+    "message": "If the above information is correct, please click the tick button in the bottom right corner."
+  },
+  "showcodeIntro": {
+    "message": "We've now generated your code successfully. Please, scan the following QR code with the voting app."
+  },
+  "showcodeTitle": {
+    "message": "Success!"
+  },
+  "showcodeIntroAgain": {
+    "message": "You had already generated a code, so we've now generated another one. Keep in mind that the old code can no longer be used. Please, scan the following QR code with the voting app."
+  },
+  "showcodeDone": {
+    "message": "Done<span class=\"mdl-ripple\"></span>"
+  },
+  "showcodePrint": {
+    "message": "I would like it in paper<span class=\"mdl-ripple\"></span>"
+  },
+  "printing": {
+    "message": "Printing..."
+  },
+  "doneTitle": {
+    "message": "Done. Have a nice day!"
+  }
+}
