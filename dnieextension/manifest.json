@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "version": "0.1",
+  "name": "DNIe certificate provider",
+  "description": "An extension which helps authenticate with DNIe",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": ["certificateProvider", "usb", {
+    "usbDevices": [{
+      "vendorId": 123,
+      "productId": 456
+    }]
+  }]
+}

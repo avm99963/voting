@@ -44,7 +44,7 @@ input, textarea {
      border-radius: 0!important;
 }
 
-#welcome, #insertdni, #data, #showcode, #printing, #done {
+#login, #welcome, #insertdni, #data, #showcode, #printing, #done {
   display: none;
 }
 

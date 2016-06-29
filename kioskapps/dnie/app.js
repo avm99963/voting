@@ -1,4 +1,5 @@
 window.atimeout = null;
+var smartcardconnectorid = "khpfeaanjngmcnplbdlpegiifgpfgdco", port, channelid;
 
 function $(selector) {
     return document.querySelector(selector);
@@ -24,7 +25,7 @@ function xhr(method, url, params, callback) {
       console.warn("Attention, status code "+this.status+" when loading via xhr url "+url);
     }
     callback(this.responseText, this.status);
-  }
+  };
   if (method == "POST") {
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     http.send(params);
@@ -34,9 +35,9 @@ function xhr(method, url, params, callback) {
 }
 
 function i18n() {
-  var i18n = $all("*[data-i18n]");
-  for (var i = 0; i < i18n.length; i++) {
-    i18n[i].innerHTML = chrome.i18n.getMessage(i18n[i].getAttribute("data-i18n"));
+  var i18ne = $all("*[data-i18n]");
+  for (var i = 0; i < i18ne.length; i++) {
+    i18ne[i].innerHTML = chrome.i18n.getMessage(i18ne[i].getAttribute("data-i18n"));
   }
 }
 
@@ -83,7 +84,7 @@ function init() {
     var apiurl = $("#api").value,
         secretKey = $("#secretKey").value;
 
-    if (apiurl == "" || secretKey == "") {
+    if (apiurl === "" || secretKey === "") {
       console.warn("apiurl or secretKey are not set.");
       return;
     }
@@ -155,7 +156,64 @@ function init() {
 
   // The following 2 lines is for developing only. DELETE IN PRODUCTION!
   $("#welcomeIntro").innerHTML = chrome.i18n.getMessage("welcomeIntro", ["Election of the committee"]);
-  pages.changePage("welcome");
+  //pages.changePage("welcome");
+
+  /*chrome.usb.getDevices({}, function(devices) {
+    if (devices.length > 0) {
+      chrome.usb.openDevice(devices[0], function(connection) {
+        if (connection) {
+          window.usbConnection = connection;
+          console.log("Device opened.");
+        } else {
+          console.log("Device failed to open");
+        }
+      });
+    }
+  });*/
+  chrome.usb.findDevices({"vendorId": 1423, "productId": 38176}, function (devices) {
+    console.log(devices);
+  });
+  
+  port = chrome.runtime.connect(smartcardconnectorid);
+  
+  port.postMessage({
+  "type": "pcsc_lite_function_call::request",
+    "data": {
+      "request_id": 1,
+      "payload": {
+        "function_name": "SCardEstablishContext",
+        "arguments": [0]
+      }
+    }
+  });
+  
+  port.onMessage.addListener(function(msg) {
+    if (msg.type == "pong") {
+      channelid = msg.data.channel_id;
+    } else if (msg.type == "ping") {
+      if (typeof(channelid) === "undefined") {
+        channelid = Math.floor(Math.random() * 999) + 1;
+      }
+      port.postMessage({
+        "type": "pong",
+        "data": {
+          "channel_id": channelid
+        }
+      });
+    } else if (msg.type == "pcsc_lite_function_call::response") {
+      if (msg.data.request_id == 1) {
+        if (typeof(msg.data.error) !== "undefined") {
+          console.error(msg.data.error);
+        } else {
+          console.log("We got a response for SCardEstablishContext");
+          pages.changePage("login");
+        }
+      }
+    } else {
+      console.warn("What did we just receive?");
+    }
+    console.log(msg);
+  });
 }
 
 window.addEventListener('load', init);
