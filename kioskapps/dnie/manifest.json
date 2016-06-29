@@ -12,16 +12,7 @@
   },
   "permissions": [
     "https://*/*",
-    "https://fonts.googleapis.com/*",
-    "usb",
-    {
-      "usbDevices": [
-        {
-          "vendorId": 1423,
-          "productId": 38176
-        }
-      ]
-    }
+    "https://fonts.googleapis.com/*"
   ],
   "kiosk_enabled": true,
   "default_locale": "en"

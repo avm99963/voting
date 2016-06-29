@@ -11,3 +11,39 @@
   max-width: Calc(100% - 64px);
   width: 700px;
 }
+
+.loginoptioncontainer {
+  text-decoration: none!important;
+  color: black!important;
+}
+
+.loginoption {
+  position: relative;
+  display: block;
+  width: Calc(100% - 10px);
+  margin-bottom: 5px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding: 5px;
+}
+
+.loginoption:hover {
+  background-color: #EEE;
+}
+
+.loginoption .icon {
+  float:left;
+  margin-right: 8px;
+}
+
+.loginoption .material-icons {
+  font-size: 40px;
+}
+
+.loginoption .title {
+  font-weight: bold;
+}
+
+.loginoption .description {
+  color: rgba(0, 0, 0, 0.8);
+}

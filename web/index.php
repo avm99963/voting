@@ -37,39 +37,27 @@ if (isset($_GET['msg'])) {
 <body class="mdl-color--green">
   <div class="login mdl-shadow--4dp">
     <h2><?=$conf["appname"]?></h2>
-    <?php
-		if (function_exists("loggedin") && loggedin()) {
-      ?>
-      <p>¡Hola <?php echo userdata('nombre'); ?>!</p>
-      <?php
-  		$whatif = mysqli_query($con, "SELECT * FROM reserva WHERE usuari = ".(INT)$_SESSION['id']);
-  		if (mysqli_num_rows($whatif)) {
-  			$link = "reservar.php";
-        $linktext = "Modificar reservas";
-  		} else {
-  			$link = "welcome.php";
-        $linktext = "Reservar horas";
-  		}
-  		?>
-  		<p><?php if (isadmin()) {?> <a class="mdl-button md-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="dashboard.php">Panel de control<span class="mdl-ripple"></span></a><?php } else { ?><a class="mdl-button md-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="<?=$link?>"><?=$linktext?><span class="mdl-ripple"></span></a><?php } ?> <a class="mdl-button md-js-button mdl-button--raised mdl-js-ripple-effect" href="logout.php">Cerrar sesión<span class="mdl-ripple"></span></a></p>
-      <?php
-    } else {
-      ?>
-      <form action="login.php" method="POST" autocomplete="off" id="formulario">
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" name="id" id="id" autocomplete="off">
-          <label class="mdl-textfield__label" for="id">Nombre</label>
+    <a class="loginoptioncontainer" href="logindnie.php">
+      <div class="loginoption mdl-js-ripple-effect">
+        <div class="icon"><i class="material-icons">credit_card</i></div>
+        <div class="text">
+          <span class="title">Iniciar sesión con DNI electrónico</span><br>
+          <span class="description">Se requiere un lector de DNI electrónico.</span>
         </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="password" name="password" id="password" autocomplete="off">
-          <label class="mdl-textfield__label" for="password">Contraseña</label>
+        <span class="mdl-ripple">
+      </div>
+    </a>
+    <a class="loginoptioncontainer" href="logincode.php">
+      <div class="loginoption mdl-js-ripple-effect">
+        <div class="icon"><i class="material-icons">subject</i></div>
+        <div class="text">
+          <span class="title">Iniciar sesión con código generado</span><br>
+          <span class="description">En caso de no disponer de un lector de DNI electrónico.</span>
         </div>
-        <p><button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Iniciar sesión</button> <button id="aboutbtn" onclick="event.preventDefault();" class="mdl-button">Sobre esta aplicación</button></p>
-  		</form>
-      <?php
-    }
-    ?>
-    <p>&copy; 2016 Adrià Vilanova Martínez</p>
+        <span class="mdl-ripple">
+      </div>
+    </a>
+    <p style="margin-top: 16px;"><button id="aboutbtn" onclick="event.preventDefault();" class="mdl-button mdl-button--raised mdl-js-ripple-effect">Sobre esta aplicación<span class="mdl-ripple"></span></button></p>
   </div>
   <dialog class="mdl-dialog" id="about">
     <form action="csv.php" method="POST" enctype="multipart/form-data">

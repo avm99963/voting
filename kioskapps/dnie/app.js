@@ -1,5 +1,5 @@
 window.atimeout = null;
-var smartcardconnectorid = "khpfeaanjngmcnplbdlpegiifgpfgdco", port, channelid;
+var smartcardconnectorid = "khpfeaanjngmcnplbdlpegiifgpfgdco", port, channelid, hContext, szGroups, szReader, hCard, readerStates = [{"SCARD_READERSTATE": "\\\\?PnP?\\Notification"}];
 
 function $(selector) {
     return document.querySelector(selector);
@@ -156,7 +156,7 @@ function init() {
 
   // The following 2 lines is for developing only. DELETE IN PRODUCTION!
   $("#welcomeIntro").innerHTML = chrome.i18n.getMessage("welcomeIntro", ["Election of the committee"]);
-  //pages.changePage("welcome");
+  pages.changePage("welcome");
 
   /*chrome.usb.getDevices({}, function(devices) {
     if (devices.length > 0) {
@@ -170,23 +170,23 @@ function init() {
       });
     }
   });*/
-  chrome.usb.findDevices({"vendorId": 1423, "productId": 38176}, function (devices) {
+  /*chrome.usb.findDevices({"vendorId": 1423, "productId": 38176}, function (devices) {
     console.log(devices);
-  });
-  
+  });*/
+
   port = chrome.runtime.connect(smartcardconnectorid);
-  
+
   port.postMessage({
   "type": "pcsc_lite_function_call::request",
     "data": {
       "request_id": 1,
       "payload": {
         "function_name": "SCardEstablishContext",
-        "arguments": [0]
+        "arguments": [0, null, null]
       }
     }
   });
-  
+
   port.onMessage.addListener(function(msg) {
     if (msg.type == "pong") {
       channelid = msg.data.channel_id;
@@ -201,12 +201,59 @@ function init() {
         }
       });
     } else if (msg.type == "pcsc_lite_function_call::response") {
-      if (msg.data.request_id == 1) {
-        if (typeof(msg.data.error) !== "undefined") {
-          console.error(msg.data.error);
-        } else {
-          console.log("We got a response for SCardEstablishContext");
-          pages.changePage("login");
+      if (typeof(msg.data.error) !== "undefined") {
+        console.error(msg.data.error);
+      } else {
+        if (msg.data.request_id == 1) {
+          hContext = msg.data.payload[1];
+          port.postMessage({
+          "type": "pcsc_lite_function_call::request",
+            "data": {
+              "request_id": 99,
+              "payload": {
+                "function_name": "SCardGetStatusChange",
+                "arguments": [hContext, 10000, readerStates]
+              }
+            }
+          });
+        } else if (msg.data.request_id == 99) {
+          //hContext = msg.data.payload[1];
+          port.postMessage({
+          "type": "pcsc_lite_function_call::request",
+            "data": {
+              "request_id": 2,
+              "payload": {
+                "function_name": "SCardListReaders",
+                "arguments": [hContext, null]
+              }
+            }
+          });
+        } else if (msg.data.request_id == 2) {
+          szReader = msg.data.payload[0]+"";
+          port.postMessage({
+          "type": "pcsc_lite_function_call::request",
+            "data": {
+              "request_id": 3,
+              "payload": {
+                "function_name": "SCardConnect",
+                "arguments": [hContext, szReader, 2, 3]
+              }
+            }
+          });
+        } else if (msg.data.request_id == 3) {
+          hCard = msg.data.payload[0];
+          port.postMessage({
+          "type": "pcsc_lite_function_call::request",
+            "data": {
+              "request_id": 4,
+              "payload": {
+                "function_name": "SCardStatus",
+                "arguments": [hCard]
+              }
+            }
+          });
+        } else if (msg.data.request_id == 4) {
+
         }
       }
     } else {
