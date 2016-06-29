@@ -1,5 +1,5 @@
 window.atimeout = null;
-var smartcardconnectorid = "khpfeaanjngmcnplbdlpegiifgpfgdco", port, channelid, hContext, szGroups, szReader, hCard, readerStates = [{"SCARD_READERSTATE": "\\\\?PnP?\\Notification"}];
+var smartcardconnectorid = "khpfeaanjngmcnplbdlpegiifgpfgdco", port, channelid, hContext, szGroups, szReader, hCard, readerStates = [];
 
 function $(selector) {
     return document.querySelector(selector);
