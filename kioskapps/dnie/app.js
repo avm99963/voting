@@ -77,6 +77,37 @@ function reset() {
   $("#showcodeIntro").innerHTML = "";
 }
 
+function extPostMessage(port, request_id, function_name, arguments) {
+  port.postMessage({
+  "type": "pcsc_lite_function_call::request",
+    "data": {
+      "request_id": request_id,
+      "payload": {
+        "function_name": function_name,
+        "arguments": arguments
+      }
+    }
+  });
+}
+
+function error(msg, detail) {
+  $("#msgerror").innerHTML = chrome.i18n.getMessage(msg);
+  if (Number.isInteger(detail)) {
+    $("#msgerrordetail").style.display = "block";
+    extPostMessage(port, 98, "pcsc_stringify_error", [detail]);
+  } else if (detail !== "") {
+    $("#msgerrordetail").style.display = "block";
+    $("#msgerrordetail").innerHTML = chrome.i18n.getMessage(msg);
+    pages.changePage("error");
+  } else {
+    pages.changePage("error");
+  }
+}
+
+function snackbar(msg) {
+  $(".mdl-snackbar").MaterialSnackbar.showSnackbar({"message": chrome.i18n.getMessage(msg)});
+}
+
 function init() {
   i18n();
 
@@ -103,12 +134,9 @@ function init() {
     pages.changePage("insertdni");
 
     // Add event listener for DNI insertion. I will just do a timeout here to show it:
-    window.atimeout = window.setTimeout(function() {
-      $("#dataName").innerText = "Adrià Vilanova Martínez";
-      $("#dataDni").innerText = "12345678A";
-      $("#dataBirthday").innerText = "04/01/1999";
-      pages.changePage("data");
-    }, 6000);
+    console.log(szReader);
+
+    extPostMessage(port, 4, "SCardGetStatusChange", [hContext, 30000, [{"reader_name": szReader, "current_state": 16}]]);
   });
 
   $("#dataNext").addEventListener("click", function() {
@@ -156,36 +184,10 @@ function init() {
 
   // The following 2 lines is for developing only. DELETE IN PRODUCTION!
   $("#welcomeIntro").innerHTML = chrome.i18n.getMessage("welcomeIntro", ["Election of the committee"]);
-  pages.changePage("welcome");
-
-  /*chrome.usb.getDevices({}, function(devices) {
-    if (devices.length > 0) {
-      chrome.usb.openDevice(devices[0], function(connection) {
-        if (connection) {
-          window.usbConnection = connection;
-          console.log("Device opened.");
-        } else {
-          console.log("Device failed to open");
-        }
-      });
-    }
-  });*/
-  /*chrome.usb.findDevices({"vendorId": 1423, "productId": 38176}, function (devices) {
-    console.log(devices);
-  });*/
 
   port = chrome.runtime.connect(smartcardconnectorid);
 
-  port.postMessage({
-  "type": "pcsc_lite_function_call::request",
-    "data": {
-      "request_id": 1,
-      "payload": {
-        "function_name": "SCardEstablishContext",
-        "arguments": [0, null, null]
-      }
-    }
-  });
+  extPostMessage(port, 1, "SCardEstablishContext", [0, null, null]);
 
   port.onMessage.addListener(function(msg) {
     if (msg.type == "pong") {
@@ -203,57 +205,57 @@ function init() {
     } else if (msg.type == "pcsc_lite_function_call::response") {
       if (typeof(msg.data.error) !== "undefined") {
         console.error(msg.data.error);
+      } else if (Number.isInteger(msg.data.payload[0]) && msg.data.payload[0] < 0 && msg.data.payload[0] != -2146435062) {
+        error("generalError", msg.data.payload[0]);
       } else {
         if (msg.data.request_id == 1) {
           hContext = msg.data.payload[1];
-          port.postMessage({
-          "type": "pcsc_lite_function_call::request",
-            "data": {
-              "request_id": 99,
-              "payload": {
-                "function_name": "SCardGetStatusChange",
-                "arguments": [hContext, 10000, readerStates]
-              }
-            }
-          });
-        } else if (msg.data.request_id == 99) {
-          //hContext = msg.data.payload[1];
-          port.postMessage({
-          "type": "pcsc_lite_function_call::request",
-            "data": {
-              "request_id": 2,
-              "payload": {
-                "function_name": "SCardListReaders",
-                "arguments": [hContext, null]
-              }
-            }
-          });
+          extPostMessage(port, 2, "SCardListReaders", [hContext, null]);
         } else if (msg.data.request_id == 2) {
-          szReader = msg.data.payload[0]+"";
-          port.postMessage({
-          "type": "pcsc_lite_function_call::request",
-            "data": {
-              "request_id": 3,
-              "payload": {
-                "function_name": "SCardConnect",
-                "arguments": [hContext, szReader, 2, 3]
-              }
-            }
-          });
+          szReader = msg.data.payload[1][0];
+          console.log(szReader);
+          extPostMessage(port, 3, "SCardConnect", [hContext, szReader, 3, 3]);
+          pages.changePage("welcome"); // @TODO: Change to "login" when in PRODUCTION mode
         } else if (msg.data.request_id == 3) {
-          hCard = msg.data.payload[0];
-          port.postMessage({
-          "type": "pcsc_lite_function_call::request",
-            "data": {
-              "request_id": 4,
-              "payload": {
-                "function_name": "SCardStatus",
-                "arguments": [hCard]
-              }
-            }
-          });
+          hCard = msg.data.payload[1];
+          dwActiveProtocol = msg.data.payload[2];
         } else if (msg.data.request_id == 4) {
-
+          var payload = msg.data.payload;
+          if (payload[0] == -2146435062) {
+            // @TODO: snackbar
+            snackbar("errorTimeout");
+            pages.changePage("welcome");
+          } else if (payload[0] == "Command timeout.") {
+            return;
+          } else if (payload[1][0].current_state == 16) {
+            console.log(payload[1][0]);
+            if (payload[1][0].atr[0] == 59 && payload[1][0].atr[1] == 127 && payload[1][0].atr[3] == 0 && payload[1][0].atr[4] == 0 && payload[1][0].atr[5] == 0 && payload[1][0].atr[6] == 106 && payload[1][0].atr[7] == 68 && payload[1][0].atr[8] == 78 && payload[1][0].atr[9] == 73 && payload[1][0].atr[10] == 101) {
+              if (payload[1][0].atr[18] == 144 && payload[1][0].atr[19] == 0) {
+                pages.changePage("data");
+                extPostMessage(port, 5, "SCardTransmit", [hCard, {"dwProtocol": 1, "cbPciLength": 2}, ["00", "a4", "00", "00", "02", "50", "15"], 7]);
+              } else if (payload[1][0].atr[18] == 101 && payload[1][0].atr[19] == 129) {
+                snackbar("warningOutdatedDNIE");
+                pages.changePage("data");
+                extPostMessage(port, 5, "SCardTransmit", [hCard, 1, ["00", "a4", "00", "00", "02", "50", "15"], 7]);
+              } else {
+                pages.changePage("welcome");
+                snackbar("errorNotDNIE");
+              }
+              // YEY!
+            } else {
+              pages.changePage("welcome");
+              snackbar("errorNotDNIE");
+            }
+            //console.log(msg.data.payload[1][0]);
+          }
+        } else if (msg.data.request_id == 5) {
+          $("#dataName").innerText = "Adrià Vilanova Martínez";
+          $("#dataDni").innerText = "12345678A";
+          $("#dataBirthday").innerText = "04/01/1999";
+          pages.changePage("data");
+        } else if (msg.data.request_id == 98) {
+          $("#msgerrordetail").innerText = msg.data.payload[0];
+          pages.changePage("error");
         }
       }
     } else {

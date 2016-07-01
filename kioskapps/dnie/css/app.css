@@ -44,7 +44,7 @@ input, textarea {
      border-radius: 0!important;
 }
 
-#login, #welcome, #insertdni, #data, #showcode, #printing, #done {
+#login, #welcome, #insertdni, #data, #showcode, #printing, #done, #error {
   display: none;
 }
 
@@ -131,4 +131,8 @@ input, textarea {
 
 .doneVertical {
   vertical-align: middle;
+}
+
+#msgerrordetail {
+  display: none;
 }
