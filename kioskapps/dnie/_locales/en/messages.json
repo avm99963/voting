@@ -88,5 +88,11 @@
   },
   "warningOutdatedDNIE": {
     "message": "You are using an outdated DNIE, but are allowed to vote."
+  },
+  "errorCardRemoved": {
+    "message": "The DNIE was removed from the reader."
+  },
+  "errorTransactionFailed": {
+    "message": "The communication with your DNIE failed. Please, try again."
   }
 }

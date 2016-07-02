@@ -1,5 +1,5 @@
 window.atimeout = null;
-var smartcardconnectorid = "khpfeaanjngmcnplbdlpegiifgpfgdco", port, channelid, hContext, szGroups, szReader, hCard, readerStates = [];
+var smartcardconnectorid = "khpfeaanjngmcnplbdlpegiifgpfgdco", port, channelid, hContext, szGroups, szReader, hCard, readerStates = [], idesp, version, cdf;
 
 function $(selector) {
     return document.querySelector(selector);
@@ -108,6 +108,133 @@ function snackbar(msg) {
   $(".mdl-snackbar").MaterialSnackbar.showSnackbar({"message": chrome.i18n.getMessage(msg)});
 }
 
+function SCardTransmit(port, request_id, hCard, cmd) {
+  extPostMessage(port, request_id, "SCardTransmit", [hCard, {"dwProtocol": 1, "cbPciLength": 2}, cmd, {}]);
+}
+
+function hi(int) {
+  var hex = int.toString(16);
+  var tmp = ('0000'+hex).substring(hex.length);
+
+  return parseInt(tmp.substr(-4, 2), 16);
+}
+
+function lo(int) {
+  var hex = int.toString(16);
+  var tmp = ('0000'+hex).substring(hex.length);
+
+  return parseInt(tmp.substr(-2, 2), 16);
+}
+
+var file = {
+  locked: false,
+  path: null,
+  filesize: null,
+  offset: null,
+  stream: [],
+  operation: null,
+  readFile: function(hCard, path, operation) {
+    console.info("Starting to read file with path:", path);
+    this.operation = operation;
+    if (this.locked === false) {
+      this.path = path;
+      var cmd = [0x00, 0xA4, 0x04, 0x00, 0x0B, 0x4D, 0x61, 0x73, 0x74, 0x65, 0x72, 0x2E, 0x46, 0x69, 0x6C, 0x65];
+      SCardTransmit(port, 5, hCard, cmd);
+      return true;
+    } else {
+      console.error("There's a file being read, so the operation to "+hcard+" with path ", path, "couldn't procede.");
+      return false;
+    }
+  },
+  followUp: function(payload) {
+    //console.info(payload);
+    if (this.path.length >= 2) {
+      var following = [0x00, 0xA4, 0x00, 0x00, 0x02, this.path.shift(), this.path.shift()];
+      SCardTransmit(port, 6, hCard, following);
+    } else {
+      console.info("Sending GET RESPONSE");
+      var cmd = [0x00, 0xC0, 0x00, 0x00, 0x0E];
+      SCardTransmit(port, 7, hCard, cmd);
+    }
+  },
+  responseGotten: function(payload) {
+    //console.log(payload);
+    this.filesize = (payload[2][7] * 256) + payload[2][8];
+    this.offset = 0;
+    //console.log(this.filesize);
+    var cmd = [0x00, 0xB0, hi(this.offset), lo(this.offset), Math.min((this.filesize - this.offset), 0xFF)];
+    console.info("Sending READ BINARY", cmd);
+    SCardTransmit(port, 8, hCard, cmd);
+  },
+  binaryRead: function(payload) {
+    var newdata = payload[2].splice(0, payload[2].length-2);
+    this.stream = this.stream.concat(newdata);
+    this.offset += 255;
+    if (this.offset < this.filesize) {
+      var cmd = [0x00, 0xB0, hi(this.offset), lo(this.offset), Math.min((this.filesize - this.offset), 0xFF)];
+      console.info("Sending READ BINARY", cmd);
+      SCardTransmit(port, 8, hCard, cmd);
+    } else {
+      var stream = this.stream;
+      var operation = this.operation;
+      this.path = null;
+      this.filesize = null;
+      this.offset = null;
+      this.stream = [];
+      this.operation = null;
+      this.locked = false;
+      fileRead(stream, operation);
+    }
+  }
+}
+
+// From http://stackoverflow.com/questions/3745666/how-to-convert-from-hex-to-ascii-in-javascript and adapted
+function hex2a(stream) {
+    var hex = stream.map(function (int) {
+      return int.toString(16)
+    }).join("");
+    var str = '';
+    for (var i = 0; i < hex.length; i += 2)
+        str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+    return str;
+}
+
+function fileRead(stream, operation) {
+  var contents = hex2a(stream);
+  console.log(contents);
+  if (operation == 1) {
+    idesp = contents;
+    file.readFile(hCard, [0x50, 0x15, 0x60, 0x04], 2);
+  } else if (operation == 2) {
+    var encoded_sequence = new ArrayBuffer(stream.length);
+    var encoded_sequence_view = new Uint8Array(encoded_sequence);
+    for (var i = 0; i < stream.length; i++) {
+      encoded_sequence_view[i] = stream[i];
+    }
+
+    var crf = org.pkijs.fromBER(encoded_sequence);
+
+    console.log(crf.result);
+
+    if (crf.offset === (-1)) {
+      console.error("Error decoding crf.");
+      pages.changePage("welcome");
+      return;
+    }
+
+    // file.readFile(hCard, [0x50, 0x15, 0x1F, 0x60], 3);
+
+    // file.readFile(hCard, [0x50, 0x15, 0x15, 0x3F], 3);
+    pages.changePage("data");
+  } else {
+    console.warn("Unknown file operation.");
+  }
+}
+
+function loadDniData() {
+  file.readFile(hCard, [0x00, 0x06], 1);
+}
+
 function init() {
   i18n();
 
@@ -134,9 +261,9 @@ function init() {
     pages.changePage("insertdni");
 
     // Add event listener for DNI insertion. I will just do a timeout here to show it:
-    console.log(szReader);
+    console.info("Waiting for card insertion...");
 
-    extPostMessage(port, 4, "SCardGetStatusChange", [hContext, 30000, [{"reader_name": szReader, "current_state": 16}]]);
+    extPostMessage(port, 3, "SCardConnect", [hContext, szReader, 3, 3]);
   });
 
   $("#dataNext").addEventListener("click", function() {
@@ -203,40 +330,44 @@ function init() {
         }
       });
     } else if (msg.type == "pcsc_lite_function_call::response") {
+      // @TODO: Comment/delete the following line when in PRODUCTION, as it may cause sensitive information leaks in the console
+      console.log(msg);
       if (typeof(msg.data.error) !== "undefined") {
-        console.error(msg.data.error);
+        console.error("Error in request_id #"+msg.data.request_id+": "+msg.data.error);
+        error("generalError", msg.data.error);
       } else if (Number.isInteger(msg.data.payload[0]) && msg.data.payload[0] < 0 && msg.data.payload[0] != -2146435062) {
-        error("generalError", msg.data.payload[0]);
+        if (msg.data.payload[0] == -2146434967) {
+          pages.changePage("welcome");
+          snackbar("errorCardRemoved");
+        } else if (msg.data.payload[0] == -2146435050) {
+          pages.changePage("welcome");
+          snackbar("errorTransactionFailed");
+        } else {
+          error("generalError", msg.data.payload[0]);
+        }
       } else {
         if (msg.data.request_id == 1) {
           hContext = msg.data.payload[1];
           extPostMessage(port, 2, "SCardListReaders", [hContext, null]);
         } else if (msg.data.request_id == 2) {
           szReader = msg.data.payload[1][0];
-          console.log(szReader);
-          extPostMessage(port, 3, "SCardConnect", [hContext, szReader, 3, 3]);
           pages.changePage("welcome"); // @TODO: Change to "login" when in PRODUCTION mode
         } else if (msg.data.request_id == 3) {
           hCard = msg.data.payload[1];
           dwActiveProtocol = msg.data.payload[2];
+          extPostMessage(port, 4, "SCardGetStatusChange", [hContext, 30000, [{"reader_name": szReader, "current_state": 16}]]);
         } else if (msg.data.request_id == 4) {
           var payload = msg.data.payload;
           if (payload[0] == -2146435062) {
-            // @TODO: snackbar
             snackbar("errorTimeout");
             pages.changePage("welcome");
-          } else if (payload[0] == "Command timeout.") {
-            return;
           } else if (payload[1][0].current_state == 16) {
-            console.log(payload[1][0]);
             if (payload[1][0].atr[0] == 59 && payload[1][0].atr[1] == 127 && payload[1][0].atr[3] == 0 && payload[1][0].atr[4] == 0 && payload[1][0].atr[5] == 0 && payload[1][0].atr[6] == 106 && payload[1][0].atr[7] == 68 && payload[1][0].atr[8] == 78 && payload[1][0].atr[9] == 73 && payload[1][0].atr[10] == 101) {
-              if (payload[1][0].atr[18] == 144 && payload[1][0].atr[19] == 0) {
-                pages.changePage("data");
-                extPostMessage(port, 5, "SCardTransmit", [hCard, {"dwProtocol": 1, "cbPciLength": 2}, ["00", "a4", "00", "00", "02", "50", "15"], 7]);
-              } else if (payload[1][0].atr[18] == 101 && payload[1][0].atr[19] == 129) {
-                snackbar("warningOutdatedDNIE");
-                pages.changePage("data");
-                extPostMessage(port, 5, "SCardTransmit", [hCard, 1, ["00", "a4", "00", "00", "02", "50", "15"], 7]);
+              if ((payload[1][0].atr[18] == 144 && payload[1][0].atr[19] == 0) || (payload[1][0].atr[18] == 101 && payload[1][0].atr[19] == 129)) {
+                loadDniData();
+                if (payload[1][0].atr[18] == 101 && payload[1][0].atr[19] == 129) {
+                  snackbar("warningOutdatedDNIE");
+                }
               } else {
                 pages.changePage("welcome");
                 snackbar("errorNotDNIE");
@@ -246,9 +377,16 @@ function init() {
               pages.changePage("welcome");
               snackbar("errorNotDNIE");
             }
-            //console.log(msg.data.payload[1][0]);
           }
         } else if (msg.data.request_id == 5) {
+          file.followUp(msg.data.payload);
+        } else if (msg.data.request_id == 6) {
+          file.followUp(msg.data.payload);
+        } else if (msg.data.request_id == 7) {
+          file.responseGotten(msg.data.payload);
+        } else if (msg.data.request_id == 8) {
+          file.binaryRead(msg.data.payload);
+        } else if (msg.data.request_id == 10) {
           $("#dataName").innerText = "Adrià Vilanova Martínez";
           $("#dataDni").innerText = "12345678A";
           $("#dataBirthday").innerText = "04/01/1999";
@@ -261,7 +399,6 @@ function init() {
     } else {
       console.warn("What did we just receive?");
     }
-    console.log(msg);
   });
 }
 
