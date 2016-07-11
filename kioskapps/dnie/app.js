@@ -1,5 +1,5 @@
 window.atimeout = null;
-var smartcardconnectorid = "khpfeaanjngmcnplbdlpegiifgpfgdco", port, channelid, hContext, szGroups, szReader, hCard, readerStates = [], serial, idesp, version, caint, caroot;
+var smartcardconnectorid = "kccifahimnddhgjicmldpjinclohoekf", port, channelid, hContext, szGroups, szReader, hCard, readerStates = [], serial, idesp, version, caint, caroot;
 
 function $(selector) {
     return document.querySelector(selector);
@@ -77,14 +77,14 @@ function reset() {
   $("#showcodeIntro").innerHTML = "";
 }
 
-function extPostMessage(port, request_id, function_name, arguments) {
+function extPostMessage(port, request_id, function_name, arg) {
   port.postMessage({
   "type": "pcsc_lite_function_call::request",
     "data": {
       "request_id": request_id,
       "payload": {
         "function_name": function_name,
-        "arguments": arguments
+        "arguments": arg
       }
     }
   });
@@ -190,7 +190,7 @@ var file = {
       fileRead(stream, operation);
     }
   }
-}
+};
 
 // From http://stackoverflow.com/questions/3745666/how-to-convert-from-hex-to-ascii-in-javascript and adapted
 function hex2a(stream) {
@@ -373,14 +373,14 @@ function init() {
           extPostMessage(port, 2, "SCardListReaders", [hContext, null]);
         } else if (msg.data.request_id == 2) {
           szReader = msg.data.payload[1][0];
-          // pages.changePage("welcome"); // @TODO: Change to "login" when in PRODUCTION mode
+          pages.changePage("welcome"); // @TODO: Change to "login" when in PRODUCTION mode
           // DELETE THE FOLLOWING IN PRODUCTION:
-          pages.changePage("insertdni");
+          //pages.changePage("welcome");
 
           // Add event listener for DNI insertion. I will just do a timeout here to show it:
-          console.info("Waiting for card insertion...");
+          //console.info("Waiting for card insertion...");
 
-          extPostMessage(port, 3, "SCardConnect", [hContext, szReader, 3, 3]);
+          //extPostMessage(port, 3, "SCardConnect", [hContext, szReader, 3, 3]);
         } else if (msg.data.request_id == 3) {
           hCard = msg.data.payload[1];
           dwActiveProtocol = msg.data.payload[2];
