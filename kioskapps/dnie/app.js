@@ -1,5 +1,5 @@
 window.atimeout = null;
-var smartcardconnectorid = "khpfeaanjngmcnplbdlpegiifgpfgdco", port, channelid, hContext, szGroups, szReader, hCard, readerStates = [], idesp, version, cdf;
+var smartcardconnectorid = "khpfeaanjngmcnplbdlpegiifgpfgdco", port, channelid, hContext, szGroups, szReader, hCard, readerStates = [], serial, idesp, version, caint, caroot;
 
 function $(selector) {
     return document.querySelector(selector);
@@ -90,14 +90,18 @@ function extPostMessage(port, request_id, function_name, arguments) {
   });
 }
 
-function error(msg, detail) {
+function error(msg, detail, nontranslatable = false) {
   $("#msgerror").innerHTML = chrome.i18n.getMessage(msg);
   if (Number.isInteger(detail)) {
     $("#msgerrordetail").style.display = "block";
     extPostMessage(port, 98, "pcsc_stringify_error", [detail]);
   } else if (detail !== "") {
     $("#msgerrordetail").style.display = "block";
-    $("#msgerrordetail").innerHTML = chrome.i18n.getMessage(msg);
+    if (nontranslatable === true) {
+      $("#msgerrordetail").innerHTML = detail;
+    } else {
+      $("#msgerrordetail").innerHTML = chrome.i18n.getMessage(msg);
+    }
     pages.changePage("error");
   } else {
     pages.changePage("error");
@@ -191,7 +195,7 @@ var file = {
 // From http://stackoverflow.com/questions/3745666/how-to-convert-from-hex-to-ascii-in-javascript and adapted
 function hex2a(stream) {
     var hex = stream.map(function (int) {
-      return int.toString(16)
+      return int.toString(16);
     }).join("");
     var str = '';
     for (var i = 0; i < hex.length; i += 2)
@@ -200,31 +204,49 @@ function hex2a(stream) {
 }
 
 function fileRead(stream, operation) {
+  console.log(stream);
   var contents = hex2a(stream);
   console.log(contents);
   if (operation == 1) {
     idesp = contents;
-    file.readFile(hCard, [0x50, 0x15, 0x60, 0x04], 2);
+    file.readFile(hCard, [0x60, 0x1F], 2);
   } else if (operation == 2) {
-    var encoded_sequence = new ArrayBuffer(stream.length);
-    var encoded_sequence_view = new Uint8Array(encoded_sequence);
-    for (var i = 0; i < stream.length; i++) {
-      encoded_sequence_view[i] = stream[i];
-    }
+    var hex = stream.map(function (int) {
+      var string = int.toString(16);
+      return ('00'+string).substring(string.length);
+    }).join("");
 
-    var crf = org.pkijs.fromBER(encoded_sequence);
+    console.log(hex);
 
-    console.log(crf.result);
+    var pem = KJUR.asn1.ASN1Util.getPEMStringFromHex(hex, "CERTIFICATE");
 
-    if (crf.offset === (-1)) {
-      console.error("Error decoding crf.");
-      pages.changePage("welcome");
-      return;
-    }
+    console.log(pem);
 
-    // file.readFile(hCard, [0x50, 0x15, 0x1F, 0x60], 3);
+    caroot = pem;
 
-    // file.readFile(hCard, [0x50, 0x15, 0x15, 0x3F], 3);
+    file.readFile(hCard, [0x60, 0x20], 3);
+
+    /*var c = new X509();
+    c.readCertPEM(pem);
+
+    console.log(c.getSubjectString());
+    console.log(c.getSignatureAlgorithmField());
+
+    pages.changePage("data");*/
+  } else if (operation == 3) {
+    var hex = stream.map(function (int) {
+      var string = int.toString(16);
+      return ('00'+string).substring(string.length);
+    }).join("");
+
+    console.log(hex);
+
+    var pem = KJUR.asn1.ASN1Util.getPEMStringFromHex(hex, "CERTIFICATE");
+
+    console.log(pem);
+
+    caint = pem;
+
     pages.changePage("data");
   } else {
     console.warn("Unknown file operation.");
@@ -232,7 +254,7 @@ function fileRead(stream, operation) {
 }
 
 function loadDniData() {
-  file.readFile(hCard, [0x00, 0x06], 1);
+  SCardTransmit(port, 96, hCard, [0x90, 0xB8, 0x00, 0x00, 0x00, 0x00, 0x07]);
 }
 
 function init() {
@@ -334,7 +356,7 @@ function init() {
       console.log(msg);
       if (typeof(msg.data.error) !== "undefined") {
         console.error("Error in request_id #"+msg.data.request_id+": "+msg.data.error);
-        error("generalError", msg.data.error);
+        error("generalError", msg.data.error, true);
       } else if (Number.isInteger(msg.data.payload[0]) && msg.data.payload[0] < 0 && msg.data.payload[0] != -2146435062) {
         if (msg.data.payload[0] == -2146434967) {
           pages.changePage("welcome");
@@ -351,7 +373,14 @@ function init() {
           extPostMessage(port, 2, "SCardListReaders", [hContext, null]);
         } else if (msg.data.request_id == 2) {
           szReader = msg.data.payload[1][0];
-          pages.changePage("welcome"); // @TODO: Change to "login" when in PRODUCTION mode
+          // pages.changePage("welcome"); // @TODO: Change to "login" when in PRODUCTION mode
+          // DELETE THE FOLLOWING IN PRODUCTION:
+          pages.changePage("insertdni");
+
+          // Add event listener for DNI insertion. I will just do a timeout here to show it:
+          console.info("Waiting for card insertion...");
+
+          extPostMessage(port, 3, "SCardConnect", [hContext, szReader, 3, 3]);
         } else if (msg.data.request_id == 3) {
           hCard = msg.data.payload[1];
           dwActiveProtocol = msg.data.payload[2];
@@ -391,6 +420,9 @@ function init() {
           $("#dataDni").innerText = "12345678A";
           $("#dataBirthday").innerText = "04/01/1999";
           pages.changePage("data");
+        } else if (msg.data.request_id == 96) {
+          serial = msg.data.payload[2];
+          file.readFile(hCard, [0x00, 0x06], 1);
         } else if (msg.data.request_id == 98) {
           $("#msgerrordetail").innerText = msg.data.payload[0];
           pages.changePage("error");
