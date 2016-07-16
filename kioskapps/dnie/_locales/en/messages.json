@@ -70,5 +70,29 @@
   },
   "doneTitle": {
     "message": "Done. Have a nice day!"
+  },
+  "errorNoCardReaders": {
+    "message": "There are no card readers connected to the computer"
+  },
+  "errorNoCardReadersDetails": {
+    "message": "Please, connect one and restart the kiosk app."
+  },
+  "generalError": {
+    "message": "An error has occurred."
+  },
+  "errorNotDNIE": {
+    "message": "The smart card you have inserted is not a DNIE."
+  },
+  "errorTimeout": {
+    "message": "Timeout."
+  },
+  "warningOutdatedDNIE": {
+    "message": "You are using an outdated DNIE, but are allowed to vote."
+  },
+  "errorCardRemoved": {
+    "message": "The DNIE was removed from the reader."
+  },
+  "errorTransactionFailed": {
+    "message": "The communication with your DNIE failed. Please, try again."
   }
 }

@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <title data-i18n="htmlTitle"></title>
-    <script src="lib/google-smart-card-client-library.js"></script>
+    <script src="pkijs/common.js"></script>
+    <script src="pkijs/asn1.js"></script>
+    <script src="bower_components/kjur-jsrsasign/jsrsasign-latest-all-min.js"></script>
+    <script src="bower_components/kjur-jsrsasign/x509-1.1.js"></script>
     <script src="app.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,6 +71,14 @@
     <div class="main mdl-shadow--4dp" id="done">
       <h4 id="doneTitle"><i class="material-icons mdl-color-text--green doneVertical">done</i> <span data-i18n="doneTitle" class="doneVertical"></span></h4>
     </div>
+    <div class="main mdl-shadow--4dp" id="error">
+      <h4><i class="material-icons doneVertical">error</i> <span class="doneVertical" id="msgerror"></span></h4>
+      <p id="msgerrordetail"></p>
+    </div>
     <div id="reset_container"><button id="reset" class="mdl-button mdl-button--icon md-js-button"><i class="material-icons doneicon">clear</i></button></div>
+    <div id="toast" class="mdl-snackbar mdl-js-snackbar">
+      <div class="mdl-snackbar__text"></div>
+      <button class="mdl-snackbar__action"></button>
+    </div>
   </body>
 </html>

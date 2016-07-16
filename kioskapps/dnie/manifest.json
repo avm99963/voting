@@ -15,5 +15,6 @@
     "https://fonts.googleapis.com/*"
   ],
   "kiosk_enabled": true,
-  "default_locale": "en"
+  "default_locale": "en",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr7HJ8KQZUiSIFPHEQu18OkY6o8OgbDp7LOJxreN1FQfdxWqVQPcZ4hy1x8Y3ASKGbedFCz6dRl6t7sYwa5wZ1VdDHRs4JEeCCAvUwWJvOxocEVnaeEdi02P/4p4B9f6mhYrWgmQDUvgJ348za5S6zLhZfIdv+dilbTGo1h6RwyXHt4yCizCOCspvMPn2QeiR6rr9NoTXlnDjzujW3ZVhKoyt75iIWtL7Clif8q2wrT8HtUm/wIzWGEzOVcFozMTMjFMZ21SCDKxO5uhbTFYwBAxosyJEDwiyuDYPR7Oqn/JMT6FTUKS0ALxPHyr4b5P/ZO2m+GxfuvQ6VlKm1nofRwIDAQAB"
 }
