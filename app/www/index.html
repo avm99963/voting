@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="cordova.js"></script>
+
+  <!-- Chrome for Android theme color -->
+  <!--<meta name="theme-color" content="#2E3AA1">-->
+
+  <meta name="format-detection" content="telephone=no" />
+
+  <link rel="stylesheet" href="bower_components/material-design-lite/material.min.css">
+  <script src="bower_components/material-design-lite/material.min.js"></script>
+
+  <link rel="stylesheet" href="bower_components/material-design-icons/iconfont/material-icons.css">
+
+  <link rel="stylesheet" href="css/stylemd.css">
+  <link rel="stylesheet" href="css/index.css">
+
+  <script src="bower_components/dialog-polyfill/dialog-polyfill.js"></script>
+	<link rel="stylesheet" type="text/css" href="bower_components/dialog-polyfill/dialog-polyfill.css">
+
+  <script src="js/fastclick.js"></script>
+</head>
+<body class="mdl-color--green">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
+    <header class="mdl-layout__header mdl-layout__header--scroll">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">Voting</span>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Voting</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="dashboard.php"><i class="material-icons">dashboard</i> Panel de Control</a>
+        <a class="mdl-navigation__link" href="reservar.php"><i class="material-icons">event_seat</i> Reservas</a>
+        <a class="mdl-navigation__link" href="users.php"><i class="material-icons">group</i> Usuarios</a>
+        <!--<a class="mdl-navigation__link" href="newuser.php">Añadir un usuario</a>
+        <a class="mdl-navigation__link" href="csv.php">Subir múltiples usuarios</a>-->
+        <a class="mdl-navigation__link" href="print.php"><i class="material-icons">print</i> Imprimir horarios</a>
+        <a class="mdl-navigation__link" href="configuracion.php"><i class="material-icons">settings</i> Configuración</a>
+        <a class="mdl-navigation__link" class="mdl-navigation__link" href="logout.php"><i class="material-icons">power_settings_new</i> Cerrar sesión</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <div class="main mdl-shadow--4dp">
+          <h2>Bienvenido</h2>
+          ¡Hola! Bienvenido
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/index.js"></script>
+</body>
+</html>

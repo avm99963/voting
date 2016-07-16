@@ -1,0 +1,6 @@
+SSLEngine On
+SSLOptions +OptRenegotiate +StdEnvVars
+SSLRequireSSL
+SSLCACertificateFile /Library/WebServer/Documents/voting/web/certs/ACRAIZ-SHA1.crt
+SSLVerifyClient require
+SSLVerifyDepth 2
