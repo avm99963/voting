@@ -37,7 +37,7 @@ if (isset($_GET['msg'])) {
 <body class="mdl-color--green">
   <div class="login mdl-shadow--4dp">
     <h2><?=$conf["appname"]?></h2>
-    <a class="loginoptioncontainer" href="logindnie.php">
+    <a class="loginoptioncontainer" href="dnieauth/">
       <div class="loginoption mdl-js-ripple-effect">
         <div class="icon"><i class="material-icons">credit_card</i></div>
         <div class="text">
