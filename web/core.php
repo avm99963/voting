@@ -20,12 +20,11 @@ require("config.php");
 // Aquí se accede a la BD y a la sesión
 $con = @mysqli_connect($host_db, $usuario_db, $clave_db,$nombre_db) or die("Check Mysqli settings in config.php"); // Conectamos y seleccionamos BD
 
+session_set_cookie_params(0, $conf["path"]);
 session_start();
 
 // Custom error handler
-
-function myErrorHandler($errno, $errstr, $errfile, $errline)
-{
+function myErrorHandler($errno, $errstr, $errfile, $errline) {
     if (!(error_reporting() & $errno)) {
         // This error code is not included in error_reporting
         return;
@@ -71,4 +70,8 @@ function myErrorHandler($errno, $errstr, $errfile, $errline)
 
 $old_error_handler = set_error_handler("myErrorHandler");
 
-// Aquí van todas las funciones
+spl_autoload_register(function($className) {
+  include_once("inc/".$className.".php");
+});
+
+// Funciones:

@@ -23,3 +23,10 @@ $conf = array();
 
 // Define the website name:
 $conf["appname"] = "Voting";
+
+// Define the language: (currently only "en" and "es" are supported)
+$conf["language"] = "en";
+
+// Path in the URL to the voting app. It will be used to set up the session cookie.
+// Examples: "/voting/", "/", "/p/voting/"
+$conf["path"] = "/voting/web/";

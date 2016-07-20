@@ -1,13 +1,11 @@
 <?php
 require_once("core.php");
+
+$i18n = new i18n("index");
+
 $msg = "";
-if (isset($_GET['msg'])) {
-  if ($_GET['msg'] == "loginwrong")
-    $msg = 'Usuario y/o contraseña incorrecto';
-  if ($_GET['msg'] == "empty")
-    $msg = 'Por favor, rellena todos los campos';
-  if ($_GET['msg'] == "logoutsuccess")
-    $msg = '¡Has cerrado la sesión correctamente! Ten un buen día :-)';
+if (isset($_GET['msg']) && in_array($_GET['msg'], array("loginwrong", "empty", "logoutsuccess"))) {
+  $msg = $i18n->msg("msg_".$_GET['msg']);
 }
 ?>
 <!DOCTYPE html>
@@ -41,8 +39,8 @@ if (isset($_GET['msg'])) {
       <div class="loginoption mdl-js-ripple-effect">
         <div class="icon"><i class="material-icons">credit_card</i></div>
         <div class="text">
-          <span class="title">Iniciar sesión con DNI electrónico</span><br>
-          <span class="description">Se requiere un lector de DNI electrónico.</span>
+          <span class="title"><?=$i18n->msg("loginDNIE")?></span><br>
+          <span class="description"><?=$i18n->msg("loginDNIEexp")?></span>
         </div>
         <span class="mdl-ripple">
       </div>
@@ -51,30 +49,46 @@ if (isset($_GET['msg'])) {
       <div class="loginoption mdl-js-ripple-effect">
         <div class="icon"><i class="material-icons">subject</i></div>
         <div class="text">
-          <span class="title">Iniciar sesión con código generado</span><br>
-          <span class="description">En caso de no disponer de un lector de DNI electrónico.</span>
+          <span class="title"><?=$i18n->msg("loginCode")?></span><br>
+          <span class="description"><?=$i18n->msg("loginCodeExp")?></span>
         </div>
         <span class="mdl-ripple">
       </div>
     </a>
-    <p style="margin-top: 16px;"><button id="aboutbtn" onclick="event.preventDefault();" class="mdl-button mdl-button--raised mdl-js-ripple-effect">Sobre esta aplicación<span class="mdl-ripple"></span></button></p>
+    <?php
+    if (user::loggedin()) {
+      ?>
+      <a class="loginoptioncontainer" href="admin/">
+        <div class="loginoption mdl-js-ripple-effect">
+          <div class="icon"><i class="material-icons">dashboard</i></div>
+          <div class="text">
+            <span class="title"><?=$i18n->msg("loginAdmin")?></span><br>
+            <span class="description"><?=$i18n->msg("loginAdminExp")?></span>
+          </div>
+          <span class="mdl-ripple">
+        </div>
+      </a>
+      <?php
+    }
+    ?>
+    <p style="margin-top: 16px;"><button id="aboutbtn" onclick="event.preventDefault();" class="mdl-button mdl-button--raised mdl-js-ripple-effect"><?=$i18n->msg("about")?><span class="mdl-ripple"></span></button></p>
   </div>
   <dialog class="mdl-dialog" id="about">
     <form action="csv.php" method="POST" enctype="multipart/form-data">
-      <h4 class="mdl-dialog__title">Licencia</h4>
+      <h4 class="mdl-dialog__title"><?=$i18n->msg("license")?></h4>
       <div class="mdl-dialog__content">
         <code>
-          <p>Copyright (c) 2016 Adrià Vilanova Martínez</p>
+          <p><?=$i18n->msg("copyright")?></p>
         </code>
       </div>
       <div class="mdl-dialog__actions">
-        <button onclick="event.preventDefault(); document.querySelector('#about').close();" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Aceptar</button>
+        <button onclick="event.preventDefault(); document.querySelector('#about').close();" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent"><?=$i18n->msg("ok")?></button>
       </div>
     </form>
   </dialog>
   <?php
-  if (isset($_GET['msg'])) {
-    md_snackbar($msg);
+  if (isset($msg) && !empty($msg)) {
+    md::snackbar($msg);
   }
   ?>
 </body>

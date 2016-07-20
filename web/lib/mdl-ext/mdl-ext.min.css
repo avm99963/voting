@@ -1,0 +1,4520 @@
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*------------------------------------*    $CONTENTS
+\*------------------------------------*/
+
+/**
+ * STYLE GUIDE VARIABLES------------------Declarations of Sass variables
+ * -----Typography
+ * -----Colors
+ * -----Textfield
+ * -----Switch
+ * -----Spinner
+ * -----Radio
+ * -----Menu
+ * -----List
+ * -----Layout
+ * -----Icon toggles
+ * -----Footer
+ * -----Column
+ * -----Checkbox
+ * -----Card
+ * -----Button
+ * -----Animation
+ * -----Progress
+ * -----Badge
+ * -----Shadows
+ * -----Grid
+ * -----Data table
+ * -----Dialog
+ * -----Snackbar
+ *
+ * Even though all variables have the `!default` directive, most of them
+ * should not be changed as they are dependent one another. This can cause
+ * visual distortions (like alignment issues) that are hard to track down
+ * and fix.
+ */
+
+/* ==========  TYPOGRAPHY  ========== */
+
+/* We're splitting fonts into "preferred" and "performance" in order to optimize
+   page loading. For important text, such as the body, we want it to load
+   immediately and not wait for the web font load, whereas for other sections,
+   such as headers and titles, we're OK with things taking a bit longer to load.
+   We do have some optional classes and parameters in the mixins, in case you
+   definitely want to make sure you're using the preferred font and don't mind
+   the performance hit.
+   We should be able to improve on this once CSS Font Loading L3 becomes more
+   widely available.
+*/
+
+/* ==========  COLORS  ========== */
+
+/**
+*
+* Material design color palettes.
+* @see http://www.google.com/design/spec/style/color.html
+*
+**/
+
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ==========  Color Palettes  ========== */
+
+/* colors.scss */
+
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ==========  IMAGES  ========== */
+
+/* ==========  Color & Themes  ========== */
+
+/* ==========  Typography  ========== */
+
+/* ==========  Components  ========== */
+
+/* ==========  Standard Buttons  ========== */
+
+/* ==========  Icon Toggles  ========== */
+
+/* ==========  Radio Buttons  ========== */
+
+/* ==========  Ripple effect  ========== */
+
+/* ==========  Layout  ========== */
+
+/* ==========  Content Tabs  ========== */
+
+/* ==========  Checkboxes  ========== */
+
+/* ==========  Switches  ========== */
+
+/* ==========  Spinner  ========== */
+
+/* ==========  Text fields  ========== */
+
+/* ==========  Card  ========== */
+
+/* ==========  Sliders ========== */
+
+/* ========== Progress ========== */
+
+/* ==========  List ========== */
+
+/* ==========  Item ========== */
+
+/* ==========  Dropdown menu ========== */
+
+/* ==========  Tooltips  ========== */
+
+/* ==========  Footer  ========== */
+
+/* TEXTFIELD */
+
+/* SWITCH */
+
+/* SPINNER */
+
+/* RADIO */
+
+/* MENU */
+
+/* LIST */
+
+/* LAYOUT */
+
+/* ICON TOGGLE */
+
+/* FOOTER */
+
+/*mega-footer*/
+
+/*mini-footer*/
+
+/* CHECKBOX */
+
+/* CARD */
+
+/* Card dimensions */
+
+/* Cover image */
+
+/* BUTTON */
+
+/**
+ *
+ * Dimensions
+ *
+ */
+
+/* ANIMATION */
+
+/* PROGRESS */
+
+/* BADGE */
+
+/* SHADOWS */
+
+/* GRID */
+
+/* DATA TABLE */
+
+/* DIALOG */
+
+/* SNACKBAR */
+
+/* TOOLTIP */
+
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* Typography */
+
+/* Shadows */
+
+/* Animations */
+
+/* Dialog */
+
+/**
+ * Copyright 2016 Leif Olsen. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ==========   Sticky Header   ========== */
+
+/* ==========     Accordion     ========== */
+
+/* ==========  Bordered fields  ========== */
+
+/* ==========     Dialog     ========== */
+
+/* ==========     Lightbox     ========== */
+
+/* ==========  Lightboard  ========== */
+
+/* ==========  Color Themes  ========== */
+
+/*
+ * Modified from: http://blustemy.io/drawing-pure-css-arrows-with-mixins/
+ */
+
+/**
+ * Copyright 2016 Leif Olsen. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Copyright 2016 Leif Olsen. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ==========   Sticky Header   ========== */
+
+/* ==========     Accordion     ========== */
+
+/* ==========  Bordered fields  ========== */
+
+/* ==========     Dialog     ========== */
+
+/* ==========     Lightbox     ========== */
+
+/* ==========  Lightboard  ========== */
+
+/* ==========  Color Themes  ========== */
+
+.mdlext-layout__sticky-header {
+  position: absolute;
+  overflow: visible;
+  background: transparent linear-gradient(to bottom, rgb(63,81,181) 0, rgb(63,81,181) 100%);
+  transition: .1s ease-in-out;
+}
+
+.mdlext-layout__sticky-header.mdlext-is-scroll {
+  background: transparent linear-gradient(to bottom, rgba(63,81,181, 0.98) 100%, rgba(63,81,181, 0.95) 100%);
+}
+
+*:not(.is-small-screen) .mdlext-layout__sticky-header .mdl-layout__drawer-button {
+  visibility: hidden;
+}
+
+*:not(.is-small-screen) .mdlext-layout__sticky-header .mdl-layout__header-row {
+  padding-left: 16px;
+}
+
+*:not(.mdl-layout--fixed-drawer).has-drawer .mdlext-layout__sticky-header,
+.is-small-screen.has-drawer .mdlext-layout__sticky-header {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+*:not(.mdl-layout--fixed-drawer).has-drawer .mdlext-layout__sticky-header .mdl-layout__drawer-button,
+.is-small-screen.has-drawer .mdlext-layout__sticky-header .mdl-layout__drawer-button {
+  visibility: visible;
+}
+
+*:not(.mdl-layout--fixed-drawer).has-drawer .mdlext-layout__sticky-header .mdl-layout__header-row,
+.is-small-screen.has-drawer .mdlext-layout__sticky-header .mdl-layout__header-row {
+  padding-left: 64px;
+}
+
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ * Copyright 2016 Leif Olsen. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * SASS based on css from Google Chrome Dialog polyfill, https://github.com/GoogleChrome/dialog-polyfill
+ * @include 'node_modules/dialog-polyfill/dialog-polyfill.css' before using this
+ */
+
+/**
+ * Copyright 2016 Leif Olsen. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ==========   Sticky Header   ========== */
+
+/* ==========     Accordion     ========== */
+
+/* ==========  Bordered fields  ========== */
+
+/* ==========     Dialog     ========== */
+
+/* ==========     Lightbox     ========== */
+
+/* ==========  Lightboard  ========== */
+
+/* ==========  Color Themes  ========== */
+
+dialog.mdlext-dialog {
+  position: absolute;
+  border: 0;
+  opacity: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+dialog.mdlext-dialog[open] {
+  -webkit-animation: mdlext-open-dialog 0.5s 0.2s forwards;
+          animation: mdlext-open-dialog 0.5s 0.2s forwards;
+}
+
+dialog.mdlext-dialog[open]::-webkit-backdrop {
+  -webkit-animation: mdlext-darken-backdrop 0.2s forwards;
+          animation: mdlext-darken-backdrop 0.2s forwards;
+}
+
+dialog.mdlext-dialog[open]::backdrop {
+  -webkit-animation: mdlext-darken-backdrop 0.2s forwards;
+          animation: mdlext-darken-backdrop 0.2s forwards;
+}
+
+dialog.mdlext-dialog[open] + .backdrop {
+  -webkit-animation: mdlext-darken-backdrop 0.2s forwards;
+          animation: mdlext-darken-backdrop 0.2s forwards;
+}
+
+@-webkit-keyframes mdlext-darken-backdrop {
+  to {
+    background: rgba(0, 0, 0, 0.86);
+  }
+}
+
+@keyframes mdlext-darken-backdrop {
+  to {
+    background: rgba(0, 0, 0, 0.86);
+  }
+}
+
+@-webkit-keyframes mdlext-open-dialog {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mdlext-open-dialog {
+  to {
+    opacity: 1;
+  }
+}
+
+/**
+ * This code is modified from Material Design Lite _grid.sass,
+ * which is Licensed under the Apache License, Version 2.0
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+.mdlext-grid {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  margin: 0 auto 0 auto;
+  -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.mdlext-grid.mdlext-grid--no-spacing {
+  padding: 0;
+}
+
+.mdlext-cell {
+  box-sizing: border-box;
+}
+
+.mdlext-cell--top {
+  -webkit-align-self: flex-start;
+      -ms-flex-item-align: start;
+          align-self: flex-start;
+}
+
+.mdlext-cell--middle {
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+}
+
+.mdlext-cell--bottom {
+  -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+          align-self: flex-end;
+}
+
+.mdlext-cell--stretch {
+  -webkit-align-self: stretch;
+      -ms-flex-item-align: stretch;
+          align-self: stretch;
+}
+
+.mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell {
+  margin: 0;
+}
+
+.mdlext-cell--order-1 {
+  -webkit-order: 1;
+      -ms-flex-order: 1;
+          order: 1;
+}
+
+.mdlext-cell--order-2 {
+  -webkit-order: 2;
+      -ms-flex-order: 2;
+          order: 2;
+}
+
+.mdlext-cell--order-3 {
+  -webkit-order: 3;
+      -ms-flex-order: 3;
+          order: 3;
+}
+
+.mdlext-cell--order-4 {
+  -webkit-order: 4;
+      -ms-flex-order: 4;
+          order: 4;
+}
+
+.mdlext-cell--order-5 {
+  -webkit-order: 5;
+      -ms-flex-order: 5;
+          order: 5;
+}
+
+.mdlext-cell--order-6 {
+  -webkit-order: 6;
+      -ms-flex-order: 6;
+          order: 6;
+}
+
+.mdlext-cell--order-7 {
+  -webkit-order: 7;
+      -ms-flex-order: 7;
+          order: 7;
+}
+
+.mdlext-cell--order-8 {
+  -webkit-order: 8;
+      -ms-flex-order: 8;
+          order: 8;
+}
+
+.mdlext-cell--order-9 {
+  -webkit-order: 9;
+      -ms-flex-order: 9;
+          order: 9;
+}
+
+.mdlext-cell--order-10 {
+  -webkit-order: 10;
+      -ms-flex-order: 10;
+          order: 10;
+}
+
+.mdlext-cell--order-11 {
+  -webkit-order: 11;
+      -ms-flex-order: 11;
+          order: 11;
+}
+
+.mdlext-cell--order-12 {
+  -webkit-order: 12;
+      -ms-flex-order: 12;
+          order: 12;
+}
+
+@media (max-width: 479px) {
+  .mdlext-grid {
+    padding: 8px;
+  }
+
+  .mdlext-cell {
+    margin: 8px;
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell {
+    width: 100%;
+  }
+
+  .mdlext-cell--hide-phone {
+    display: none !important;
+  }
+
+  .mdlext-cell--order-1-phone.mdlext-cell--order-1-phone {
+    -webkit-order: 1;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+
+  .mdlext-cell--order-2-phone.mdlext-cell--order-2-phone {
+    -webkit-order: 2;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+
+  .mdlext-cell--order-3-phone.mdlext-cell--order-3-phone {
+    -webkit-order: 3;
+        -ms-flex-order: 3;
+            order: 3;
+  }
+
+  .mdlext-cell--order-4-phone.mdlext-cell--order-4-phone {
+    -webkit-order: 4;
+        -ms-flex-order: 4;
+            order: 4;
+  }
+
+  .mdlext-cell--order-5-phone.mdlext-cell--order-5-phone {
+    -webkit-order: 5;
+        -ms-flex-order: 5;
+            order: 5;
+  }
+
+  .mdlext-cell--order-6-phone.mdlext-cell--order-6-phone {
+    -webkit-order: 6;
+        -ms-flex-order: 6;
+            order: 6;
+  }
+
+  .mdlext-cell--order-7-phone.mdlext-cell--order-7-phone {
+    -webkit-order: 7;
+        -ms-flex-order: 7;
+            order: 7;
+  }
+
+  .mdlext-cell--order-8-phone.mdlext-cell--order-8-phone {
+    -webkit-order: 8;
+        -ms-flex-order: 8;
+            order: 8;
+  }
+
+  .mdlext-cell--order-9-phone.mdlext-cell--order-9-phone {
+    -webkit-order: 9;
+        -ms-flex-order: 9;
+            order: 9;
+  }
+
+  .mdlext-cell--order-10-phone.mdlext-cell--order-10-phone {
+    -webkit-order: 10;
+        -ms-flex-order: 10;
+            order: 10;
+  }
+
+  .mdlext-cell--order-11-phone.mdlext-cell--order-11-phone {
+    -webkit-order: 11;
+        -ms-flex-order: 11;
+            order: 11;
+  }
+
+  .mdlext-cell--order-12-phone.mdlext-cell--order-12-phone {
+    -webkit-order: 12;
+        -ms-flex-order: 12;
+            order: 12;
+  }
+
+  .mdlext-cell--1-col,
+  .mdlext-cell--1-col-phone.mdlext-cell--1-col-phone {
+    width: calc(25% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--1-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--1-col-phone.mdlext-cell--1-col-phone {
+    width: 25%;
+  }
+
+  .mdlext-cell--2-col,
+  .mdlext-cell--2-col-phone.mdlext-cell--2-col-phone {
+    width: calc(50% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--2-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--2-col-phone.mdlext-cell--2-col-phone {
+    width: 50%;
+  }
+
+  .mdlext-cell--3-col,
+  .mdlext-cell--3-col-phone.mdlext-cell--3-col-phone {
+    width: calc(75% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--3-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--3-col-phone.mdlext-cell--3-col-phone {
+    width: 75%;
+  }
+
+  .mdlext-cell--4-col,
+  .mdlext-cell--4-col-phone.mdlext-cell--4-col-phone {
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--4-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--4-col-phone.mdlext-cell--4-col-phone {
+    width: 100%;
+  }
+
+  .mdlext-cell--5-col,
+  .mdlext-cell--5-col-phone.mdlext-cell--5-col-phone {
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--5-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--5-col-phone.mdlext-cell--5-col-phone {
+    width: 100%;
+  }
+
+  .mdlext-cell--6-col,
+  .mdlext-cell--6-col-phone.mdlext-cell--6-col-phone {
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--6-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--6-col-phone.mdlext-cell--6-col-phone {
+    width: 100%;
+  }
+
+  .mdlext-cell--7-col,
+  .mdlext-cell--7-col-phone.mdlext-cell--7-col-phone {
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--7-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--7-col-phone.mdlext-cell--7-col-phone {
+    width: 100%;
+  }
+
+  .mdlext-cell--8-col,
+  .mdlext-cell--8-col-phone.mdlext-cell--8-col-phone {
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--8-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--8-col-phone.mdlext-cell--8-col-phone {
+    width: 100%;
+  }
+
+  .mdlext-cell--9-col,
+  .mdlext-cell--9-col-phone.mdlext-cell--9-col-phone {
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--9-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--9-col-phone.mdlext-cell--9-col-phone {
+    width: 100%;
+  }
+
+  .mdlext-cell--10-col,
+  .mdlext-cell--10-col-phone.mdlext-cell--10-col-phone {
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--10-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--10-col-phone.mdlext-cell--10-col-phone {
+    width: 100%;
+  }
+
+  .mdlext-cell--11-col,
+  .mdlext-cell--11-col-phone.mdlext-cell--11-col-phone {
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--11-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--11-col-phone.mdlext-cell--11-col-phone {
+    width: 100%;
+  }
+
+  .mdlext-cell--12-col,
+  .mdlext-cell--12-col-phone.mdlext-cell--12-col-phone {
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--12-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--12-col-phone.mdlext-cell--12-col-phone {
+    width: 100%;
+  }
+
+  .mdlext-cell--1-offset,
+  .mdlext-cell--1-offset-phone.mdlext-cell--1-offset-phone {
+    margin-left: calc(25% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--1-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--1-offset-phone.mdlext-cell--1-offset-phone {
+    margin-left: 25%;
+  }
+
+  .mdlext-cell--2-offset,
+  .mdlext-cell--2-offset-phone.mdlext-cell--2-offset-phone {
+    margin-left: calc(50% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--2-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--2-offset-phone.mdlext-cell--2-offset-phone {
+    margin-left: 50%;
+  }
+
+  .mdlext-cell--3-offset,
+  .mdlext-cell--3-offset-phone.mdlext-cell--3-offset-phone {
+    margin-left: calc(75% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--3-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--3-offset-phone.mdlext-cell--3-offset-phone {
+    margin-left: 75%;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 839px) {
+  .mdlext-grid {
+    padding: 8px;
+  }
+
+  .mdlext-cell {
+    margin: 8px;
+    width: calc(50% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell {
+    width: 50%;
+  }
+
+  .mdlext-cell--hide-tablet {
+    display: none !important;
+  }
+
+  .mdlext-cell--order-1-tablet.mdlext-cell--order-1-tablet {
+    -webkit-order: 1;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+
+  .mdlext-cell--order-2-tablet.mdlext-cell--order-2-tablet {
+    -webkit-order: 2;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+
+  .mdlext-cell--order-3-tablet.mdlext-cell--order-3-tablet {
+    -webkit-order: 3;
+        -ms-flex-order: 3;
+            order: 3;
+  }
+
+  .mdlext-cell--order-4-tablet.mdlext-cell--order-4-tablet {
+    -webkit-order: 4;
+        -ms-flex-order: 4;
+            order: 4;
+  }
+
+  .mdlext-cell--order-5-tablet.mdlext-cell--order-5-tablet {
+    -webkit-order: 5;
+        -ms-flex-order: 5;
+            order: 5;
+  }
+
+  .mdlext-cell--order-6-tablet.mdlext-cell--order-6-tablet {
+    -webkit-order: 6;
+        -ms-flex-order: 6;
+            order: 6;
+  }
+
+  .mdlext-cell--order-7-tablet.mdlext-cell--order-7-tablet {
+    -webkit-order: 7;
+        -ms-flex-order: 7;
+            order: 7;
+  }
+
+  .mdlext-cell--order-8-tablet.mdlext-cell--order-8-tablet {
+    -webkit-order: 8;
+        -ms-flex-order: 8;
+            order: 8;
+  }
+
+  .mdlext-cell--order-9-tablet.mdlext-cell--order-9-tablet {
+    -webkit-order: 9;
+        -ms-flex-order: 9;
+            order: 9;
+  }
+
+  .mdlext-cell--order-10-tablet.mdlext-cell--order-10-tablet {
+    -webkit-order: 10;
+        -ms-flex-order: 10;
+            order: 10;
+  }
+
+  .mdlext-cell--order-11-tablet.mdlext-cell--order-11-tablet {
+    -webkit-order: 11;
+        -ms-flex-order: 11;
+            order: 11;
+  }
+
+  .mdlext-cell--order-12-tablet.mdlext-cell--order-12-tablet {
+    -webkit-order: 12;
+        -ms-flex-order: 12;
+            order: 12;
+  }
+
+  .mdlext-cell--1-col,
+  .mdlext-cell--1-col-tablet.mdlext-cell--1-col-tablet {
+    width: calc(12.5% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--1-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--1-col-tablet.mdlext-cell--1-col-tablet {
+    width: 12.5%;
+  }
+
+  .mdlext-cell--2-col,
+  .mdlext-cell--2-col-tablet.mdlext-cell--2-col-tablet {
+    width: calc(25% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--2-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--2-col-tablet.mdlext-cell--2-col-tablet {
+    width: 25%;
+  }
+
+  .mdlext-cell--3-col,
+  .mdlext-cell--3-col-tablet.mdlext-cell--3-col-tablet {
+    width: calc(37.5% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--3-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--3-col-tablet.mdlext-cell--3-col-tablet {
+    width: 37.5%;
+  }
+
+  .mdlext-cell--4-col,
+  .mdlext-cell--4-col-tablet.mdlext-cell--4-col-tablet {
+    width: calc(50% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--4-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--4-col-tablet.mdlext-cell--4-col-tablet {
+    width: 50%;
+  }
+
+  .mdlext-cell--5-col,
+  .mdlext-cell--5-col-tablet.mdlext-cell--5-col-tablet {
+    width: calc(62.5% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--5-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--5-col-tablet.mdlext-cell--5-col-tablet {
+    width: 62.5%;
+  }
+
+  .mdlext-cell--6-col,
+  .mdlext-cell--6-col-tablet.mdlext-cell--6-col-tablet {
+    width: calc(75% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--6-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--6-col-tablet.mdlext-cell--6-col-tablet {
+    width: 75%;
+  }
+
+  .mdlext-cell--7-col,
+  .mdlext-cell--7-col-tablet.mdlext-cell--7-col-tablet {
+    width: calc(87.5% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--7-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--7-col-tablet.mdlext-cell--7-col-tablet {
+    width: 87.5%;
+  }
+
+  .mdlext-cell--8-col,
+  .mdlext-cell--8-col-tablet.mdlext-cell--8-col-tablet {
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--8-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--8-col-tablet.mdlext-cell--8-col-tablet {
+    width: 100%;
+  }
+
+  .mdlext-cell--9-col,
+  .mdlext-cell--9-col-tablet.mdlext-cell--9-col-tablet {
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--9-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--9-col-tablet.mdlext-cell--9-col-tablet {
+    width: 100%;
+  }
+
+  .mdlext-cell--10-col,
+  .mdlext-cell--10-col-tablet.mdlext-cell--10-col-tablet {
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--10-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--10-col-tablet.mdlext-cell--10-col-tablet {
+    width: 100%;
+  }
+
+  .mdlext-cell--11-col,
+  .mdlext-cell--11-col-tablet.mdlext-cell--11-col-tablet {
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--11-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--11-col-tablet.mdlext-cell--11-col-tablet {
+    width: 100%;
+  }
+
+  .mdlext-cell--12-col,
+  .mdlext-cell--12-col-tablet.mdlext-cell--12-col-tablet {
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--12-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--12-col-tablet.mdlext-cell--12-col-tablet {
+    width: 100%;
+  }
+
+  .mdlext-cell--1-offset,
+  .mdlext-cell--1-offset-tablet.mdlext-cell--1-offset-tablet {
+    margin-left: calc(12.5% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--1-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--1-offset-tablet.mdlext-cell--1-offset-tablet {
+    margin-left: 12.5%;
+  }
+
+  .mdlext-cell--2-offset,
+  .mdlext-cell--2-offset-tablet.mdlext-cell--2-offset-tablet {
+    margin-left: calc(25% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--2-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--2-offset-tablet.mdlext-cell--2-offset-tablet {
+    margin-left: 25%;
+  }
+
+  .mdlext-cell--3-offset,
+  .mdlext-cell--3-offset-tablet.mdlext-cell--3-offset-tablet {
+    margin-left: calc(37.5% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--3-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--3-offset-tablet.mdlext-cell--3-offset-tablet {
+    margin-left: 37.5%;
+  }
+
+  .mdlext-cell--4-offset,
+  .mdlext-cell--4-offset-tablet.mdlext-cell--4-offset-tablet {
+    margin-left: calc(50% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--4-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--4-offset-tablet.mdlext-cell--4-offset-tablet {
+    margin-left: 50%;
+  }
+
+  .mdlext-cell--5-offset,
+  .mdlext-cell--5-offset-tablet.mdlext-cell--5-offset-tablet {
+    margin-left: calc(62.5% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--5-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--5-offset-tablet.mdlext-cell--5-offset-tablet {
+    margin-left: 62.5%;
+  }
+
+  .mdlext-cell--6-offset,
+  .mdlext-cell--6-offset-tablet.mdlext-cell--6-offset-tablet {
+    margin-left: calc(75% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--6-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--6-offset-tablet.mdlext-cell--6-offset-tablet {
+    margin-left: 75%;
+  }
+
+  .mdlext-cell--7-offset,
+  .mdlext-cell--7-offset-tablet.mdlext-cell--7-offset-tablet {
+    margin-left: calc(87.5% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--7-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--7-offset-tablet.mdlext-cell--7-offset-tablet {
+    margin-left: 87.5%;
+  }
+}
+
+@media (min-width: 840px) {
+  .mdlext-grid {
+    padding: 8px;
+  }
+
+  .mdlext-cell {
+    margin: 8px;
+    width: calc(33.33333% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell {
+    width: 33.33333%;
+  }
+
+  .mdlext-cell--hide-desktop {
+    display: none !important;
+  }
+
+  .mdlext-cell--order-1-desktop.mdlext-cell--order-1-desktop {
+    -webkit-order: 1;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+
+  .mdlext-cell--order-2-desktop.mdlext-cell--order-2-desktop {
+    -webkit-order: 2;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+
+  .mdlext-cell--order-3-desktop.mdlext-cell--order-3-desktop {
+    -webkit-order: 3;
+        -ms-flex-order: 3;
+            order: 3;
+  }
+
+  .mdlext-cell--order-4-desktop.mdlext-cell--order-4-desktop {
+    -webkit-order: 4;
+        -ms-flex-order: 4;
+            order: 4;
+  }
+
+  .mdlext-cell--order-5-desktop.mdlext-cell--order-5-desktop {
+    -webkit-order: 5;
+        -ms-flex-order: 5;
+            order: 5;
+  }
+
+  .mdlext-cell--order-6-desktop.mdlext-cell--order-6-desktop {
+    -webkit-order: 6;
+        -ms-flex-order: 6;
+            order: 6;
+  }
+
+  .mdlext-cell--order-7-desktop.mdlext-cell--order-7-desktop {
+    -webkit-order: 7;
+        -ms-flex-order: 7;
+            order: 7;
+  }
+
+  .mdlext-cell--order-8-desktop.mdlext-cell--order-8-desktop {
+    -webkit-order: 8;
+        -ms-flex-order: 8;
+            order: 8;
+  }
+
+  .mdlext-cell--order-9-desktop.mdlext-cell--order-9-desktop {
+    -webkit-order: 9;
+        -ms-flex-order: 9;
+            order: 9;
+  }
+
+  .mdlext-cell--order-10-desktop.mdlext-cell--order-10-desktop {
+    -webkit-order: 10;
+        -ms-flex-order: 10;
+            order: 10;
+  }
+
+  .mdlext-cell--order-11-desktop.mdlext-cell--order-11-desktop {
+    -webkit-order: 11;
+        -ms-flex-order: 11;
+            order: 11;
+  }
+
+  .mdlext-cell--order-12-desktop.mdlext-cell--order-12-desktop {
+    -webkit-order: 12;
+        -ms-flex-order: 12;
+            order: 12;
+  }
+
+  .mdlext-cell--1-col,
+  .mdlext-cell--1-col-desktop.mdlext-cell--1-col-desktop {
+    width: calc(8.33333% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--1-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--1-col-desktop.mdlext-cell--1-col-desktop {
+    width: 8.33333%;
+  }
+
+  .mdlext-cell--2-col,
+  .mdlext-cell--2-col-desktop.mdlext-cell--2-col-desktop {
+    width: calc(16.66667% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--2-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--2-col-desktop.mdlext-cell--2-col-desktop {
+    width: 16.66667%;
+  }
+
+  .mdlext-cell--3-col,
+  .mdlext-cell--3-col-desktop.mdlext-cell--3-col-desktop {
+    width: calc(25% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--3-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--3-col-desktop.mdlext-cell--3-col-desktop {
+    width: 25%;
+  }
+
+  .mdlext-cell--4-col,
+  .mdlext-cell--4-col-desktop.mdlext-cell--4-col-desktop {
+    width: calc(33.33333% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--4-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--4-col-desktop.mdlext-cell--4-col-desktop {
+    width: 33.33333%;
+  }
+
+  .mdlext-cell--5-col,
+  .mdlext-cell--5-col-desktop.mdlext-cell--5-col-desktop {
+    width: calc(41.66667% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--5-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--5-col-desktop.mdlext-cell--5-col-desktop {
+    width: 41.66667%;
+  }
+
+  .mdlext-cell--6-col,
+  .mdlext-cell--6-col-desktop.mdlext-cell--6-col-desktop {
+    width: calc(50% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--6-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--6-col-desktop.mdlext-cell--6-col-desktop {
+    width: 50%;
+  }
+
+  .mdlext-cell--7-col,
+  .mdlext-cell--7-col-desktop.mdlext-cell--7-col-desktop {
+    width: calc(58.33333% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--7-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--7-col-desktop.mdlext-cell--7-col-desktop {
+    width: 58.33333%;
+  }
+
+  .mdlext-cell--8-col,
+  .mdlext-cell--8-col-desktop.mdlext-cell--8-col-desktop {
+    width: calc(66.66667% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--8-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--8-col-desktop.mdlext-cell--8-col-desktop {
+    width: 66.66667%;
+  }
+
+  .mdlext-cell--9-col,
+  .mdlext-cell--9-col-desktop.mdlext-cell--9-col-desktop {
+    width: calc(75% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--9-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--9-col-desktop.mdlext-cell--9-col-desktop {
+    width: 75%;
+  }
+
+  .mdlext-cell--10-col,
+  .mdlext-cell--10-col-desktop.mdlext-cell--10-col-desktop {
+    width: calc(83.33333% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--10-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--10-col-desktop.mdlext-cell--10-col-desktop {
+    width: 83.33333%;
+  }
+
+  .mdlext-cell--11-col,
+  .mdlext-cell--11-col-desktop.mdlext-cell--11-col-desktop {
+    width: calc(91.66667% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--11-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--11-col-desktop.mdlext-cell--11-col-desktop {
+    width: 91.66667%;
+  }
+
+  .mdlext-cell--12-col,
+  .mdlext-cell--12-col-desktop.mdlext-cell--12-col-desktop {
+    width: calc(100% - 16px);
+  }
+
+  .mdlext-grid--no-spacing > .mdlext-cell--12-col,
+  .mdlext-grid--no-spacing >
+    .mdlext-cell--12-col-desktop.mdlext-cell--12-col-desktop {
+    width: 100%;
+  }
+
+  .mdlext-cell--1-offset,
+  .mdlext-cell--1-offset-desktop.mdlext-cell--1-offset-desktop {
+    margin-left: calc(8.33333% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--1-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--1-offset-desktop.mdlext-cell--1-offset-desktop {
+    margin-left: 8.33333%;
+  }
+
+  .mdlext-cell--2-offset,
+  .mdlext-cell--2-offset-desktop.mdlext-cell--2-offset-desktop {
+    margin-left: calc(16.66667% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--2-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--2-offset-desktop.mdlext-cell--2-offset-desktop {
+    margin-left: 16.66667%;
+  }
+
+  .mdlext-cell--3-offset,
+  .mdlext-cell--3-offset-desktop.mdlext-cell--3-offset-desktop {
+    margin-left: calc(25% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--3-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--3-offset-desktop.mdlext-cell--3-offset-desktop {
+    margin-left: 25%;
+  }
+
+  .mdlext-cell--4-offset,
+  .mdlext-cell--4-offset-desktop.mdlext-cell--4-offset-desktop {
+    margin-left: calc(33.33333% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--4-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--4-offset-desktop.mdlext-cell--4-offset-desktop {
+    margin-left: 33.33333%;
+  }
+
+  .mdlext-cell--5-offset,
+  .mdlext-cell--5-offset-desktop.mdlext-cell--5-offset-desktop {
+    margin-left: calc(41.66667% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--5-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--5-offset-desktop.mdlext-cell--5-offset-desktop {
+    margin-left: 41.66667%;
+  }
+
+  .mdlext-cell--6-offset,
+  .mdlext-cell--6-offset-desktop.mdlext-cell--6-offset-desktop {
+    margin-left: calc(50% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--6-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--6-offset-desktop.mdlext-cell--6-offset-desktop {
+    margin-left: 50%;
+  }
+
+  .mdlext-cell--7-offset,
+  .mdlext-cell--7-offset-desktop.mdlext-cell--7-offset-desktop {
+    margin-left: calc(58.33333% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--7-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--7-offset-desktop.mdlext-cell--7-offset-desktop {
+    margin-left: 58.33333%;
+  }
+
+  .mdlext-cell--8-offset,
+  .mdlext-cell--8-offset-desktop.mdlext-cell--8-offset-desktop {
+    margin-left: calc(66.66667% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--8-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--8-offset-desktop.mdlext-cell--8-offset-desktop {
+    margin-left: 66.66667%;
+  }
+
+  .mdlext-cell--9-offset,
+  .mdlext-cell--9-offset-desktop.mdlext-cell--9-offset-desktop {
+    margin-left: calc(75% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--9-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--9-offset-desktop.mdlext-cell--9-offset-desktop {
+    margin-left: 75%;
+  }
+
+  .mdlext-cell--10-offset,
+  .mdlext-cell--10-offset-desktop.mdlext-cell--10-offset-desktop {
+    margin-left: calc(83.33333% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--10-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--10-offset-desktop.mdlext-cell--10-offset-desktop {
+    margin-left: 83.33333%;
+  }
+
+  .mdlext-cell--11-offset,
+  .mdlext-cell--11-offset-desktop.mdlext-cell--11-offset-desktop {
+    margin-left: calc(91.66667% + 8px);
+  }
+
+  .mdlext-grid.mdlext-grid--no-spacing > .mdlext-cell--11-offset,
+  .mdlext-grid.mdlext-grid--no-spacing >
+    .mdlext-cell--11-offset-desktop.mdlext-cell--11-offset-desktop {
+    margin-left: 91.66667%;
+  }
+}
+
+/**
+ * Copyright 2016 Leif Olsen. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+ * A lightboard is a translucent surface illuminated from behind, used for situations
+ * where a shape laid upon the surface needs to be seen with high contrast. In the "old days" of photography
+ * photograpers used a lightboard to get a quick view of their slides. The goal is to create a responsive lightbox
+ * design, based on flex layout, similar to what is used in Adobe LightRoom to browse images.
+ */
+
+/**
+ * Copyright 2016 Leif Olsen. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ==========   Sticky Header   ========== */
+
+/* ==========     Accordion     ========== */
+
+/* ==========  Bordered fields  ========== */
+
+/* ==========     Dialog     ========== */
+
+/* ==========     Lightbox     ========== */
+
+/* ==========  Lightboard  ========== */
+
+/* ==========  Color Themes  ========== */
+
+ul.mdlext-lightboard {
+  list-style: none;
+}
+
+.mdlext-lightboard {
+  box-sizing: border-box;
+  margin: 0 auto 0 auto;
+  padding: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.mdlext-lightboard *,
+.mdlext-lightboard *::before,
+.mdlext-lightboard *::after,
+.mdlext-lightboard input[type="search"] {
+  box-sizing: border-box;
+}
+
+.mdlext-lightboard .mdlext-lightboard__slide {
+  background-color: #F8F8F8;
+  border: 1px solid #D8D8D8;
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px -1px rgba(219, 215, 219, 0.5);
+  position: relative;
+  display: block;
+  max-width: 250px;
+  outline: 0;
+}
+
+.mdlext-lightboard .mdlext-lightboard__slide:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.mdlext-lightboard .mdlext-lightboard__slide:hover,
+.mdlext-lightboard .mdlext-lightboard__slide:active,
+.mdlext-lightboard .mdlext-lightboard__slide:focus {
+  border-color: #B8B8B8;
+  background-color: #E8E8E8;
+  box-shadow: 2px 2px 12px -1px #dbd7db;
+}
+
+.mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__frame,
+.mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__ripple-container {
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
+}
+
+.mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__frame:focus,
+.mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__ripple-container:focus {
+  outline: thin dotted #777777;
+  outline-offset: -4px;
+}
+
+.mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__frame .mdl-ripple,
+.mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__ripple-container .mdl-ripple {
+  background: rgb(63,81,181);
+}
+
+.mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__frame figure,
+.mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__ripple-container figure {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__frame figure img,
+.mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__ripple-container figure img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  border-width: 0;
+  border-radius: 3px;
+}
+
+.mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__frame figure figcaption,
+.mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__ripple-container figure figcaption {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  color: rgb(189,189,189);
+  position: absolute;
+  bottom: -2px;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  text-overflow: ellipsis;
+  padding: 4px 0;
+}
+
+.mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__frame:hover figcaption,
+.mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__ripple-container:hover figcaption {
+  color: black !important;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.mdlext-lightboard {
+  padding: calc((0px - 2px) / 2);
+}
+
+.mdlext-lightboard .mdlext-lightboard__slide {
+  margin: calc(2px / 2);
+  width: calc(1 / 2 * 100% - 2px);
+}
+
+.mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__frame figure {
+  margin: 8px;
+}
+
+.mdlext-lightboard.mdlext-lightboard--no-spacing {
+  padding: 0;
+}
+
+.mdlext-lightboard.mdlext-lightboard--no-spacing .mdlext-lightboard__slide {
+  margin: 0;
+  width: calc(1 / 2 * 100%);
+}
+
+/**
+ * Copyright 2016 Leif Olsen. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ==========   Sticky Header   ========== */
+
+/* ==========     Accordion     ========== */
+
+/* ==========  Bordered fields  ========== */
+
+/* ==========     Dialog     ========== */
+
+/* ==========     Lightbox     ========== */
+
+/* ==========  Lightboard  ========== */
+
+/* ==========  Color Themes  ========== */
+
+@media (min-width: 480px) and (max-width: 659px) {
+  .mdlext-lightboard {
+    padding: calc((0px - 4px) / 2);
+  }
+
+  .mdlext-lightboard .mdlext-lightboard__slide {
+    margin: calc(4px / 2);
+    width: calc(1 / 4 * 100% - 4px);
+  }
+
+  .mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__frame figure {
+    margin: 8px;
+  }
+
+  .mdlext-lightboard.mdlext-lightboard--no-spacing {
+    padding: 0;
+  }
+
+  .mdlext-lightboard.mdlext-lightboard--no-spacing .mdlext-lightboard__slide {
+    margin: 0;
+    width: calc(1 / 4 * 100%);
+  }
+}
+
+@media (min-width: 660px) and (max-width: 839px) {
+  .mdlext-lightboard {
+    padding: calc((0px - 4px) / 2);
+  }
+
+  .mdlext-lightboard .mdlext-lightboard__slide {
+    margin: calc(4px / 2);
+    width: calc(1 / 5 * 100% - 4px);
+  }
+
+  .mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__frame figure {
+    margin: 8px;
+  }
+
+  .mdlext-lightboard.mdlext-lightboard--no-spacing {
+    padding: 0;
+  }
+
+  .mdlext-lightboard.mdlext-lightboard--no-spacing .mdlext-lightboard__slide {
+    margin: 0;
+    width: calc(1 / 5 * 100%);
+  }
+}
+
+@media (min-width: 840px) and (max-width: 1199px) {
+  .mdlext-lightboard {
+    padding: calc((0px - 8px) / 2);
+  }
+
+  .mdlext-lightboard .mdlext-lightboard__slide {
+    margin: calc(8px / 2);
+    width: calc(1 / 6 * 100% - 8px);
+  }
+
+  .mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__frame figure {
+    margin: 12px;
+  }
+
+  .mdlext-lightboard.mdlext-lightboard--no-spacing {
+    padding: 0;
+  }
+
+  .mdlext-lightboard.mdlext-lightboard--no-spacing .mdlext-lightboard__slide {
+    margin: 0;
+    width: calc(1 / 6 * 100%);
+  }
+}
+
+@media (min-width: 1200px) {
+  .mdlext-lightboard {
+    padding: calc((0px - 8px) / 2);
+  }
+
+  .mdlext-lightboard .mdlext-lightboard__slide {
+    margin: calc(8px / 2);
+    width: calc(1 / 7 * 100% - 8px);
+  }
+
+  .mdlext-lightboard .mdlext-lightboard__slide .mdlext-lightboard__slide__frame figure {
+    margin: 12px;
+  }
+
+  .mdlext-lightboard.mdlext-lightboard--no-spacing {
+    padding: 0;
+  }
+
+  .mdlext-lightboard.mdlext-lightboard--no-spacing .mdlext-lightboard__slide {
+    margin: 0;
+    width: calc(1 / 7 * 100%);
+  }
+}
+
+/**
+ * Copyright 2016 Leif Olsen. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Copyright 2016 Leif Olsen. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ==========   Sticky Header   ========== */
+
+/* ==========     Accordion     ========== */
+
+/* ==========  Bordered fields  ========== */
+
+/* ==========     Dialog     ========== */
+
+/* ==========     Lightbox     ========== */
+
+/* ==========  Lightboard  ========== */
+
+/* ==========  Color Themes  ========== */
+
+.mdlext-lightbox {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: default;
+  position: relative;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+  border: 0;
+  border-radius: 0;
+  background-color: rgb(255,255,255);
+  box-sizing: border-box;
+  outline: 0;
+  display: block;
+}
+
+.mdlext-lightbox *,
+.mdlext-lightbox *::before,
+.mdlext-lightbox *::after,
+.mdlext-lightbox input[type="search"] {
+  box-sizing: border-box;
+}
+
+.mdlext-lightbox .mdlext-lightbox__slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.mdlext-lightbox .mdlext-lightbox__slider .mdlext-lightbox__slider__slide {
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+  display: block;
+  text-align: left;
+  color: #7f7f7f;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.mdlext-lightbox figure {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.mdlext-lightbox figure img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+  outline: 0;
+}
+
+.mdlext-lightbox figure figcaption {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  height: auto;
+  max-height: 50%;
+  overflow: auto;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.76);
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  transition: .2s ease-in-out;
+}
+
+.mdlext-lightbox figure figcaption.mdlext-lightbox__show-figcaption {
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+
+.mdlext-lightbox figure figcaption tbody th {
+  text-align: left;
+}
+
+.mdlext-lightbox figure figcaption tbody th,
+.mdlext-lightbox figure figcaption tbody td {
+  vertical-align: text-top;
+}
+
+.mdlext-lightbox .mdl-card__menu {
+  color: #ffffff;
+  z-index: 1;
+}
+
+.mdlext-lightbox footer {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(255, 255, 255, 0.86);
+}
+
+.mdlext-lightbox footer .mdl-card__supporting-text {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: hidden;
+  padding: 0;
+  height: 18px;
+  width: 100%;
+}
+
+.mdlext-lightbox footer nav {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mdlext-lightbox.mdlext-lightbox--sticky-footer footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+/**
+ * Copyright 2016 Leif Olsen. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+ * Copied/Modified/Inspired from/by:
+ *   https://github.com/google/material-design-lite/tree/master/src/textfield
+ *   http://codepen.io/etcpe9/pen/PqyOye,
+ *   http://codepen.io/pudgereyem/pen/PqBxQx
+ *   https://github.com/MEYVN-digital/mdl-selectfield
+ *   https://github.com/mebibou/mdl-selectfield
+ */
+
+/*
+ * Modified from: http://blustemy.io/drawing-pure-css-arrows-with-mixins/
+ */
+
+.mdlext-selectfield {
+  position: relative;
+  font-size: 16px;
+  display: inline-block;
+  width: 300px;
+  max-width: 100%;
+  margin: 0;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+.mdlext-selectfield *,
+.mdlext-selectfield *::before,
+.mdlext-selectfield *::after {
+  box-sizing: border-box;
+}
+
+.mdlext-selectfield .mdl-button {
+  position: absolute;
+  bottom: 20px;
+}
+
+.mdlext-selectfield:after {
+  content: '';
+  width: 0;
+  height: 0;
+  border: 0.35em solid transparent;
+  border-top-width: 0.5em;
+  border-bottom: none;
+  border-top-color: inherit;
+  position: absolute;
+  bottom: 1.8em;
+  right: 0.5em;
+  padding: 0;
+  pointer-events: none;
+}
+
+.mdlext-selectfield.is-disabled:after {
+  color: rgba(0,0,0, 0.12);
+  content: '';
+  width: 0;
+  height: 0;
+  border: 0.35em solid transparent;
+  border-top-width: 0.5em;
+  border-bottom: none;
+  border-top-color: rgba(0,0,0, 0.12);
+}
+
+.mdlext-selectfield--align-right {
+  text-align: right;
+}
+
+.mdlext-selectfield--full-width {
+  width: 100%;
+}
+
+.mdlext-selectfield--expandable {
+  min-width: 32px;
+  width: auto;
+  min-height: 32px;
+}
+
+.mdlext-selectfield__select {
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0, 0.12);
+  display: block;
+  font-size: 16px;
+  font-family: "Helvetica", "Arial", sans-serif;
+  margin: 0;
+  padding: 4px calc(1.2em + 4px) 4px 0;
+  width: 100%;
+  background: none;
+  text-align: left;
+  color: inherit;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-indent: 0.01px;
+  text-overflow: "";
+}
+
+.mdlext-selectfield__select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+
+.mdlext-selectfield__select::-ms-expand {
+  display: none;
+}
+
+.mdlext-selectfield.is-focused .mdlext-selectfield__select {
+  outline: none;
+}
+
+.mdlext-selectfield.is-invalid .mdlext-selectfield__select {
+  border-color: rgb(213,0,0);
+  box-shadow: none;
+}
+
+fieldset[disabled] .mdlext-selectfield .mdlext-selectfield__select,
+.mdlext-selectfield.is-disabled .mdlext-selectfield__select {
+  background-color: transparent;
+  border-bottom: 1px dotted rgba(0,0,0, 0.12);
+  color: rgba(0,0,0, 0.26);
+}
+
+.mdlext-selectfield__select option {
+  background-color: inherit;
+  color: rgba(0,0,0, 0.87);
+}
+
+.mdlext-selectfield__label {
+  bottom: 0;
+  color: rgba(0,0,0, 0.26);
+  font-size: 16px;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  position: absolute;
+  display: block;
+  top: 24px;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.mdlext-selectfield.is-dirty .mdlext-selectfield__label,
+.mdlext-selectfield.has-placeholder .mdlext-selectfield__label {
+  visibility: hidden;
+}
+
+.mdlext-selectfield--floating-label .mdlext-selectfield__label {
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mdlext-selectfield--floating-label.has-placeholder .mdlext-selectfield__label {
+  transition: none;
+}
+
+fieldset[disabled] .mdlext-selectfield .mdlext-selectfield__label,
+.mdlext-selectfield.is-disabled.is-disabled .mdlext-selectfield__label {
+  color: rgba(0,0,0, 0.26);
+}
+
+.mdlext-selectfield--floating-label.is-focused .mdlext-selectfield__label,
+.mdlext-selectfield--floating-label.is-dirty .mdlext-selectfield__label,
+.mdlext-selectfield--floating-label.is-dirty.is-dirty .mdlext-selectfield__label,
+.mdlext-selectfield--floating-label.has-placeholder .mdlext-selectfield__label {
+  color: rgb(76,175,80);
+  font-size: 12px;
+  top: 4px;
+  visibility: visible;
+}
+
+.mdlext-selectfield--floating-label.is-focused .mdlext-selectfield__expandable-holder .mdlext-selectfield__label,
+.mdlext-selectfield--floating-label.is-dirty .mdlext-selectfield__expandable-holder .mdlext-selectfield__label,
+.mdlext-selectfield--floating-label.has-placeholder .mdlext-selectfield__expandable-holder .mdlext-selectfield__label {
+  top: -16px;
+}
+
+.mdlext-selectfield--floating-label.is-invalid .mdlext-selectfield__label {
+  color: rgb(213,0,0);
+  font-size: 12px;
+}
+
+.mdlext-selectfield__label:after {
+  background-color: rgb(76,175,80);
+  bottom: 20px;
+  content: '';
+  height: 2px;
+  left: 45%;
+  position: absolute;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: hidden;
+  width: 10px;
+}
+
+.mdlext-selectfield.is-focused .mdlext-selectfield__label:after {
+  left: 0;
+  visibility: visible;
+  width: 100%;
+}
+
+.mdlext-selectfield.is-invalid .mdlext-selectfield__label:after {
+  background-color: rgb(213,0,0);
+}
+
+.mdlext-selectfield__error {
+  color: rgb(213,0,0);
+  position: absolute;
+  font-size: 12px;
+  margin-top: 3px;
+  visibility: hidden;
+  display: block;
+}
+
+.mdlext-selectfield.is-invalid .mdlext-selectfield__error {
+  visibility: visible;
+}
+
+.mdlext-selectfield__expandable-holder {
+  display: inline-block;
+  position: relative;
+  margin-left: 32px;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 0.1px;
+}
+
+.mdlext-selectfield.is-focused .mdlext-selectfield__expandable-holder,
+.mdlext-selectfield.is-dirty .mdlext-selectfield__expandable-holder {
+  max-width: 600px;
+}
+
+.mdlext-selectfield__expandable-holder .mdlext-selectfield__label:after {
+  bottom: 0;
+}
+
+/**
+ * Copyright 2016 Leif Olsen. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+ * The bordered fields are based on / inspired by this CodePen: http://codepen.io/prajwal078/pen/LVJZXz?editors=010
+ */
+
+/**
+ * Copyright 2016 Leif Olsen. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ==========   Sticky Header   ========== */
+
+/* ==========     Accordion     ========== */
+
+/* ==========  Bordered fields  ========== */
+
+/* ==========     Dialog     ========== */
+
+/* ==========     Lightbox     ========== */
+
+/* ==========  Lightboard  ========== */
+
+/* ==========  Color Themes  ========== */
+
+.mdlext-bordered-fields {
+  box-sizing: border-box;
+}
+
+.mdlext-bordered-fields *,
+.mdlext-bordered-fields *::before,
+.mdlext-bordered-fields *::after,
+.mdlext-bordered-fields input[type="search"] {
+  box-sizing: border-box;
+}
+
+.mdlext-bordered-fields .mdl-textfield.is-dirty .mdl-textfield__input:required,
+.mdlext-bordered-fields .mdl-textfield.is-dirty .mdlext-selectfield__select:required,
+.mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdl-textfield__input:required,
+.mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdlext-selectfield__select:required {
+  border-color: rgba(0,0,0, 0.12);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mdlext-bordered-fields .mdl-textfield.is-dirty .mdl-textfield__input:focus,
+.mdlext-bordered-fields .mdl-textfield.is-dirty .mdl-textfield__input:required:focus,
+.mdlext-bordered-fields .mdl-textfield.is-dirty .mdlext-selectfield__select:focus,
+.mdlext-bordered-fields .mdl-textfield.is-dirty .mdlext-selectfield__select:required:focus,
+.mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdl-textfield__input:focus,
+.mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdl-textfield__input:required:focus,
+.mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdlext-selectfield__select:focus,
+.mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdlext-selectfield__select:required:focus {
+  border-color: rgb(63,81,181);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mdlext-bordered-fields .mdl-textfield .mdl-textfield__input,
+.mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select,
+.mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__input,
+.mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0,0,0, 0.12);
+  border-radius: 3px;
+  height: 48px;
+  padding-top: 20px;
+  padding-right: 8px;
+  padding-bottom: 0;
+  padding-left: 8px;
+}
+
+.mdlext-bordered-fields .mdl-textfield .mdl-textfield__input:disabled,
+.mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select:disabled,
+.mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__input:disabled,
+.mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select:disabled {
+  color: rgba(0,0,0, 0.26);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(0,0,0, 0.12);
+}
+
+.mdlext-bordered-fields .mdl-textfield .mdl-textfield__input:required,
+.mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select:required,
+.mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__input:required,
+.mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select:required {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255,64,129, 0.8);
+}
+
+.mdlext-bordered-fields .mdl-textfield .mdl-textfield__input:focus,
+.mdlext-bordered-fields .mdl-textfield .mdl-textfield__input:required:focus,
+.mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select:focus,
+.mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select:required:focus,
+.mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__input:focus,
+.mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__input:required:focus,
+.mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select:focus,
+.mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select:required:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgb(63,81,181);
+}
+
+.mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select,
+.mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select {
+  padding-right: calc(1em + 4px);
+}
+
+.mdlext-bordered-fields .mdl-textfield.is-focused .mdl-textfield__label,
+.mdlext-bordered-fields .mdl-textfield.is-focused .mdlext-selectfield__label,
+.mdlext-bordered-fields .mdlext-selectfield.is-focused .mdl-textfield__label,
+.mdlext-bordered-fields .mdlext-selectfield.is-focused .mdlext-selectfield__label {
+  top: 20px;
+}
+
+.mdlext-bordered-fields .mdl-textfield.is-dirty .mdl-textfield__label,
+.mdlext-bordered-fields .mdl-textfield.is-dirty .mdlext-selectfield__label,
+.mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdl-textfield__label,
+.mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdlext-selectfield__label {
+  top: 20px;
+  visibility: visible;
+}
+
+.mdlext-bordered-fields .mdl-textfield .mdl-textfield__label,
+.mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__label,
+.mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__label,
+.mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__label {
+  padding-left: 8px;
+  top: 45px;
+}
+
+.mdlext-bordered-fields .mdl-textfield .mdl-textfield__label:after,
+.mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__label:after,
+.mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__label:after,
+.mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__label:after {
+  background-color: transparent !important;
+  visibility: hidden !important;
+}
+
+.mdlext-bordered-fields .mdl-textfield.has-placeholder .mdl-textfield__label,
+.mdlext-bordered-fields .mdl-textfield.has-placeholder .mdlext-selectfield__label,
+.mdlext-bordered-fields .mdl-textfield.has-placeholder .mdl-textfield__label,
+.mdlext-bordered-fields .mdl-textfield.has-placeholder .mdlext-selectfield__label,
+.mdlext-bordered-fields .mdlext-selectfield.has-placeholder .mdl-textfield__label,
+.mdlext-bordered-fields .mdlext-selectfield.has-placeholder .mdlext-selectfield__label,
+.mdlext-bordered-fields .mdlext-selectfield.has-placeholder .mdl-textfield__label,
+.mdlext-bordered-fields .mdlext-selectfield.has-placeholder .mdlext-selectfield__label {
+  top: 20px;
+}
+
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-left > i,
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-left > .mdl-button,
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-right > i,
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-right > .mdl-button,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-left > i,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-left > .mdl-button,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-right > i,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-right > .mdl-button {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-25%);
+          transform: translateY(-25%);
+}
+
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-left > i:first-child,
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-left > .mdl-button:first-child,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-left > i:first-child,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-left > .mdl-button:first-child {
+  left: 4px;
+}
+
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-left > i ~ .mdl-textfield__input,
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-left > .mdl-button ~ .mdl-textfield__input,
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-left > i ~ .mdlext-selectfield__select,
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-left > .mdl-button ~ .mdlext-selectfield__select,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-left > i ~ .mdl-textfield__input,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-left > .mdl-button ~ .mdl-textfield__input,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-left > i ~ .mdlext-selectfield__select,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-left > .mdl-button ~ .mdlext-selectfield__select {
+  padding-left: 32px;
+}
+
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-left > i ~ .mdl-textfield__label,
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-left > .mdl-button ~ .mdl-textfield__label,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-left > i ~ .mdl-textfield__label,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-left > .mdl-button ~ .mdl-textfield__label {
+  left: 28px;
+}
+
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-left > i ~ .mdlext-selectfield__label,
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-left > .mdl-button ~ .mdlext-selectfield__label,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-left > i ~ .mdlext-selectfield__label,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-left > .mdl-button ~ .mdlext-selectfield__label {
+  left: 24px;
+}
+
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-right > .mdl-textfield__input,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-right > .mdl-textfield__input {
+  padding-right: 32px;
+}
+
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-right > i:last-child,
+.mdlext-bordered-fields .mdl-textfield.mdlext-bordered-fields__icon-right > .mdl-button:last-child,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-right > i:last-child,
+.mdlext-bordered-fields .mdlext-selectfield.mdlext-bordered-fields__icon-right > .mdl-button:last-child {
+  left: auto;
+  right: 4px;
+}
+
+.mdlext-bordered-fields .mdl-textfield.is-disabled i,
+.mdlext-bordered-fields .mdl-textfield.is-disabled .mdl-button,
+.mdlext-bordered-fields .mdlext-selectfield.is-disabled i,
+.mdlext-bordered-fields .mdlext-selectfield.is-disabled .mdl-button {
+  color: rgba(0,0,0, 0.12);
+}
+
+/**
+ * Copyright 2016 Leif Olsen. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+ * Accordion
+ * The Accordion CSS are based on / inspired by this CodePen: http://codepen.io/aann/pen/dPqBML
+ */
+
+/**
+ * Copyright 2016 Leif Olsen. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ==========   Sticky Header   ========== */
+
+/* ==========     Accordion     ========== */
+
+/* ==========  Bordered fields  ========== */
+
+/* ==========     Dialog     ========== */
+
+/* ==========     Lightbox     ========== */
+
+/* ==========  Lightboard  ========== */
+
+/* ==========  Color Themes  ========== */
+
+ul.mdlext-accordion {
+  list-style: none;
+}
+
+.mdlext-accordion {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  box-sizing: border-box;
+}
+
+.mdlext-accordion *,
+.mdlext-accordion *::before,
+.mdlext-accordion *::after,
+.mdlext-accordion input[type="search"] {
+  box-sizing: border-box;
+}
+
+.mdlext-accordion .mdlext-accordion__panel {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 48px;
+  overflow: hidden;
+  transition: -webkit-flex .15s ease-in;
+  transition: flex .15s ease-in;
+  transition: flex .15s ease-in, -webkit-flex .15s ease-in, -ms-flex .15s ease-in;
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+}
+
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__header {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  min-width: 48px;
+  margin: 0;
+  padding: 0;
+  color: #000000;
+  background-color: rgba(158, 158, 158, 0.2);
+  border-right: 1px solid rgba(158, 158, 158, 0.5);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__header:hover {
+  background-color: rgba(158, 158, 158, 0.6);
+}
+
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__header a.mdlext-accordion__panel__header__tabstop,
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__header .mdlext-accordion__panel__header__ripple-container {
+  text-decoration: none;
+  overflow: hidden;
+  font-size: 0;
+  position: absolute;
+  top: 1px;
+  right: 0px;
+  bottom: 0px;
+  left: 1px;
+  z-index: 1;
+}
+
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__header a.mdlext-accordion__panel__header__tabstop:focus,
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__header .mdlext-accordion__panel__header__ripple-container:focus {
+  outline: thin solid #BDBDBD;
+  outline-offset: -1px;
+}
+
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__header .mdlext-accordion__panel__header__ripple-container {
+  width: 99.9%;
+  height: 99.9%;
+}
+
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__header .mdlext-accordion__panel__header__ripple-container .mdl-ripple {
+  background: rgb(255,255,255);
+}
+
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__header .mdlext-accordion__panel__header__transform {
+  white-space: nowrap;
+  margin: 0;
+  padding: 0 8px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 48px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform: rotate(-90deg) translateY(100%);
+          transform: rotate(-90deg) translateY(100%);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+}
+
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__header .mdlext-accordion__panel__header__transform > * {
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__header .mdlext-accordion__panel__header__transform > i,
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__header .mdlext-accordion__panel__header__transform > img {
+  -webkit-flex: none;
+      -ms-flex: none;
+          flex: none;
+}
+
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__header .mdlext-accordion__panel__header__transform > i + *,
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__header .mdlext-accordion__panel__header__transform > img + * {
+  margin-left: 8px;
+}
+
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__state:after {
+  content: '+';
+}
+
+.mdlext-accordion .mdlext-accordion__panel .mdlext-accordion__panel__content {
+  width: 100%;
+  padding: 8px;
+  overflow: hidden;
+}
+
+.mdlext-accordion .mdlext-accordion__panel[open] {
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.mdlext-accordion .mdlext-accordion__panel[open] .mdlext-accordion__panel__state:after {
+  content: '-';
+}
+
+.mdlext-accordion .mdlext-accordion__panel[open] .mdlext-accordion__panel__header {
+  background-color: rgba(158, 158, 158, 0.3);
+  border-right: 1px solid rgba(158, 158, 158, 0.6);
+}
+
+.mdlext-accordion .mdlext-accordion__panel[open] .mdlext-accordion__panel__content {
+  overflow: auto;
+  -webkit-animation: mdlext-accordion__panel-open-keyframe .4s linear;
+          animation: mdlext-accordion__panel-open-keyframe .4s linear;
+}
+
+.mdlext-accordion .mdlext-accordion__panel[disabled] .mdlext-accordion__panel__header {
+  background-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-accordion .mdlext-accordion__panel[disabled] .mdlext-accordion__panel__header:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.mdlext-accordion .mdlext-accordion__panel[disabled] .mdlext-accordion__panel__content {
+  pointer-events: none;
+}
+
+.mdlext-accordion.mdlext-accordion--vertical {
+  -webkit-flex-flow: column nowrap;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+.mdlext-accordion.mdlext-accordion--vertical .mdlext-accordion__panel {
+  width: 100%;
+  height: 48px;
+  -webkit-flex: none;
+      -ms-flex: none;
+          flex: none;
+  -webkit-flex-flow: column nowrap;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+.mdlext-accordion.mdlext-accordion--vertical .mdlext-accordion__panel .mdlext-accordion__panel__header {
+  height: 48px;
+  min-height: 48px;
+  border-right: 0;
+  border-bottom: 1px solid rgba(158, 158, 158, 0.5);
+}
+
+.mdlext-accordion.mdlext-accordion--vertical .mdlext-accordion__panel .mdlext-accordion__panel__header .mdlext-accordion__panel__header__transform {
+  white-space: normal;
+  position: relative;
+  width: 100%;
+  bottom: auto;
+  left: auto;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.mdlext-accordion.mdlext-accordion--vertical .mdlext-accordion__panel[open] {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.mdlext-accordion.mdlext-accordion--vertical .mdlext-accordion__panel[open] .mdlext-accordion__panel__header {
+  border-right: 0;
+  border-bottom: 1px solid rgba(158, 158, 158, 0.6);
+}
+
+.mdlext-accordion.mdlext-accordion--vertical[aria-multiselectable]:not([aria-multiselectable="false"]) {
+  height: auto;
+}
+
+.mdlext-accordion.mdlext-accordion--vertical[aria-multiselectable]:not([aria-multiselectable="false"]) .mdlext-accordion__panel {
+  height: auto;
+  max-height: 48px;
+  transition: max-height .1s ease-out;
+}
+
+.mdlext-accordion.mdlext-accordion--vertical[aria-multiselectable]:not([aria-multiselectable="false"]) .mdlext-accordion__panel[open] {
+  max-height: 20000px;
+  transition: max-height 2s ease-in;
+}
+
+.mdlext-accordion.mdlext-accordion--vertical[aria-multiselectable]:not([aria-multiselectable="false"]) .mdlext-accordion__panel[open] .mdlext-accordion__panel__content {
+  overflow: hidden;
+  -webkit-animation: mdlext-accordion__panel-open-keyframe 0.1s linear;
+          animation: mdlext-accordion__panel-open-keyframe 0.1s linear;
+  -webkit-animation-delay: 2.2s;
+          animation-delay: 2.2s;
+}
+
+/*
+ * Animating overflow:hidden -> overflow:auto, see: https://jdsteinbach.com/css/snippet-animate-display-transform/
+ * Why do we need to animate this? The text overflow auto should be set after the accordion animation has completed!
+ * If we omit this, the the overflow scrollbar will flicker during the accordion open transition
+ */
+
+@-webkit-keyframes mdlext-accordion__panel-open-keyframe {
+  0% {
+    overflow: hidden;
+  }
+
+  100% {
+    overflow: auto;
+  }
+}
+
+@keyframes mdlext-accordion__panel-open-keyframe {
+  0% {
+    overflow: hidden;
+  }
+
+  100% {
+    overflow: auto;
+  }
+}
+
+/* -------------------------------------------------------------
+   Palette samples. Not part of build
+----------------------------------------------------------------
+
+$mdlext-light-color-primary:          #9E9E9E !default;
+$mdlext-light-color-primary-dark:     #616161 !default;
+$mdlext-light-color-primary-light:    #9E9E9E !default;  // Fallback color. Set to color-primary if fallback is not needed
+$mdlext-light-color-primary-contrast: #212121 !default;  // text color on primary/primary dark background
+$mdlext-light-color-accent:           #E040FB !default;
+$mdlext-light-color-accent-light:     #E040FB !default;  // Fallback color. Set to color-accent if fallback is not needed
+$mdlext-light-color-accent-contrast:  #FAFAFA !default;
+
+$mdlext-light-color-primary:          #F5F5F5 !default;
+$mdlext-light-color-primary-dark:     #E0E0E0 !default;
+$mdlext-light-color-primary-light:    #8BC34A !default;  // Fallback color. Set to color-primary if fallback is not needed
+$mdlext-light-color-primary-contrast: #000000 !default;  // text color on primary/primary dark background
+$mdlext-light-color-accent:           #FFC107 !default;
+$mdlext-light-color-accent-light:     #FFC107 !default;  // Fallback color. Set to color-accent if fallback is not needed
+$mdlext-light-color-accent-contrast:  #FFFFFF !default;
+
+
+$mdlext-light-color-primary:          #673AB7 !default;
+$mdlext-light-color-primary-dark:     #512DA8 !default;
+$mdlext-light-color-primary-light:    #673AB7 !default;   // Fallback color. Set to color-primary if fallback is not needed
+$mdlext-light-color-primary-contrast: #D1C4E9 !default;   // text color on primary/primary dark background
+$mdlext-light-color-accent:           #4CAF50 !default;
+$mdlext-light-color-accent-light:     #4CAF50 !default;   // Fallback color. Set to color-accent if fallback is not needed
+$mdlext-light-color-accent-contrast:  #FFFFFF !default;
+
+
+$mdlext-light-color-primary:          #4CAF50 !default;
+$mdlext-light-color-primary-dark:     #388E3C !default;
+$mdlext-light-color-primary-light:    #4CAF50 !default;  // Fallback color. Set to color-primary if fallback is not needed
+$mdlext-light-color-primary-contrast: #C8E6C9 !default;  // text color on primary/primary dark background
+$mdlext-light-color-accent:           #FF5252 !default;
+$mdlext-light-color-accent-light:     #FF5252 !default;  // Fallback color. Set to color-accent if fallback is not needed
+$mdlext-light-color-accent-contrast:  #FFFFFF !default;
+
+
+$mdlext-light-color-primary:          #4CAF50 !default;
+$mdlext-light-color-primary-dark:     #388E3C !default;
+$mdlext-light-color-primary-light:    #4CAF50 !default;  // Fallback color. Set to color-primary if fallback is not needed
+$mdlext-light-color-primary-contrast: #C8E6C9 !default;  // text color on primary/primary dark background
+$mdlext-light-color-accent:           #03A9F4 !default;
+$mdlext-light-color-accent-light:     #03A9F4 !default;  // Fallback color. Set to color-accent if fallback is not needed
+$mdlext-light-color-accent-contrast:  #FFFFFF !default;
+
+
+$mdlext-dark-color-primary:           #212121 !default;
+$mdlext-dark-color-primary-dark:      #000000 !default;
+$mdlext-dark-color-primary-light:     #607D8B !default;  // Fallback color. Set to color-primary if fallback is not needed
+$mdlext-dark-color-primary-contrast:  #FFFFFF !default;  // text color on primary/primary dark background
+$mdlext-dark-color-accent:            #FF5722 !default;
+$mdlext-dark-color-accent-light:      #FF5722 !default;  // Fallback color. Set to color-accent if fallback is not needed
+$mdlext-dark-color-accent-contrast:   #FFFFFF !default;
+
+*/
+
+.mdlext-light-color-theme {
+  background-color: #FAFAFA;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.mdlext-light-color-theme .mdl-color--primary {
+  background-color: #4CAF50 !important;
+}
+
+.mdlext-light-color-theme .mdl-color--primary-contrast {
+  background-color: #C8E6C9 !important;
+}
+
+.mdlext-light-color-theme .mdl-color--primary-dark {
+  background-color: #388E3C !important;
+}
+
+.mdlext-light-color-theme .mdl-color--accent {
+  background-color: #E040FB !important;
+}
+
+.mdlext-light-color-theme .mdl-color--accent-contrast {
+  background-color: #FAFAFA !important;
+}
+
+.mdlext-light-color-theme .mdl-color-text--primary {
+  color: #4CAF50 !important;
+}
+
+.mdlext-light-color-theme .mdl-color-text--primary-contrast {
+  color: #C8E6C9 !important;
+}
+
+.mdlext-light-color-theme .mdl-color-text--primary-dark {
+  color: #388E3C !important;
+}
+
+.mdlext-light-color-theme .mdl-color-text--accent {
+  color: #E040FB !important;
+}
+
+.mdlext-light-color-theme .mdl-color-text--accent-contrast {
+  color: #FAFAFA !important;
+}
+
+.mdlext-light-color-theme a {
+  color: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-badge[data-badge]:after {
+  background: #E040FB;
+  color: #FAFAFA;
+}
+
+.mdlext-light-color-theme .mdl-badge.mdl-badge--no-background[data-badge]:after {
+  color: #E040FB;
+  background: #FAFAFA;
+}
+
+.mdlext-light-color-theme .mdl-button {
+  background: transparent;
+  color: #000000;
+}
+
+.mdlext-light-color-theme .mdl-button:hover {
+  background-color: rgba(158, 158, 158, 0.2);
+}
+
+.mdlext-light-color-theme .mdl-button:focus:not(:active) {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.mdlext-light-color-theme .mdl-button:active {
+  background-color: rgba(158, 158, 158, 0.4);
+}
+
+.mdlext-light-color-theme .mdl-button.mdl-button--colored {
+  color: #4CAF50;
+}
+
+.mdlext-light-color-theme .mdl-button.mdl-button--colored:focus:not(:active) {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.mdlext-light-color-theme .mdl-button--raised {
+  background: rgba(158, 158, 158, 0.2);
+}
+
+.mdlext-light-color-theme .mdl-button--raised:active {
+  background-color: rgba(158, 158, 158, 0.4);
+}
+
+.mdlext-light-color-theme .mdl-button--raised:focus:not(:active) {
+  background-color: rgba(158, 158, 158, 0.4);
+}
+
+.mdlext-light-color-theme .mdl-button--raised.mdl-button--colored {
+  background: #4CAF50;
+  color: #C8E6C9;
+}
+
+.mdlext-light-color-theme .mdl-button--raised.mdl-button--colored:hover {
+  background-color: #3d8b40;
+}
+
+.mdlext-light-color-theme .mdl-button--raised.mdl-button--colored:active {
+  background-color: #3d8b40;
+}
+
+.mdlext-light-color-theme .mdl-button--raised.mdl-button--colored:focus:not(:active) {
+  background-color: #3d8b40;
+}
+
+.mdlext-light-color-theme .mdl-button--raised.mdl-button--colored .mdl-ripple {
+  background: #C8E6C9;
+}
+
+.mdlext-light-color-theme .mdl-button--fab {
+  background: rgba(158, 158, 158, 0.2);
+}
+
+.mdlext-light-color-theme .mdl-button--fab:active {
+  background-color: rgba(158, 158, 158, 0.4);
+}
+
+.mdlext-light-color-theme .mdl-button--fab:focus:not(:active) {
+  background-color: rgba(158, 158, 158, 0.4);
+}
+
+.mdlext-light-color-theme .mdl-button--fab.mdl-button--colored {
+  background: #E040FB;
+  color: #FAFAFA;
+}
+
+.mdlext-light-color-theme .mdl-button--fab.mdl-button--colored:hover {
+  background-color: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-button--fab.mdl-button--colored:focus:not(:active) {
+  background-color: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-button--fab.mdl-button--colored:active {
+  background-color: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-button--fab.mdl-button--colored .mdl-ripple {
+  background: #FAFAFA;
+}
+
+.mdlext-light-color-theme .mdl-button--icon {
+  color: inherit;
+}
+
+.mdlext-light-color-theme .mdl-button--primary.mdl-button--primary {
+  color: #4CAF50;
+}
+
+.mdlext-light-color-theme .mdl-button--primary.mdl-button--primary .mdl-ripple {
+  background: #C8E6C9;
+}
+
+.mdlext-light-color-theme .mdl-button--primary.mdl-button--primary.mdl-button--raised,
+.mdlext-light-color-theme .mdl-button--primary.mdl-button--primary.mdl-button--fab {
+  color: #C8E6C9;
+  background-color: #4CAF50;
+}
+
+.mdlext-light-color-theme .mdl-button--accent.mdl-button--accent {
+  color: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-button--accent.mdl-button--accent .mdl-ripple {
+  background: #FAFAFA;
+}
+
+.mdlext-light-color-theme .mdl-button--accent.mdl-button--accent.mdl-button--raised,
+.mdlext-light-color-theme .mdl-button--accent.mdl-button--accent.mdl-button--fab {
+  color: #FAFAFA;
+  background-color: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-button[disabled][disabled],
+.mdlext-light-color-theme .mdl-button.mdl-button--disabled.mdl-button--disabled {
+  color: rgba(0, 0, 0, 0.26);
+  background-color: transparent;
+}
+
+.mdlext-light-color-theme .mdl-button--fab[disabled][disabled],
+.mdlext-light-color-theme .mdl-button--fab.mdl-button--disabled.mdl-button--disabled {
+  background-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-button--raised[disabled][disabled],
+.mdlext-light-color-theme .mdl-button--raised.mdl-button--disabled.mdl-button--disabled {
+  background-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-button--colored[disabled][disabled],
+.mdlext-light-color-theme .mdl-button--colored.mdl-button--disabled.mdl-button--disabled {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded {
+  background: transparent;
+  color: #E040FB;
+  /**************************** Thumbs ****************************/
+  /**************************** 0-value ****************************/
+  /**************************** Disabled ****************************/
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded::-moz-range-track {
+  background: transparent;
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded::-ms-track {
+  background: none;
+  color: transparent;
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded::-ms-fill-lower {
+  background: linear-gradient(to right, transparent, transparent 16px, #E040FB 16px, #E040FB 0);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded::-ms-fill-upper {
+  background: linear-gradient(to left, transparent, transparent 16px, rgba(0, 0, 0, 0.26) 16px, rgba(0, 0, 0, 0.26) 0);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded::-webkit-slider-thumb {
+  background: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded::-moz-range-thumb {
+  background: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded:focus:not(:active)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 10px rgba(224, 64, 251, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded:focus:not(:active)::-moz-range-thumb {
+  box-shadow: 0 0 0 10px rgba(224, 64, 251, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded:active::-webkit-slider-thumb {
+  background: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded:active::-moz-range-thumb {
+  background: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded::-ms-thumb {
+  background: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded:focus:not(:active)::-ms-thumb {
+  background: radial-gradient(circle closest-side, #E040FB 0%, #E040FB 37.5%, rgba(224, 64, 251, 0.26) 37.5%, rgba(224, 64, 251, 0.26) 100%);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded:active::-ms-thumb {
+  background: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value::-webkit-slider-thumb {
+  border-color: #E040FB;
+  background: transparent;
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value::-moz-range-thumb {
+  border-color: rgba(0, 0, 0, 0.26);
+  background: transparent;
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value:focus:not(:active)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value:focus:not(:active)::-moz-range-thumb {
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value:active::-webkit-slider-thumb {
+  border-color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value:active::-moz-range-thumb {
+  border-color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value::-ms-thumb {
+  background: radial-gradient(circle closest-side, transparent 0%, transparent 66.67%, rgba(0, 0, 0, 0.26) 66.67%, rgba(0, 0, 0, 0.26) 100%);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value:focus:not(:active)::-ms-thumb {
+  background: radial-gradient(circle closest-side, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.12) 25%, rgba(0, 0, 0, 0.26) 25%, rgba(0, 0, 0, 0.26) 37.5%, rgba(0, 0, 0, 0.12) 37.5%, rgba(0, 0, 0, 0.12) 100%);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value:active::-ms-thumb {
+  background: radial-gradient(circle closest-side, transparent 0%, transparent 77.78%, rgba(0, 0, 0, 0.26) 77.78%, rgba(0, 0, 0, 0.26) 100%);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value::-ms-fill-lower {
+  background: transparent;
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded:disabled:focus::-webkit-slider-thumb,
+.mdlext-light-color-theme .mdl-slider.is-upgraded:disabled:active::-webkit-slider-thumb,
+.mdlext-light-color-theme .mdl-slider.is-upgraded:disabled::-webkit-slider-thumb {
+  background: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded:disabled:focus::-moz-range-thumb,
+.mdlext-light-color-theme .mdl-slider.is-upgraded:disabled:active::-moz-range-thumb,
+.mdlext-light-color-theme .mdl-slider.is-upgraded:disabled::-moz-range-thumb {
+  background: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded:disabled + .mdl-slider__background-flex > .mdl-slider__background-lower {
+  background-color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled:focus::-webkit-slider-thumb,
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled:active::-webkit-slider-thumb,
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled::-webkit-slider-thumb {
+  border-color: rgba(0, 0, 0, 0.26);
+  background: transparent;
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled:focus::-moz-range-thumb,
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled:active::-moz-range-thumb,
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled::-moz-range-thumb {
+  border-color: rgba(0, 0, 0, 0.26);
+  background: transparent;
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded:disabled:focus::-ms-thumb,
+.mdlext-light-color-theme .mdl-slider.is-upgraded:disabled:active::-ms-thumb,
+.mdlext-light-color-theme .mdl-slider.is-upgraded:disabled::-ms-thumb {
+  background: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled:focus::-ms-thumb,
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled:active::-ms-thumb,
+.mdlext-light-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled::-ms-thumb {
+  background: radial-gradient(circle closest-side, transparent 0%, transparent 50%, rgba(0, 0, 0, 0.26) 50%, rgba(0, 0, 0, 0.26) 100%);
+}
+
+.mdlext-light-color-theme .mdl-slider.is-upgraded:disabled::-ms-fill-lower {
+  background: linear-gradient(to right, transparent, transparent 25px, rgba(0, 0, 0, 0.26) 25px, rgba(0, 0, 0, 0.26) 0);
+}
+
+.mdlext-light-color-theme .mdl-slider__background-flex {
+  background: transparent;
+}
+
+.mdlext-light-color-theme .mdl-slider__background-lower {
+  background: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-slider__background-upper {
+  background: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-textfield__input {
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+}
+
+.mdlext-light-color-theme .mdl-textfield.is-invalid .mdl-textfield__input {
+  border-color: #D32F2F;
+}
+
+.mdlext-light-color-theme fieldset[disabled] .mdl-textfield .mdl-textfield__input,
+.mdlext-light-color-theme .mdl-textfield.is-disabled .mdl-textfield__input {
+  background-color: transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-textfield__label {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-textfield__label:after {
+  background-color: #E040FB;
+}
+
+.mdlext-light-color-theme fieldset[disabled] .mdl-textfield .mdl-textfield__label,
+.mdlext-light-color-theme .mdl-textfield.is-disabled.is-disabled .mdl-textfield__label {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-textfield--floating-label.is-focused .mdl-textfield__label,
+.mdlext-light-color-theme .mdl-textfield--floating-label.is-dirty .mdl-textfield__label,
+.mdlext-light-color-theme .mdl-textfield--floating-label.has-placeholder .mdl-textfield__label {
+  color: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-textfield--floating-label.is-invalid .mdl-textfield__label {
+  color: #D32F2F;
+}
+
+.mdlext-light-color-theme .mdl-textfield.is-invalid .mdl-textfield__label:after {
+  background-color: #D32F2F;
+}
+
+.mdlext-light-color-theme .mdl-textfield__error {
+  color: #D32F2F;
+}
+
+.mdlext-light-color-theme .mdl-checkbox__box-outline {
+  border-color: rgba(0, 0, 0, 0.54);
+}
+
+.mdlext-light-color-theme .mdl-checkbox.is-checked .mdl-checkbox__box-outline {
+  border-color: #E040FB;
+}
+
+.mdlext-light-color-theme fieldset[disabled] .mdl-checkbox .mdl-checkbox__box-outline,
+.mdlext-light-color-theme .mdl-checkbox.is-disabled .mdl-checkbox__box-outline {
+  border-color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-checkbox__focus-helper {
+  background-color: transparent;
+}
+
+.mdlext-light-color-theme .mdl-checkbox.is-focused.is-checked .mdl-checkbox__focus-helper {
+  box-shadow: 0 0 0px 8px rgba(224, 64, 251, 0.26);
+  background-color: rgba(224, 64, 251, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-checkbox__tick-outline {
+  background: transparent;
+}
+
+.mdlext-light-color-theme .mdl-checkbox.is-checked .mdl-checkbox__tick-outline {
+  background-color: #E040FB;
+}
+
+.mdlext-light-color-theme fieldset[disabled] .mdl-checkbox.is-checked .mdl-checkbox__tick-outline,
+.mdlext-light-color-theme .mdl-checkbox.is-checked.is-disabled .mdl-checkbox__tick-outline {
+  background-color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme fieldset[disabled] .mdl-checkbox .mdl-checkbox__label,
+.mdlext-light-color-theme .mdl-checkbox.is-disabled .mdl-checkbox__label {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-checkbox__ripple-container .mdl-ripple {
+  background: #E040FB;
+}
+
+.mdlext-light-color-theme fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
+.mdlext-light-color-theme .mdl-checkbox.is-disabled .mdl-checkbox__ripple-container .mdl-ripple {
+  background: transparent;
+}
+
+.mdlext-light-color-theme .mdl-radio__outer-circle {
+  border-color: rgba(0, 0, 0, 0.54);
+}
+
+.mdlext-light-color-theme .mdl-radio.is-checked .mdl-radio__outer-circle {
+  border-color: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-radio__outer-circle fieldset[disabled] .mdl-radio,
+.mdlext-light-color-theme .mdl-radio.is-disabled .mdl-radio__outer-circle {
+  border-color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-radio__inner-circle {
+  background: #E040FB;
+}
+
+.mdlext-light-color-theme fieldset[disabled] .mdl-radio .mdl-radio__inner-circle,
+.mdlext-light-color-theme .mdl-radio.is-disabled .mdl-radio__inner-circle {
+  background: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme fieldset[disabled] .mdl-radio .mdl-radio__label,
+.mdlext-light-color-theme .mdl-radio.is-disabled .mdl-radio__label {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-radio__ripple-container .mdl-ripple {
+  background: #E040FB;
+}
+
+.mdlext-light-color-theme fieldset[disabled] .mdl-radio .mdl-radio__ripple-container .mdl-ripple,
+.mdlext-light-color-theme .mdl-radio.is-disabled .mdl-radio__ripple-container .mdl-ripple {
+  background: transparent;
+}
+
+.mdlext-light-color-theme .mdl-icon-toggle__label {
+  color: #616161;
+}
+
+.mdlext-light-color-theme .mdl-icon-toggle.is-checked .mdl-icon-toggle__label {
+  color: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-icon-toggle.is-disabled .mdl-icon-toggle__label {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-icon-toggle.is-focused .mdl-icon-toggle__label {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.mdlext-light-color-theme .mdl-icon-toggle.is-focused.is-checked .mdl-icon-toggle__label {
+  background-color: rgba(224, 64, 251, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-icon-toggle__ripple-container .mdl-ripple {
+  background: #616161;
+}
+
+.mdlext-light-color-theme .mdl-icon-toggle.is-disabled .mdl-icon-toggle__ripple-container .mdl-ripple {
+  background: transparent;
+}
+
+.mdlext-light-color-theme .mdl-switch__track {
+  background: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-switch.is-checked .mdl-switch__track {
+  background: rgba(224, 64, 251, 0.54);
+}
+
+.mdlext-light-color-theme .mdl-switch__track fieldset[disabled] .mdl-switch,
+.mdlext-light-color-theme .mdl-switch.is-disabled .mdl-switch__track {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.mdlext-light-color-theme .mdl-switch__thumb {
+  background: #FAFAFA;
+}
+
+.mdlext-light-color-theme .mdl-switch.is-checked .mdl-switch__thumb {
+  background: #E040FB;
+}
+
+.mdlext-light-color-theme .mdl-switch__thumb fieldset[disabled] .mdl-switch,
+.mdlext-light-color-theme .mdl-switch.is-disabled .mdl-switch__thumb {
+  background: #BDBDBD;
+}
+
+.mdlext-light-color-theme .mdl-switch__focus-helper {
+  background-color: transparent;
+}
+
+.mdlext-light-color-theme .mdl-switch.is-focused .mdl-switch__focus-helper {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.mdlext-light-color-theme .mdl-switch.is-focused.is-checked .mdl-switch__focus-helper {
+  box-shadow: 0 0 0px 20px rgba(224, 64, 251, 0.26);
+  background-color: rgba(224, 64, 251, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-switch__label fieldset[disabled] .mdl-switch,
+.mdlext-light-color-theme .mdl-switch.is-disabled .mdl-switch__label {
+  color: #BDBDBD;
+}
+
+.mdlext-light-color-theme .mdl-switch__ripple-container .mdl-ripple {
+  background: #E040FB;
+}
+
+.mdlext-light-color-theme fieldset[disabled] .mdl-switch .mdl-switch__ripple-container .mdl-ripple,
+.mdlext-light-color-theme .mdl-switch.is-disabled .mdl-switch__ripple-container .mdl-ripple {
+  background: transparent;
+}
+
+.mdlext-light-color-theme .mdl-data-table {
+  border-color: rgba(0, 0, 0, 0.12);
+  background-color: #FAFAFA;
+}
+
+.mdlext-light-color-theme .mdl-data-table tbody tr.is-selected {
+  background-color: #EEEEEE;
+}
+
+.mdlext-light-color-theme .mdl-data-table tbody tr:hover {
+  background-color: #EEEEEE;
+}
+
+.mdlext-light-color-theme .mdl-data-table th {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.mdlext-light-color-theme .mdl-data-table th.mdl-data-table__header--sorted-ascending,
+.mdlext-light-color-theme .mdl-data-table th.mdl-data-table__header--sorted-descending {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.mdlext-light-color-theme .mdl-data-table th.mdl-data-table__header--sorted-ascending:hover:before,
+.mdlext-light-color-theme .mdl-data-table th.mdl-data-table__header--sorted-descending:hover:before {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdl-menu__outline {
+  background: #FFFFFF;
+}
+
+.mdlext-light-color-theme .mdl-menu__item {
+  color: rgba(0, 0, 0, 0.87);
+  background-color: transparent;
+  outline-color: #BDBDBD;
+}
+
+.mdlext-light-color-theme .mdl-menu__item--full-bleed-divider {
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+}
+
+.mdlext-light-color-theme .mdl-menu__item[disabled],
+.mdlext-light-color-theme .mdl-menu__item[data-mdl-disabled] {
+  color: #BDBDBD;
+  background-color: transparent;
+}
+
+.mdlext-light-color-theme .mdl-menu__item[disabled]:hover,
+.mdlext-light-color-theme .mdl-menu__item[data-mdl-disabled]:hover {
+  background-color: transparent;
+}
+
+.mdlext-light-color-theme .mdl-menu__item[disabled]:focus,
+.mdlext-light-color-theme .mdl-menu__item[data-mdl-disabled]:focus {
+  background-color: transparent;
+}
+
+.mdlext-light-color-theme .mdl-menu__item[disabled] .mdl-ripple,
+.mdlext-light-color-theme .mdl-menu__item[data-mdl-disabled] .mdl-ripple {
+  background: transparent;
+}
+
+.mdlext-light-color-theme .mdl-menu__item:hover {
+  background-color: #EEEEEE;
+}
+
+.mdlext-light-color-theme .mdl-menu__item:focus {
+  background-color: #EEEEEE;
+}
+
+.mdlext-light-color-theme .mdl-menu__item:active {
+  background-color: #E0E0E0;
+}
+
+.mdlext-light-color-theme .mdl-card__supporting-text {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.mdlext-light-color-theme .mdlext-selectfield.is-disabled:after {
+  color: rgba(0, 0, 0, 0.12);
+  content: '';
+  width: 0;
+  height: 0;
+  border: 0.35em solid transparent;
+  border-top-width: 0.5em;
+  border-bottom: none;
+  border-top-color: rgba(0, 0, 0, 0.12);
+}
+
+.mdlext-light-color-theme .mdlext-selectfield__select {
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+  color: inherit;
+}
+
+.mdlext-light-color-theme .mdlext-selectfield__select option {
+  background-color: #FAFAFA;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.mdlext-light-color-theme .mdlext-selectfield.is-invalid .mdlext-selectfield__select {
+  border-color: #D32F2F;
+}
+
+.mdlext-light-color-theme fieldset[disabled] .mdlext-selectfield .mdlext-selectfield__select,
+.mdlext-light-color-theme .mdlext-selectfield.is-disabled .mdlext-selectfield__select {
+  background-color: transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdlext-selectfield__label {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme fieldset[disabled] .mdlext-selectfield .mdlext-selectfield__label,
+.mdlext-light-color-theme .mdlext-selectfield.is-disabled.is-disabled .mdlext-selectfield__label {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.mdlext-light-color-theme .mdlext-selectfield--floating-label.is-focused .mdlext-selectfield__label,
+.mdlext-light-color-theme .mdlext-selectfield--floating-label.is-dirty .mdlext-selectfield__label,
+.mdlext-light-color-theme .mdlext-selectfield--floating-label.is-dirty.is-dirty .mdlext-selectfield__label,
+.mdlext-light-color-theme .mdlext-selectfield--floating-label.has-placeholder .mdlext-selectfield__label {
+  color: #E040FB;
+}
+
+.mdlext-light-color-theme .mdlext-selectfield--floating-label.is-invalid .mdlext-selectfield__label {
+  color: #D32F2F;
+}
+
+.mdlext-light-color-theme .mdlext-selectfield__label:after {
+  background-color: #E040FB;
+}
+
+.mdlext-light-color-theme .mdlext-selectfield.is-invalid .mdlext-selectfield__label:after {
+  background-color: #D32F2F;
+}
+
+.mdlext-light-color-theme .mdlext-selectfield__error {
+  color: #D32F2F;
+}
+
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield.is-dirty .mdl-textfield__input:required,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield.is-dirty .mdlext-selectfield__select:required,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdl-textfield__input:required,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdlext-selectfield__select:required {
+  border-color: rgba(0, 0, 0, 0.12);
+  background-color: rgba(250, 250, 250, 0.1);
+}
+
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield.is-dirty .mdl-textfield__input:focus,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield.is-dirty .mdl-textfield__input:required:focus,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield.is-dirty .mdlext-selectfield__select:focus,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield.is-dirty .mdlext-selectfield__select:required:focus,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdl-textfield__input:focus,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdl-textfield__input:required:focus,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdlext-selectfield__select:focus,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdlext-selectfield__select:required:focus {
+  border-color: #E040FB;
+  background-color: rgba(250, 250, 250, 0.1);
+}
+
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield .mdl-textfield__input,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__input,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select {
+  background-color: rgba(250, 250, 250, 0.1);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield .mdl-textfield__input:disabled,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select:disabled,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__input:disabled,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select:disabled {
+  color: rgba(0, 0, 0, 0.26);
+  background-color: rgba(250, 250, 250, 0.1);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield .mdl-textfield__input:required,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select:required,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__input:required,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select:required {
+  background-color: rgba(250, 250, 250, 0.1);
+  border-color: rgba(76, 175, 80, 0.8);
+}
+
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield .mdl-textfield__input:focus,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield .mdl-textfield__input:required:focus,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select:focus,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select:required:focus,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__input:focus,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__input:required:focus,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select:focus,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select:required:focus {
+  background-color: rgba(250, 250, 250, 0.1);
+  border-color: #E040FB;
+}
+
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield.is-disabled i,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdl-textfield.is-disabled .mdl-button,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-disabled i,
+.mdlext-light-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-disabled .mdl-button {
+  color: rgba(0, 0, 0, 0.12);
+}
+
+/* -------------------------------------------------------------
+   Palette samples. Not part of build
+----------------------------------------------------------------
+
+$mdlext-light-color-primary:          #9E9E9E !default;
+$mdlext-light-color-primary-dark:     #616161 !default;
+$mdlext-light-color-primary-light:    #9E9E9E !default;  // Fallback color. Set to color-primary if fallback is not needed
+$mdlext-light-color-primary-contrast: #212121 !default;  // text color on primary/primary dark background
+$mdlext-light-color-accent:           #E040FB !default;
+$mdlext-light-color-accent-light:     #E040FB !default;  // Fallback color. Set to color-accent if fallback is not needed
+$mdlext-light-color-accent-contrast:  #FAFAFA !default;
+
+$mdlext-light-color-primary:          #F5F5F5 !default;
+$mdlext-light-color-primary-dark:     #E0E0E0 !default;
+$mdlext-light-color-primary-light:    #8BC34A !default;  // Fallback color. Set to color-primary if fallback is not needed
+$mdlext-light-color-primary-contrast: #000000 !default;  // text color on primary/primary dark background
+$mdlext-light-color-accent:           #FFC107 !default;
+$mdlext-light-color-accent-light:     #FFC107 !default;  // Fallback color. Set to color-accent if fallback is not needed
+$mdlext-light-color-accent-contrast:  #FFFFFF !default;
+
+
+$mdlext-light-color-primary:          #673AB7 !default;
+$mdlext-light-color-primary-dark:     #512DA8 !default;
+$mdlext-light-color-primary-light:    #673AB7 !default;   // Fallback color. Set to color-primary if fallback is not needed
+$mdlext-light-color-primary-contrast: #D1C4E9 !default;   // text color on primary/primary dark background
+$mdlext-light-color-accent:           #4CAF50 !default;
+$mdlext-light-color-accent-light:     #4CAF50 !default;   // Fallback color. Set to color-accent if fallback is not needed
+$mdlext-light-color-accent-contrast:  #FFFFFF !default;
+
+
+$mdlext-light-color-primary:          #4CAF50 !default;
+$mdlext-light-color-primary-dark:     #388E3C !default;
+$mdlext-light-color-primary-light:    #4CAF50 !default;  // Fallback color. Set to color-primary if fallback is not needed
+$mdlext-light-color-primary-contrast: #C8E6C9 !default;  // text color on primary/primary dark background
+$mdlext-light-color-accent:           #FF5252 !default;
+$mdlext-light-color-accent-light:     #FF5252 !default;  // Fallback color. Set to color-accent if fallback is not needed
+$mdlext-light-color-accent-contrast:  #FFFFFF !default;
+
+
+$mdlext-light-color-primary:          #4CAF50 !default;
+$mdlext-light-color-primary-dark:     #388E3C !default;
+$mdlext-light-color-primary-light:    #4CAF50 !default;  // Fallback color. Set to color-primary if fallback is not needed
+$mdlext-light-color-primary-contrast: #C8E6C9 !default;  // text color on primary/primary dark background
+$mdlext-light-color-accent:           #03A9F4 !default;
+$mdlext-light-color-accent-light:     #03A9F4 !default;  // Fallback color. Set to color-accent if fallback is not needed
+$mdlext-light-color-accent-contrast:  #FFFFFF !default;
+
+
+$mdlext-dark-color-primary:           #212121 !default;
+$mdlext-dark-color-primary-dark:      #000000 !default;
+$mdlext-dark-color-primary-light:     #607D8B !default;  // Fallback color. Set to color-primary if fallback is not needed
+$mdlext-dark-color-primary-contrast:  #FFFFFF !default;  // text color on primary/primary dark background
+$mdlext-dark-color-accent:            #FF5722 !default;
+$mdlext-dark-color-accent-light:      #FF5722 !default;  // Fallback color. Set to color-accent if fallback is not needed
+$mdlext-dark-color-accent-contrast:   #FFFFFF !default;
+
+*/
+
+.mdlext-dark-color-theme {
+  background-color: #303030;
+  color: white;
+}
+
+.mdlext-dark-color-theme .mdl-color--primary {
+  background-color: #FFC107 !important;
+}
+
+.mdlext-dark-color-theme .mdl-color--primary-contrast {
+  background-color: #FFF8E1 !important;
+}
+
+.mdlext-dark-color-theme .mdl-color--primary-dark {
+  background-color: #FFA000 !important;
+}
+
+.mdlext-dark-color-theme .mdl-color--accent {
+  background-color: #536DFE !important;
+}
+
+.mdlext-dark-color-theme .mdl-color--accent-contrast {
+  background-color: #FFFFFF !important;
+}
+
+.mdlext-dark-color-theme .mdl-color-text--primary {
+  color: #FFC107 !important;
+}
+
+.mdlext-dark-color-theme .mdl-color-text--primary-contrast {
+  color: #FFF8E1 !important;
+}
+
+.mdlext-dark-color-theme .mdl-color-text--primary-dark {
+  color: #FFA000 !important;
+}
+
+.mdlext-dark-color-theme .mdl-color-text--accent {
+  color: #536DFE !important;
+}
+
+.mdlext-dark-color-theme .mdl-color-text--accent-contrast {
+  color: #FFFFFF !important;
+}
+
+.mdlext-dark-color-theme a {
+  color: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-badge[data-badge]:after {
+  background: #536DFE;
+  color: #FFFFFF;
+}
+
+.mdlext-dark-color-theme .mdl-badge.mdl-badge--no-background[data-badge]:after {
+  color: #536DFE;
+  background: #FFFFFF;
+}
+
+.mdlext-dark-color-theme .mdl-button {
+  background: transparent;
+  color: #FFFFFF;
+}
+
+.mdlext-dark-color-theme .mdl-button:hover {
+  background-color: rgba(158, 158, 158, 0.2);
+}
+
+.mdlext-dark-color-theme .mdl-button:focus:not(:active) {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.mdlext-dark-color-theme .mdl-button:active {
+  background-color: rgba(158, 158, 158, 0.4);
+}
+
+.mdlext-dark-color-theme .mdl-button.mdl-button--colored {
+  color: #FFC107;
+}
+
+.mdlext-dark-color-theme .mdl-button.mdl-button--colored:focus:not(:active) {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.mdlext-dark-color-theme .mdl-button--raised {
+  background: rgba(158, 158, 158, 0.2);
+}
+
+.mdlext-dark-color-theme .mdl-button--raised:active {
+  background-color: rgba(158, 158, 158, 0.4);
+}
+
+.mdlext-dark-color-theme .mdl-button--raised:focus:not(:active) {
+  background-color: rgba(158, 158, 158, 0.4);
+}
+
+.mdlext-dark-color-theme .mdl-button--raised.mdl-button--colored {
+  background: #FFC107;
+  color: #FFF8E1;
+}
+
+.mdlext-dark-color-theme .mdl-button--raised.mdl-button--colored:hover {
+  background-color: #d39e00;
+}
+
+.mdlext-dark-color-theme .mdl-button--raised.mdl-button--colored:active {
+  background-color: #d39e00;
+}
+
+.mdlext-dark-color-theme .mdl-button--raised.mdl-button--colored:focus:not(:active) {
+  background-color: #d39e00;
+}
+
+.mdlext-dark-color-theme .mdl-button--raised.mdl-button--colored .mdl-ripple {
+  background: #FFF8E1;
+}
+
+.mdlext-dark-color-theme .mdl-button--fab {
+  background: rgba(158, 158, 158, 0.2);
+}
+
+.mdlext-dark-color-theme .mdl-button--fab:active {
+  background-color: rgba(158, 158, 158, 0.4);
+}
+
+.mdlext-dark-color-theme .mdl-button--fab:focus:not(:active) {
+  background-color: rgba(158, 158, 158, 0.4);
+}
+
+.mdlext-dark-color-theme .mdl-button--fab.mdl-button--colored {
+  background: #536DFE;
+  color: #FFFFFF;
+}
+
+.mdlext-dark-color-theme .mdl-button--fab.mdl-button--colored:hover {
+  background-color: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-button--fab.mdl-button--colored:focus:not(:active) {
+  background-color: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-button--fab.mdl-button--colored:active {
+  background-color: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-button--fab.mdl-button--colored .mdl-ripple {
+  background: #FFFFFF;
+}
+
+.mdlext-dark-color-theme .mdl-button--icon {
+  color: inherit;
+}
+
+.mdlext-dark-color-theme .mdl-button--primary.mdl-button--primary {
+  color: #FFC107;
+}
+
+.mdlext-dark-color-theme .mdl-button--primary.mdl-button--primary .mdl-ripple {
+  background: #FFF8E1;
+}
+
+.mdlext-dark-color-theme .mdl-button--primary.mdl-button--primary.mdl-button--raised,
+.mdlext-dark-color-theme .mdl-button--primary.mdl-button--primary.mdl-button--fab {
+  color: #FFF8E1;
+  background-color: #FFC107;
+}
+
+.mdlext-dark-color-theme .mdl-button--accent.mdl-button--accent {
+  color: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-button--accent.mdl-button--accent .mdl-ripple {
+  background: #FFFFFF;
+}
+
+.mdlext-dark-color-theme .mdl-button--accent.mdl-button--accent.mdl-button--raised,
+.mdlext-dark-color-theme .mdl-button--accent.mdl-button--accent.mdl-button--fab {
+  color: #FFFFFF;
+  background-color: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-button[disabled][disabled],
+.mdlext-dark-color-theme .mdl-button.mdl-button--disabled.mdl-button--disabled {
+  color: rgba(255, 255, 255, 0.26);
+  background-color: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-button--fab[disabled][disabled],
+.mdlext-dark-color-theme .mdl-button--fab.mdl-button--disabled.mdl-button--disabled {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.26);
+}
+
+.mdlext-dark-color-theme .mdl-button--raised[disabled][disabled],
+.mdlext-dark-color-theme .mdl-button--raised.mdl-button--disabled.mdl-button--disabled {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.26);
+}
+
+.mdlext-dark-color-theme .mdl-button--colored[disabled][disabled],
+.mdlext-dark-color-theme .mdl-button--colored.mdl-button--disabled.mdl-button--disabled {
+  color: rgba(255, 255, 255, 0.26);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded {
+  background: transparent;
+  color: #536DFE;
+  /**************************** 0-value ****************************/
+  /**************************** Disabled ****************************/
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded::-moz-range-track {
+  background: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded::-ms-track {
+  background: none;
+  color: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded::-ms-fill-lower {
+  background: linear-gradient(to right, transparent, transparent 16px, #536DFE 16px, #536DFE 0);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded::-ms-fill-upper {
+  background: linear-gradient(to left, transparent, transparent 16px, rgba(255, 255, 255, 0.87) 16px, rgba(255, 255, 255, 0.87) 0);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded::-webkit-slider-thumb {
+  background: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded::-moz-range-thumb {
+  background: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:focus:not(:active)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 10px rgba(83, 109, 254, 0.5);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:focus:not(:active)::-moz-range-thumb {
+  box-shadow: 0 0 0 10px rgba(83, 109, 254, 0.5);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:active::-webkit-slider-thumb {
+  background: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:active::-moz-range-thumb {
+  background: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded::-ms-thumb {
+  background: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:focus:not(:active)::-ms-thumb {
+  background: radial-gradient(circle closest-side, #536DFE 0%, #536DFE 37.5%, rgba(83, 109, 254, 0.5) 37.5%, rgba(83, 109, 254, 0.5) 100%);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:active::-ms-thumb {
+  background: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value::-webkit-slider-thumb {
+  border-color: #536DFE;
+  background: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value::-moz-range-thumb {
+  border-color: rgba(255, 255, 255, 0.87);
+  background: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value:focus:not(:active)::-webkit-slider-thumb {
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value:focus:not(:active)::-moz-range-thumb {
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value:active::-webkit-slider-thumb {
+  border-color: rgba(255, 255, 255, 0.87);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value:active::-moz-range-thumb {
+  border-color: rgba(255, 255, 255, 0.87);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value::-ms-thumb {
+  background: radial-gradient(circle closest-side, transparent 0%, transparent 66.67%, rgba(255, 255, 255, 0.87) 66.67%, rgba(255, 255, 255, 0.87) 100%);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value:focus:not(:active)::-ms-thumb {
+  background: radial-gradient(circle closest-side, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.5) 25%, rgba(255, 255, 255, 0.87) 25%, rgba(255, 255, 255, 0.87) 37.5%, rgba(255, 255, 255, 0.5) 37.5%, rgba(255, 255, 255, 0.5) 100%);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value:active::-ms-thumb {
+  background: radial-gradient(circle closest-side, transparent 0%, transparent 77.78%, rgba(255, 255, 255, 0.87) 77.78%, rgba(255, 255, 255, 0.87) 100%);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value::-ms-fill-lower {
+  background: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:disabled:focus::-webkit-slider-thumb,
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:disabled:active::-webkit-slider-thumb,
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:disabled::-webkit-slider-thumb {
+  background: rgba(255, 255, 255, 0.87);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:disabled:focus::-moz-range-thumb,
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:disabled:active::-moz-range-thumb,
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:disabled::-moz-range-thumb {
+  background: rgba(255, 255, 255, 0.87);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:disabled + .mdl-slider__background-flex > .mdl-slider__background-lower {
+  background-color: rgba(255, 255, 255, 0.87);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled:focus::-webkit-slider-thumb,
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled:active::-webkit-slider-thumb,
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled::-webkit-slider-thumb {
+  border-color: rgba(255, 255, 255, 0.87);
+  background: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled:focus::-moz-range-thumb,
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled:active::-moz-range-thumb,
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled::-moz-range-thumb {
+  border-color: rgba(255, 255, 255, 0.87);
+  background: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:disabled:focus::-ms-thumb,
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:disabled:active::-ms-thumb,
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:disabled::-ms-thumb {
+  background: rgba(255, 255, 255, 0.87);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled:focus::-ms-thumb,
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled:active::-ms-thumb,
+.mdlext-dark-color-theme .mdl-slider.is-upgraded.is-lowest-value:disabled::-ms-thumb {
+  background: radial-gradient(circle closest-side, transparent 0%, transparent 50%, rgba(255, 255, 255, 0.87) 50%, rgba(255, 255, 255, 0.87) 100%);
+}
+
+.mdlext-dark-color-theme .mdl-slider.is-upgraded:disabled::-ms-fill-lower {
+  background: linear-gradient(to right, transparent, transparent 25px, rgba(255, 255, 255, 0.87) 25px, rgba(255, 255, 255, 0.87) 0);
+}
+
+.mdlext-dark-color-theme .mdl-slider__background-flex {
+  background: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-slider__background-lower {
+  background: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-slider__background-upper {
+  background: rgba(255, 255, 255, 0.87);
+}
+
+.mdlext-dark-color-theme .mdl-textfield__input {
+  border-bottom-color: rgba(255, 255, 255, 0.26);
+}
+
+.mdlext-dark-color-theme .mdl-textfield.is-invalid .mdl-textfield__input {
+  border-color: #FF1744;
+}
+
+.mdlext-dark-color-theme fieldset[disabled] .mdl-textfield .mdl-textfield__input,
+.mdlext-dark-color-theme .mdl-textfield.is-disabled .mdl-textfield__input {
+  background-color: transparent;
+  border-bottom-color: rgba(255, 255, 255, 0.26);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mdlext-dark-color-theme .mdl-textfield__label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mdlext-dark-color-theme .mdl-textfield__label:after {
+  background-color: #536DFE;
+}
+
+.mdlext-dark-color-theme fieldset[disabled] .mdl-textfield .mdl-textfield__label,
+.mdlext-dark-color-theme .mdl-textfield.is-disabled.is-disabled .mdl-textfield__label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mdlext-dark-color-theme .mdl-textfield--floating-label.is-focused .mdl-textfield__label,
+.mdlext-dark-color-theme .mdl-textfield--floating-label.is-dirty .mdl-textfield__label,
+.mdlext-dark-color-theme .mdl-textfield--floating-label.has-placeholder .mdl-textfield__label {
+  color: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-textfield--floating-label.is-invalid .mdl-textfield__label {
+  color: #FF1744;
+}
+
+.mdlext-dark-color-theme .mdl-textfield.is-invalid .mdl-textfield__label:after {
+  background-color: #FF1744;
+}
+
+.mdlext-dark-color-theme .mdl-textfield__error {
+  color: #FF1744;
+}
+
+.mdlext-dark-color-theme .mdl-checkbox__box-outline {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.mdlext-dark-color-theme .mdl-checkbox.is-checked .mdl-checkbox__box-outline {
+  border-color: #536DFE;
+}
+
+.mdlext-dark-color-theme fieldset[disabled] .mdl-checkbox .mdl-checkbox__box-outline,
+.mdlext-dark-color-theme .mdl-checkbox.is-disabled .mdl-checkbox__box-outline {
+  border-color: rgba(255, 255, 255, 0.26);
+}
+
+.mdlext-dark-color-theme .mdl-checkbox__focus-helper {
+  background-color: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-checkbox.is-focused.is-checked .mdl-checkbox__focus-helper {
+  box-shadow: 0 0 0px 8px rgba(83, 109, 254, 0.26);
+  background-color: rgba(83, 109, 254, 0.26);
+}
+
+.mdlext-dark-color-theme .mdl-checkbox__tick-outline {
+  background: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-checkbox.is-checked .mdl-checkbox__tick-outline {
+  background-color: #536DFE;
+}
+
+.mdlext-dark-color-theme fieldset[disabled] .mdl-checkbox.is-checked .mdl-checkbox__tick-outline,
+.mdlext-dark-color-theme .mdl-checkbox.is-checked.is-disabled .mdl-checkbox__tick-outline {
+  background-color: rgba(255, 255, 255, 0.26);
+}
+
+.mdlext-dark-color-theme fieldset[disabled] .mdl-checkbox .mdl-checkbox__label,
+.mdlext-dark-color-theme .mdl-checkbox.is-disabled .mdl-checkbox__label {
+  color: rgba(255, 255, 255, 0.26);
+}
+
+.mdlext-dark-color-theme .mdl-checkbox__ripple-container .mdl-ripple {
+  background: #536DFE;
+}
+
+.mdlext-dark-color-theme fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
+.mdlext-dark-color-theme .mdl-checkbox.is-disabled .mdl-checkbox__ripple-container .mdl-ripple {
+  background: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-radio__outer-circle {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.mdlext-dark-color-theme .mdl-radio.is-checked .mdl-radio__outer-circle {
+  border-color: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-radio__outer-circle fieldset[disabled] .mdl-radio,
+.mdlext-dark-color-theme .mdl-radio.is-disabled .mdl-radio__outer-circle {
+  border-color: rgba(255, 255, 255, 0.26);
+}
+
+.mdlext-dark-color-theme .mdl-radio__inner-circle {
+  background: #536DFE;
+}
+
+.mdlext-dark-color-theme fieldset[disabled] .mdl-radio .mdl-radio__inner-circle,
+.mdlext-dark-color-theme .mdl-radio.is-disabled .mdl-radio__inner-circle {
+  background: rgba(255, 255, 255, 0.26);
+}
+
+.mdlext-dark-color-theme fieldset[disabled] .mdl-radio .mdl-radio__label,
+.mdlext-dark-color-theme .mdl-radio.is-disabled .mdl-radio__label {
+  color: rgba(255, 255, 255, 0.26);
+}
+
+.mdlext-dark-color-theme .mdl-radio__ripple-container .mdl-ripple {
+  background: #536DFE;
+}
+
+.mdlext-dark-color-theme fieldset[disabled] .mdl-radio .mdl-radio__ripple-container .mdl-ripple,
+.mdlext-dark-color-theme .mdl-radio.is-disabled .mdl-radio__ripple-container .mdl-ripple {
+  background: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-icon-toggle__label {
+  color: #616161;
+}
+
+.mdlext-dark-color-theme .mdl-icon-toggle.is-checked .mdl-icon-toggle__label {
+  color: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-icon-toggle.is-disabled .mdl-icon-toggle__label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mdlext-dark-color-theme .mdl-icon-toggle.is-focused .mdl-icon-toggle__label {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.mdlext-dark-color-theme .mdl-icon-toggle.is-focused.is-checked .mdl-icon-toggle__label {
+  background-color: rgba(83, 109, 254, 0.26);
+}
+
+.mdlext-dark-color-theme .mdl-icon-toggle__ripple-container .mdl-ripple {
+  background: #616161;
+}
+
+.mdlext-dark-color-theme .mdl-icon-toggle.is-disabled .mdl-icon-toggle__ripple-container .mdl-ripple {
+  background: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-switch__track {
+  background: rgba(255, 255, 255, 0.26);
+}
+
+.mdlext-dark-color-theme .mdl-switch.is-checked .mdl-switch__track {
+  background: rgba(83, 109, 254, 0.5);
+}
+
+.mdlext-dark-color-theme .mdl-switch__track fieldset[disabled] .mdl-switch,
+.mdlext-dark-color-theme .mdl-switch.is-disabled .mdl-switch__track {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.mdlext-dark-color-theme .mdl-switch__thumb {
+  background: #FAFAFA;
+}
+
+.mdlext-dark-color-theme .mdl-switch.is-checked .mdl-switch__thumb {
+  background: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdl-switch__thumb fieldset[disabled] .mdl-switch,
+.mdlext-dark-color-theme .mdl-switch.is-disabled .mdl-switch__thumb {
+  background: #FAFAFA;
+}
+
+.mdlext-dark-color-theme .mdl-switch__focus-helper {
+  background-color: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-switch.is-focused .mdl-switch__focus-helper {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.mdlext-dark-color-theme .mdl-switch.is-focused.is-checked .mdl-switch__focus-helper {
+  box-shadow: 0 0 0px 20px rgba(83, 109, 254, 0.26);
+  background-color: rgba(83, 109, 254, 0.26);
+}
+
+.mdlext-dark-color-theme .mdl-switch__label fieldset[disabled] .mdl-switch,
+.mdlext-dark-color-theme .mdl-switch.is-disabled .mdl-switch__label {
+  color: #FAFAFA;
+}
+
+.mdlext-dark-color-theme .mdl-switch__ripple-container .mdl-ripple {
+  background: #536DFE;
+}
+
+.mdlext-dark-color-theme fieldset[disabled] .mdl-switch .mdl-switch__ripple-container .mdl-ripple,
+.mdlext-dark-color-theme .mdl-switch.is-disabled .mdl-switch__ripple-container .mdl-ripple {
+  background: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-data-table {
+  border-color: rgba(255, 255, 255, 0.12);
+  background-color: #303030;
+}
+
+.mdlext-dark-color-theme .mdl-data-table tbody tr.is-selected {
+  background-color: #424242;
+}
+
+.mdlext-dark-color-theme .mdl-data-table tbody tr:hover {
+  background-color: #212121;
+}
+
+.mdlext-dark-color-theme .mdl-data-table th {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.mdlext-dark-color-theme .mdl-data-table th.mdl-data-table__header--sorted-ascending,
+.mdlext-dark-color-theme .mdl-data-table th.mdl-data-table__header--sorted-descending {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.mdlext-dark-color-theme .mdl-data-table th.mdl-data-table__header--sorted-ascending:hover:before,
+.mdlext-dark-color-theme .mdl-data-table th.mdl-data-table__header--sorted-descending:hover:before {
+  color: rgba(255, 255, 255, 0.26);
+}
+
+.mdlext-dark-color-theme .mdl-menu__outline {
+  background: #000000;
+}
+
+.mdlext-dark-color-theme .mdl-menu__item {
+  color: rgba(255, 255, 255, 0.87);
+  background-color: transparent;
+  outline-color: #616161;
+}
+
+.mdlext-dark-color-theme .mdl-menu__item--full-bleed-divider {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.mdlext-dark-color-theme .mdl-menu__item[disabled],
+.mdlext-dark-color-theme .mdl-menu__item[data-mdl-disabled] {
+  color: #9E9E9E;
+  background-color: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-menu__item[disabled]:hover,
+.mdlext-dark-color-theme .mdl-menu__item[data-mdl-disabled]:hover {
+  background-color: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-menu__item[disabled]:focus,
+.mdlext-dark-color-theme .mdl-menu__item[data-mdl-disabled]:focus {
+  background-color: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-menu__item[disabled] .mdl-ripple,
+.mdlext-dark-color-theme .mdl-menu__item[data-mdl-disabled] .mdl-ripple {
+  background: transparent;
+}
+
+.mdlext-dark-color-theme .mdl-menu__item:hover {
+  background-color: #212121;
+}
+
+.mdlext-dark-color-theme .mdl-menu__item:focus {
+  background-color: #212121;
+}
+
+.mdlext-dark-color-theme .mdl-menu__item:active {
+  background-color: #424242;
+}
+
+.mdlext-dark-color-theme .mdl-card__supporting-text {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.mdlext-dark-color-theme .mdlext-selectfield.is-disabled:after {
+  color: rgba(255, 255, 255, 0.26);
+  content: '';
+  width: 0;
+  height: 0;
+  border: 0.35em solid transparent;
+  border-top-width: 0.5em;
+  border-bottom: none;
+  border-top-color: rgba(255, 255, 255, 0.26);
+}
+
+.mdlext-dark-color-theme .mdlext-selectfield__select {
+  border-bottom-color: rgba(255, 255, 255, 0.26);
+  color: inherit;
+}
+
+.mdlext-dark-color-theme .mdlext-selectfield__select option {
+  background-color: #303030;
+  color: white;
+}
+
+.mdlext-dark-color-theme .mdlext-selectfield.is-invalid .mdlext-selectfield__select {
+  border-color: #FF1744;
+}
+
+.mdlext-dark-color-theme fieldset[disabled] .mdlext-selectfield .mdlext-selectfield__select,
+.mdlext-dark-color-theme .mdlext-selectfield.is-disabled .mdlext-selectfield__select {
+  background-color: transparent;
+  border-bottom-color: rgba(255, 255, 255, 0.26);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mdlext-dark-color-theme .mdlext-selectfield__label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mdlext-dark-color-theme fieldset[disabled] .mdlext-selectfield .mdlext-selectfield__label,
+.mdlext-dark-color-theme .mdlext-selectfield.is-disabled.is-disabled .mdlext-selectfield__label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mdlext-dark-color-theme .mdlext-selectfield--floating-label.is-focused .mdlext-selectfield__label,
+.mdlext-dark-color-theme .mdlext-selectfield--floating-label.is-dirty .mdlext-selectfield__label,
+.mdlext-dark-color-theme .mdlext-selectfield--floating-label.is-dirty.is-dirty .mdlext-selectfield__label,
+.mdlext-dark-color-theme .mdlext-selectfield--floating-label.has-placeholder .mdlext-selectfield__label {
+  color: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdlext-selectfield--floating-label.is-invalid .mdlext-selectfield__label {
+  color: #FF1744;
+}
+
+.mdlext-dark-color-theme .mdlext-selectfield__label:after {
+  background-color: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdlext-selectfield.is-invalid .mdlext-selectfield__label:after {
+  background-color: #FF1744;
+}
+
+.mdlext-dark-color-theme .mdlext-selectfield__error {
+  color: #FF1744;
+}
+
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield.is-dirty .mdl-textfield__input:required,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield.is-dirty .mdlext-selectfield__select:required,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdl-textfield__input:required,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdlext-selectfield__select:required {
+  border-color: rgba(255, 255, 255, 0.26);
+  background-color: rgba(48, 48, 48, 0.1);
+}
+
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield.is-dirty .mdl-textfield__input:focus,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield.is-dirty .mdl-textfield__input:required:focus,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield.is-dirty .mdlext-selectfield__select:focus,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield.is-dirty .mdlext-selectfield__select:required:focus,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdl-textfield__input:focus,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdl-textfield__input:required:focus,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdlext-selectfield__select:focus,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-dirty .mdlext-selectfield__select:required:focus {
+  border-color: #536DFE;
+  background-color: rgba(48, 48, 48, 0.1);
+}
+
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield .mdl-textfield__input,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__input,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select {
+  background-color: rgba(48, 48, 48, 0.1);
+  border-color: rgba(255, 255, 255, 0.26);
+}
+
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield .mdl-textfield__input:disabled,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select:disabled,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__input:disabled,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select:disabled {
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(48, 48, 48, 0.1);
+  border-color: rgba(255, 255, 255, 0.26);
+}
+
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield .mdl-textfield__input:required,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select:required,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__input:required,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select:required {
+  background-color: rgba(48, 48, 48, 0.1);
+  border-color: rgba(255, 193, 7, 0.8);
+}
+
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield .mdl-textfield__input:focus,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield .mdl-textfield__input:required:focus,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select:focus,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield .mdlext-selectfield__select:required:focus,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__input:focus,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdl-textfield__input:required:focus,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select:focus,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield .mdlext-selectfield__select:required:focus {
+  background-color: rgba(48, 48, 48, 0.1);
+  border-color: #536DFE;
+}
+
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield.is-disabled i,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdl-textfield.is-disabled .mdl-button,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-disabled i,
+.mdlext-dark-color-theme .mdlext-bordered-fields .mdlext-selectfield.is-disabled .mdl-button {
+  color: rgba(255, 255, 255, 0.26);
+}
+
+
+/*# sourceMappingURL=mdl-ext.css.map*/

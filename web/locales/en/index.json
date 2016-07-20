@@ -1,0 +1,11 @@
+{
+  "loginDNIE":"Log in with an electronic DNI",
+  "loginDNIEexp":"A DNIe reader is required.",
+  "loginCode":"Log in with a generated code",
+  "loginCodeExp":"In the case you don't have a DNIe reader.",
+  "loginAdmin":"Log in to the admin dashboard",
+  "loginAdminExp":"We've detected you're logged in as an admin",
+  "about":"About this app",
+  "licenseTitle":"License",
+  "copyright":"Copyright (c) 2016 Adrià Vilanova Martínez"
+}

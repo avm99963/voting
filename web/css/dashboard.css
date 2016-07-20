@@ -1,0 +1,79 @@
+.main {
+  position: relative;
+  display: block;
+	width: 700px;
+  max-width: Calc(95vw - 32px);
+	margin: 20px auto;
+	padding: 16px 16px 32px 16px;
+	border-radius: 2px;
+	background: #FFFFFF;
+}
+
+.main.withfab {
+	padding: 16px 16px 64px 16px!important;
+}
+
+.next {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+}
+
+.day-reservar td, .day-reservar-centered td {
+  text-align: center;
+}
+td.user {
+  /*background-color: rgb(60, 211, 66);*/
+  height: 36px!important;
+}
+td.reserved {
+  /*background-color: red;
+  color: white;*/
+  height: 36px!important;
+}
+
+.height36 {
+  min-height: 36px;
+}
+
+.day-reservar {
+  float: left;
+}
+
+.day-reservar-centered table {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.day-reservar:not(:last-child) {
+  margin-right: 36px;
+}
+
+.holder {
+  display: inline-block;
+  margin-bottom: 16px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.delete, .icon {
+  color: black!important;
+  vertical-align: middle;
+}
+
+.mdl-tabs__panel {
+  padding-top: 16px;
+}
+
+a.backbtn {
+  text-decoration: none;
+  color: rgb(66, 66, 66);
+  height: 26px;
+}
+
+/* Autocomplete styling */
+.autocomplete-suggestions { box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); background: #FFF; overflow: auto; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }

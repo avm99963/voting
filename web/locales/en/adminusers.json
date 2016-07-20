@@ -1,0 +1,13 @@
+{
+  "id":"id",
+  "username":"Username",
+  "password":"Password",
+  "realname":"Real name",
+  "type":"Type",
+  "type_0":"admin",
+  "type_1":"token creator",
+  "type_2":"census creator",
+  "add_title":"Add user",
+  "edituser":"Edit user",
+  "deleteuser":"Delete user"
+}

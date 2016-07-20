@@ -1,0 +1,9 @@
+{
+  "loginDNIE":"Iniciar sesión con DNI electrónico",
+  "loginDNIEexp":"Se requiere un lector de DNI electrónico.",
+  "loginCode":"Iniciar sesión con código generado",
+  "loginCodeExp":"En caso de no disponer de un lector de DNI electrónico.",
+  "about":"Sobre esta aplicación",
+  "licenseTitle":"Licencia",
+  "copyright":"Copyright (c) 2016 Adrià Vilanova Martínez"
+}

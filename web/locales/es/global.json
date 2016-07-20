@@ -1,0 +1,6 @@
+{
+  "ok":"Aceptar",
+  "msg_loginwrong":"Usuario y/o contraseña incorrecto",
+  "msg_empty":"Por favor, rellena todos los campos",
+  "msg_logoutsuccess":"¡Has cerrado la sesión correctamente! Ten un buen día."
+}

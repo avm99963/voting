@@ -1,19 +1,12 @@
 <?php
 require_once("core.php");
-$msg = "";
-if (isset($_GET['msg'])) {
-  if ($_GET['msg'] == "loginwrong")
-    $msg = 'Usuario y/o contraseña incorrecto';
-  if ($_GET['msg'] == "empty")
-    $msg = 'Por favor, rellena todos los campos';
-  if ($_GET['msg'] == "logoutsuccess")
-    $msg = '¡Has cerrado la sesión correctamente! Ten un buen día :-)';
-}
+
+$i18n = new i18n("logincode");
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Inicia sesión – <?php echo $conf["appname"]; ?></title>
+  <title><?=$i18n->msg("login")?> – <?php echo $conf["appname"]; ?></title>
   <meta charset="UTF-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,14 +28,14 @@ if (isset($_GET['msg'])) {
     <form action="dologincode.php" method="POST" autocomplete="off" id="formulario">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <input class="mdl-textfield__input" type="password" name="code" id="code" autocomplete="off">
-        <label class="mdl-textfield__label" for="code">Código</label>
+        <label class="mdl-textfield__label" for="code"><?=$i18n->msg("code")?></label>
       </div>
-      <p><button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Iniciar sesión</button></p>
+      <p><button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"><?=$i18n->msg("login")?></button></p>
 		</form>
   </div>
   <?php
-  if (isset($_GET['msg'])) {
-    md_snackbar($msg);
+  if (isset($msg) && !empty($msg)) {
+    md::snackbar($msg);
   }
   ?>
 </body>
