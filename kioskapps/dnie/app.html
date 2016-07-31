@@ -25,11 +25,11 @@
     <div class="login mdl-shadow--4dp" id="login">
       <h2 data-i18n="htmlTitle"></h2>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="url" name="api" id="api" autocomplete="off">
+        <input class="mdl-textfield__input" type="url" name="api" id="api" autocomplete="off" value="http://192.168.1.38/voting/web/api/api.php">
         <label class="mdl-textfield__label" for="api" data-i18n="htmlApiURL"></label>
       </div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" name="secretKey" id="secretKey" autocomplete="off">
+        <input class="mdl-textfield__input" type="text" name="secretKey" id="secretKey" autocomplete="off" value="cO8m6YGXhUNRPMikMhP3PWnvAjNzfNs9">
         <label class="mdl-textfield__label" for="secretKey" data-i18n="htmlSecretKey"></label>
       </div>
       <p><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" data-i18n="htmlSetUp" id="setup"></button></p>
@@ -47,6 +47,10 @@
         <div class="mdl-cell mdl-cell--8-col insertcardtxtcontainer"><span data-i18n="insertCard"></span></div>
       </div>
     </div>
+    <div class="main mdl-shadow--4dp" id="reading">
+      <div class="mdl-spinner mdl-js-spinner is-active readingCircle"></div>
+      <h4 data-i18n="reading" id="readingtxt"></h4>
+    </div>
     <div class="main withfab mdl-shadow--4dp" id="data">
       <div id="savingData" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
       <h2 data-i18n="dataTitle"></h2>
@@ -54,6 +58,7 @@
         <li><b><span data-i18n="dataName"></span></b>: <span id="dataName"></span></li>
         <li><b><span data-i18n="dataDni"></span></b>: <span id="dataDni"></span></li>
         <li><b><span data-i18n="dataBirthday"></span></b>: <span id="dataBirthday"></span></li>
+        <li><b><span data-i18n="dataIDESP"></span></b>: <span id="dataIDESP"></span></li>
       </ul>
       <p data-i18n="dataConfirmation"></p>
       <button class="next mdl-button md-js-button mdl-button--raised mdl-button--fab mdl-js-ripple-effect mdl-button--accent" id="dataNext"><i class="material-icons">done</i><span class="mdl-ripple"></span></button>

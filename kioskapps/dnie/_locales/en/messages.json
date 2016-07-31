@@ -47,6 +47,9 @@
   "dataBirthday": {
     "message": "Birthday"
   },
+  "dataIDESP": {
+    "message": "IDESP"
+  },
   "dataConfirmation": {
     "message": "If the above information is correct, please click the tick button in the bottom right corner."
   },
@@ -94,5 +97,8 @@
   },
   "errorTransactionFailed": {
     "message": "The communication with your DNIE failed. Please, try again."
+  },
+  "reading": {
+    "message": "Reading your DNIe..."
   }
 }

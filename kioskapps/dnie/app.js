@@ -62,6 +62,23 @@ var pages = {
   }
 };
 
+var api = {
+  request: function(action, method, data, callback) {
+    var params = ((data === "") ? "" : "&")+"apikey="+encodeURIComponent(sessionStorage.secretKey)+"&action="+encodeURIComponent(action);
+    xhr(method, sessionStorage.apiurl, params, function(response, status) {
+      var json = JSON.parse(response);
+      
+      console.log(json);
+      
+      if (json.status == "error") {
+        console.error("API error "+json.errorcode+": "+json.errormsg);
+      }
+      
+      callback(json, status);
+    });
+  }
+};
+
 function reset() {
   // Function which should reset the kiosk
   sessionStorage.code = "";
@@ -223,6 +240,8 @@ function fileRead(stream, operation) {
     console.log(pem);
 
     caroot = pem;
+    
+    console.log(X509.getPublicKeyFromCertPEM(caroot));
 
     file.readFile(hCard, [0x60, 0x20], 3);
 
@@ -246,6 +265,10 @@ function fileRead(stream, operation) {
     console.log(pem);
 
     caint = pem;
+    
+    console.log(X509.getPublicKeyFromCertPEM(caint));
+    
+    $("#dataIDESP").innerText = idesp;
 
     pages.changePage("data");
   } else {
@@ -270,13 +293,15 @@ function init() {
     }
 
     sessionStorage.apiurl = apiurl;
-    sessionStorage.scretKey = secretKey;
+    sessionStorage.secretKey = secretKey;
 
     //XHR to get some info
+    api.request("init", "GET", "", function(message, status) {
+      
+      $("#welcomeIntro").innerHTML = chrome.i18n.getMessage("welcomeIntro", [message.payload.votingName]);
 
-    $("#welcomeIntro").innerHTML = chrome.i18n.getMessage("welcomeIntro", [votationName]); // votationName has to be changed to the votation name which is retrieved from the XHR
-
-    pages.changePage("welcome");
+      pages.changePage("welcome");
+    });
   });
 
   $("#welcomeNext").addEventListener("click", function() {
@@ -373,7 +398,7 @@ function init() {
           extPostMessage(port, 2, "SCardListReaders", [hContext, null]);
         } else if (msg.data.request_id == 2) {
           szReader = msg.data.payload[1][0];
-          pages.changePage("welcome"); // @TODO: Change to "login" when in PRODUCTION mode
+          pages.changePage("login"); // @TODO: Change to "login" when in PRODUCTION mode
           // DELETE THE FOLLOWING IN PRODUCTION:
           //pages.changePage("welcome");
 
@@ -393,6 +418,7 @@ function init() {
           } else if (payload[1][0].current_state == 16) {
             if (payload[1][0].atr[0] == 59 && payload[1][0].atr[1] == 127 && payload[1][0].atr[3] == 0 && payload[1][0].atr[4] == 0 && payload[1][0].atr[5] == 0 && payload[1][0].atr[6] == 106 && payload[1][0].atr[7] == 68 && payload[1][0].atr[8] == 78 && payload[1][0].atr[9] == 73 && payload[1][0].atr[10] == 101) {
               if ((payload[1][0].atr[18] == 144 && payload[1][0].atr[19] == 0) || (payload[1][0].atr[18] == 101 && payload[1][0].atr[19] == 129)) {
+                pages.changePage("reading");
                 loadDniData();
                 if (payload[1][0].atr[18] == 101 && payload[1][0].atr[19] == 129) {
                   snackbar("warningOutdatedDNIE");
@@ -422,6 +448,7 @@ function init() {
           pages.changePage("data");
         } else if (msg.data.request_id == 96) {
           serial = msg.data.payload[2];
+          console.log("Serial is ",serial);
           file.readFile(hCard, [0x00, 0x06], 1);
         } else if (msg.data.request_id == 98) {
           $("#msgerrordetail").innerText = msg.data.payload[0];

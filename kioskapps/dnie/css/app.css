@@ -44,7 +44,7 @@ input, textarea {
      border-radius: 0!important;
 }
 
-#login, #welcome, #insertdni, #data, #showcode, #printing, #done, #error {
+#login, #welcome, #insertdni, #reading, #data, #showcode, #printing, #done, #error {
   display: none;
 }
 
@@ -109,17 +109,17 @@ input, textarea {
   margin-bottom: 16px;
 }
 
-#printing {
+#reading, #printing {
   padding-top: 64px;
   padding-bottom: 64px;
 }
 
-.printingCircle {
+.readingCircle, .printingCircle {
   display: block;
   margin: 0 auto 16px auto;
 }
 
-#printingtxt {
+#readingtxt, #printingtxt {
   text-align: center;
   margin-bottom: none;
 }
