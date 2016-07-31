@@ -25,6 +25,10 @@ if (isset($_POST["ballot"])) { // EDITING
 
   $row = mysqli_fetch_assoc($query);
 } else { // ADDING
+  if (!isset($_POST["voting"]) || empty($_POST["voting"])) {
+    die("This voting does not exist.");
+  }
+
   $votingid = (int)$_POST["voting"];
 
   $query = mysqli_query($con, "SELECT * FROM votings WHERE id = ".$votingid);

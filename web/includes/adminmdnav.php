@@ -17,6 +17,7 @@ if (user::loggedIn()) {
     <a class="mdl-navigation__link" href="index.php"><i class="material-icons">dashboard</i> <?=$i18n->msg("dashboard")?></a>
     <a class="mdl-navigation__link" href="users.php"><i class="material-icons">group</i> <?=$i18n->msg("users")?></a>
     <a class="mdl-navigation__link" href="votings.php"><i class="material-icons">account_balance</i> <?=$i18n->msg("votings")?></a>
+    <a class="mdl-navigation__link" href="census.php"><i class="material-icons">contacts</i> <?=$i18n->msg("census")?></a>
     <!--<a class="mdl-navigation__link" href="print.php"><i class="material-icons">print</i> Imprimir horarios</a>
     <a class="mdl-navigation__link" href="configuracion.php"><i class="material-icons">settings</i> Configuración</a>-->
     <a class="mdl-navigation__link" class="mdl-navigation__link" href="logout.php"><i class="material-icons">power_settings_new</i> <?=$i18n->msg("logout")?></a>

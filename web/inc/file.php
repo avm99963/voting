@@ -3,10 +3,14 @@ class file {
   private static $fileNameLength = 16;
   private static $uploadsFolder = __DIR__."/../uploads";
 
-  private static function generateRandomName($file) {
+  public static function canUpload() {
+    return is_writable(file::$uploadsFolder);
+  }
+
+  public static function generateRandomName($filename) {
   	$chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
   	$name = '';
-  	for($i = 0; $i < $this->fileNameLength; $i++) {
+  	for($i = 0; $i < file::$fileNameLength; $i++) {
 	    $name .= $chars[mt_rand(0, 35)];
     }
     $explode = explode(".", $filename);

@@ -39,7 +39,6 @@ $md_header_row_before = md::backBtn("voting.php?id=".$id);
     position: fixed;
     bottom: 16px;
     right: 16px;
-    z-index: 1000;
   }
 
   .ellipsis {
@@ -70,12 +69,12 @@ $md_header_row_before = md::backBtn("voting.php?id=".$id);
   </style>
 </head>
 <body class="mdl-color--green">
-  <?php if (user::role() == 0) { ?>
-    <button class="addapikey mdl-button md-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent"><i class="material-icons">vpn_key</i><span class="mdl-ripple"></span></button>
-  <?php } ?>
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
     <?php require(__DIR__."/../includes/adminmdnav.php"); ?>
     <main class="mdl-layout__content">
+      <?php if (user::role() < 2) { ?>
+        <button class="addapikey mdl-button md-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent"><i class="material-icons">vpn_key</i><span class="mdl-ripple"></span></button>
+      <?php } ?>
       <div class="page-content">
         <div class="main mdl-shadow--4dp">
           <h2><?=$i18n->msg("apikeys")?> – <?=$row["name"]?></h2>
@@ -112,7 +111,7 @@ $md_header_row_before = md::backBtn("voting.php?id=".$id);
             		<?php
             		while ($apikey = mysqli_fetch_assoc($query2)) {
             			echo "<tr><td class='extra'>".$apikey['id']."</td><td class='mdl-data-table__cell--non-numeric'><div class='ellipsis' title='".$apikey['keytext']."'>".$apikey['keytext']."</div></td><td class='mdl-data-table__cell--non-numeric extra'><div class='ellipsis' title='".$apikey['description']."'>".$apikey['description']."</div></td><td class='mdl-data-table__cell--non-numeric extra'>".user::userData("name", $apikey["userid"])."</td><td class='mdl-data-table__cell--non-numeric extraextra'>".$i18n->msg("apikeystatus_".(int)$apikey["status"])."</td>";
-                  if (user::role() < 2) {
+                  if (user::role() < 2 && $apikey['status'] == 0) {
                     echo "<td class='mdl-data-table__cell--non-numeric'><a href=\"javascript:dynDialog.load('ajax/revokeapikey.php?id=".$apikey['id']."');\"><i class='material-icons icon'>delete_forever</i></a></td></tr>";
                   } else {
                     echo "<td class='mdl-data-table__cell--non-numeric'></td>";
@@ -155,7 +154,7 @@ $md_header_row_before = md::backBtn("voting.php?id=".$id);
     ?>
   </div>
   <?php
-  md::msg(array("votingnew", "empty", "datediff", "apikeyrevoked"));
+  md::msg(array("apikeyrevoked"));
   ?>
 
 </body>

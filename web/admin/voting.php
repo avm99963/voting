@@ -42,7 +42,6 @@ $md_header_row_before = md::backBtn("votings.php");
     position: fixed;
     bottom: 16px;
     right: 16px;
-    z-index: 1000;
   }
 
   #actions {
@@ -56,47 +55,52 @@ $md_header_row_before = md::backBtn("votings.php");
     text-decoration: none;
   }
 
-  .ballot > .mdl-card__actions {
-    border-color: rgba(255, 255, 255, 0.2);
+  .ballot {
+    position: relative;
+    height: 200px;
   }
-  .ballot > .mdl-card__title {
-    align-items: flex-start;
+
+  .ballot .title {
+    padding: 16px;
   }
-  .ballot > .mdl-card__title > h4 {
+  .ballot .title h4 {
     margin-top: 0;
   }
-  .ballot > .mdl-card__actions {
-    display: flex;
-    box-sizing:border-box;
-    align-items: center;
+  .ballot .actions {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    position: absolute;
+    bottom: 0;
+    padding: 8px;
+    width: Calc(100% - 16px);
   }
-  .ballot > .mdl-card__actions > .material-icons {
+  .ballot .actions .material-icons {
     padding-right: 10px;
   }
-  .ballot > .mdl-card__title,
-  .ballot > .mdl-card__actions,
-  .ballot > .mdl-card__actions > .mdl-button {
+  .ballot .title,
+  .ballot .actions,
+  .ballot .actions .mdl-button {
     color: #fff;
+  }
+
+  .ballot .actions .alignright {
+    float: right;
   }
   </style>
 </head>
 <body class="mdl-color--green">
-  <?php if (user::role() == 0) { ?>
-    <button class="addballot mdl-button md-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent"><i class="material-icons">description</i><span class="mdl-ripple"></span></button>
-  <?php } ?>
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
     <?php require(__DIR__."/../includes/adminmdnav.php"); ?>
     <main class="mdl-layout__content">
+      <?php if (user::role() == 0 && $row["status"] == 0) { ?>
+        <button class="addballot mdl-button md-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent"><i class="material-icons">description</i><span class="mdl-ripple"></span></button>
+      <?php } ?>
       <div class="page-content">
         <div class="main mdl-shadow--4dp">
           <div id="actions">
             <?php
             if ($row["status"] == 0) {
               ?>
-              <a<?=(user::role() == 0 ? " href=\"publishvoting.php?id=$id\"" : "")?> class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect"<?=(user::role() != 0 ? " disabled" : "")?>><?=$i18n->msg("publish")?></a>
-              <button id="menu" class="mdl-button mdl-js-button mdl-button--icon">
-                <i class="material-icons">more_vert</i>
-              </button>
+              <a<?=(user::role() == 0 ? " href=\"javascript:dynDialog.load('ajax/publishvoting.php?id=$id');\"" : "")?> class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect"<?=(user::role() != 0 ? " disabled" : "")?>><?=$i18n->msg("publish")?></a>
               <?php
             } else {
               ?>
@@ -104,19 +108,22 @@ $md_header_row_before = md::backBtn("votings.php");
               <?php
             }
             ?>
+            <button id="menu" class="mdl-button mdl-js-button mdl-button--icon">
+              <i class="material-icons">more_vert</i>
+            </button>
           </div>
-          <?php
-          if ($row["status"] == 0) {
-            ?>
-            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu">
-              <?php if (user::role() == 0) { ?><a class="menulink" href="javascript:dynDialog.load('ajax/editvoting.php?id=<?=$id?>');"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=$i18n->msg("editvoting")?></li><?php if (user::role() == 0) { ?></a><?php } ?>
-              <?php if (user::role() == 0) { ?><a class="menulink" href="filters.php?id=<?=$id?>"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=$i18n->msg("managefilters")?></li><?php if (user::role() == 0) { ?></a><?php } ?>
-              <?php if (user::role() == 0) { ?><a class="menulink" href="apikeys.php?id=<?=$id?>"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=$i18n->msg("manageapikeys")?></li><?php if (user::role() == 0) { ?></a><?php } ?>
-              <?php if (user::role() == 0) { ?><a class="menulink" href="javascript:dynDialog.load('ajax/deletevoting.php?id=<?=$id?>');"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=$i18n->msg("deletevoting")?></li><?php if (user::role() == 0) { ?></a><?php } ?>
-            </ul>
+          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu">
+            <?php if (user::role() == 0) { ?><a class="menulink" href="javascript:dynDialog.load('ajax/editvoting.php?id=<?=$id?>');"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=($row["status"] == 0 ? $i18n->msg("editvoting") : $i18n->msg("viewvotingdetails"))?></li><?php if (user::role() == 0) { ?></a><?php } ?>
+            <?php if (user::role() == 0) { ?><a class="menulink" href="filtervoting.php?id=<?=$id?>"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=($row["status"] == 0 ? $i18n->msg("managefilters") : $i18n->msg("viewfilters"))?></li><?php if (user::role() == 0) { ?></a><?php } ?>
+            <?php if (user::role() == 0) { ?><a class="menulink" href="apikeys.php?id=<?=$id?>"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=$i18n->msg("manageapikeys")?></li><?php if (user::role() == 0) { ?></a><?php } ?>
             <?php
-          }
-          ?>
+            if ($row["status"] == 0) {
+              ?>
+              <?php if (user::role() == 0) { ?><a class="menulink" href="javascript:dynDialog.load('ajax/deletevoting.php?id=<?=$id?>');"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=$i18n->msg("deletevoting")?></li><?php if (user::role() == 0) { ?></a><?php } ?>
+              <?php
+            }
+            ?>
+          </ul>
           <h2><?=$row["name"]?></h2>
           <p><?=$row["description"]?></p>
           <div class="mdl-grid">
@@ -125,19 +132,20 @@ $md_header_row_before = md::backBtn("votings.php");
             if (mysqli_num_rows($query2)) {
               while ($ballot = mysqli_fetch_assoc($query2)) {
                 ?>
-                <div class="mdl-cell mdl-cell--4-col ballot mdl-card mdl-shadow--2dp" style="background-color: #<?=$ballot["color"]?>;">
-                  <div class="mdl-card__title mdl-card--expand">
+                <div class="mdl-cell mdl-cell--4-col ballot mdl-shadow--2dp" style="background-color: #<?=$ballot["color"]?>;">
+                  <div class="title mdl-card--expand">
                     <h4>
                       <?=$ballot["name"]?>
                     </h4>
                   </div>
-                  <div class="mdl-card__actions mdl-card--border">
+                  <div class="actions mdl-card--border">
                     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" disabled>
                       <?=$i18n->msg("vote")?>
                     </a>
-                    <div class="mdl-layout-spacer"></div>
-                    <?php if (user::role() == 0) { ?><a href="editballot.php?id=<?=$ballot["id"]?>" class="mdl-button mdl-js--button mdl-button--icon"><?php } ?><i class="material-icons">edit</i><?php if (user::role() == 0) { ?></a><?php } ?>
-                    <?php if (user::role() == 0) { ?><a href="deleteballot.php?id=<?=$ballot["id"]?>" class="mdl-button mdl-js--button mdl-button--icon"><?php } ?><i class="material-icons">delete</i><?php if (user::role() == 0) { ?></a><?php } ?>
+                    <div class="alignright">
+                      <?php if (user::role() == 0) { ?><a href="javascript:dynDialog.load('ajax/editballot.php?id=<?=$ballot["id"]?>');" class="mdl-button mdl-js--button mdl-button--icon"><?php } ?><i class="material-icons">edit</i><?php if (user::role() == 0) { ?></a><?php } ?>
+                      <?php if (user::role() == 0) { ?><a href="javascript:dynDialog.load('ajax/deleteballot.php?id=<?=$ballot["id"]?>');" class="mdl-button mdl-js--button mdl-button--icon"><?php } ?><i class="material-icons">delete</i><?php if (user::role() == 0) { ?></a><?php } ?>
+                    </div>
                   </div>
                 </div>
                 <?php
@@ -152,42 +160,40 @@ $md_header_row_before = md::backBtn("votings.php");
         </div>
       </div>
     </main>
-    <?php
-    if (user::role() == 0) {
-      ?>
-      <dialog class="mdl-dialog" id="addballot">
-        <form action="newballot.php" method="POST" autocomplete="off">
-          <input type="hidden" name="voting" value="<?=$id?>">
-          <h4 class="mdl-dialog__title"><?=$i18n->msg("addballot_title")?></h4>
-          <div class="mdl-dialog__content">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" name="name" id="name" autocomplete="off">
-              <label class="mdl-textfield__label" for="name"><?=$i18n->msg("name")?></label>
-            </div>
-            <br>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <textarea class="mdl-textfield__input" name="description" rows="3" id="description" autocomplete="off"></textarea>
-              <label class="mdl-textfield__label" for="description"><?=$i18n->msg("description")?></label>
-            </div>
-            <br>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="color" name="color" id="color" autocomplete="off" value="#333333">
-              <label class="mdl-textfield__label always-focused" for="color"><?=$i18n->msg("color")?></label>
-            </div>
-          </div>
-          <div class="mdl-dialog__actions">
-            <button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent"><?=$i18n->msg("add")?></button>
-            <button onclick="event.preventDefault(); document.querySelector('#addballot').close();" class="mdl-button mdl-js-button mdl-js-ripple-effect cancel"><?=$i18n->msg("cancel")?></button>
-          </div>
-        </form>
-      </dialog>
-      <?php
-    }
-    ?>
   </div>
   <?php
-  md::msg(array("votingnew", "empty", "datediff", "ballotadded", "ballotnew", "ballotdelete"));
-  ?>
+  if (user::role() == 0) {
+    ?>
+    <dialog class="mdl-dialog" id="addballot">
+      <form action="newballot.php" method="POST" autocomplete="off">
+        <input type="hidden" name="voting" value="<?=$id?>">
+        <h4 class="mdl-dialog__title"><?=$i18n->msg("addballot_title")?></h4>
+        <div class="mdl-dialog__content">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" name="name" id="name" autocomplete="off">
+            <label class="mdl-textfield__label" for="name"><?=$i18n->msg("name")?></label>
+          </div>
+          <br>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <textarea class="mdl-textfield__input" name="description" rows="3" id="description" autocomplete="off"></textarea>
+            <label class="mdl-textfield__label" for="description"><?=$i18n->msg("description")?></label>
+          </div>
+          <br>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="color" name="color" id="color" autocomplete="off" value="#333333">
+            <label class="mdl-textfield__label" for="color"><?=$i18n->msg("color")?></label>
+          </div>
+        </div>
+        <div class="mdl-dialog__actions">
+          <button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent"><?=$i18n->msg("add")?></button>
+          <button onclick="event.preventDefault(); document.querySelector('#addballot').close();" class="mdl-button mdl-js-button mdl-js-ripple-effect cancel"><?=$i18n->msg("cancel")?></button>
+        </div>
+      </form>
+    </dialog>
+    <?php
+  }
 
+  md::msg(array("votingnew", "votingpublished", "empty", "datediff", "ballotadded", "ballotnew", "ballotdelete"));
+  ?>
 </body>
 </html>

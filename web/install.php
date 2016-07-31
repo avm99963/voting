@@ -55,7 +55,6 @@
 						PRIMARY KEY(id),
 						name VARCHAR(100),
 						description TEXT,
-						votinghelper TEXT,
 						datebegins INT(13),
 						dateends INT(13),
 						status INT(2),

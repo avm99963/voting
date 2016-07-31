@@ -32,12 +32,6 @@ $i18n = new i18n("adminvotings", 1);
     right: 25px;
   }
 
-  .always-focused {
-    font-size: 12px;
-    top: 4px;
-    visibility: visible;
-  }
-
   .mdl-list__item {
     cursor: pointer;
   }

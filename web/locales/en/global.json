@@ -3,6 +3,7 @@
   "dashboard":"Dashboard",
   "users":"Users",
   "votings":"Votings",
+  "census":"Census",
   "logout":"Log out",
   "yes":"Yes",
   "no":"No",
@@ -10,6 +11,9 @@
   "cancel":"Cancel",
   "edit":"Edit",
   "vote":"Vote",
+  "save":"Save",
+  "error":"Error",
+  "search":"Search",
   "delete_areyousure":"Are you sure? <span style='color:red;font-weight:bold;'>This action cannot be reversed<\/span>",
   "delete_areyousure_object":"Are you sure you want to delete \"%0\"? <span style='color:#EF5350;font-weight:bold;'>This action cannot be reversed<\/span>",
   "msg_loginwrong":"User and/or password incorrect",
@@ -21,9 +25,12 @@
   "msg_votingadded":"Voting added successfully",
   "msg_votingnew":"Voting edited successfully",
   "msg_votingdelete":"Voting deleted successfully",
+  "msg_votingpublished":"Voting published successfully",
   "msg_ballotadded":"Ballot added successfully",
   "msg_ballotnew":"Ballot edited successfully",
   "msg_ballotdelete":"Ballot deleted successfully",
   "msg_usernametaken":"Please, choose another username. This one is taken.",
-  "msg_datediff":"The beginning date must be before the end date"
+  "msg_datediff":"The beginning date must be before the end date",
+  "msg_apikeyrevoked":"API key revoked successfully",
+  "msg_filteredit":"Filters saved successfully"
 }
