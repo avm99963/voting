@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="../bower_components/material-design-lite/material.min.css">
 <script src="../bower_components/material-design-lite/material.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="../bower_components/material-design-icons/iconfont/material-icons.css">
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'>
 
 <link rel="stylesheet" href="../css/stylemd.css">

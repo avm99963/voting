@@ -78,8 +78,32 @@ a.backbtn {
   visibility: visible;
 }
 
+.info {
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #81D4FA;
+  border-radius: 4px;
+}
+
 /* Autocomplete styling */
 .autocomplete-suggestions { box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); background: #FFF; overflow: auto; }
 .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
 .autocomplete-selected { background: #F0F0F0; }
 .autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+
+/* Print styles */
+
+@media print {
+  .mdl-layout__drawer {
+    display: none;
+  }
+
+  .mdl-layout__header {
+    display: none;
+  }
+
+  .mdl-layout__content {
+    margin-left: none;
+    width: 100%;
+  }
+}

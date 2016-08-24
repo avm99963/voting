@@ -83,7 +83,7 @@ $i18n = new i18n("admincensus", 1);
     <?php
   }
 
-  md::msg(array("citizenadded", "citizennew", "citizendelete", "empty", "usernametaken"));
+  md::msg(array("citizenadded", "citizennew", "citizendelete", "empty", "usernametaken", "activecode"));
   ?>
 </body>
 </html>

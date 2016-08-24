@@ -66,7 +66,8 @@
 						PRIMARY KEY(id),
 						name VARCHAR(100),
 						description TEXT,
-						voting INT(13)
+						voting INT(13),
+						color VARCHAR(6)
 					)";
 					$username = mysqli_real_escape_string($con, $_POST['username']);
 					$password = password_hash($_POST["password"], PASSWORD_DEFAULT);

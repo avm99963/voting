@@ -10,6 +10,8 @@ if (user::role() > 2) {
   die("You have no permissions");
 }
 
+$i18n = new i18n("admincensus", 1);
+
 $dni = sanitizer::dbString($_POST['dni']);
 $birthday = strtotime($_POST["birthday"]);
 
@@ -47,6 +49,14 @@ if (mysqli_query($con,$sql6)) {
 <head>
   <title><?=$i18n->msg("census")?> – <?php echo $conf["appname"]; ?></title>
   <?php include(__DIR__."/../includes/adminhead.php"); ?>
+  <script src="../bower_components/qr-js/qr.min.js"></script>
+  <style>
+  #qrcode {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  </style>
 </head>
 <body class="mdl-color--green">
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
@@ -54,57 +64,19 @@ if (mysqli_query($con,$sql6)) {
     <main class="mdl-layout__content">
       <div class="page-content">
         <div class="main mdl-shadow--4dp">
-          <h2><?=$i18n->msg("census")?></h2>
-          <p><?=$i18n->msg("censusexp")?></p>
-          <h4><?=$i18n->msg("searchcitizen")?></h4>
-          <form action="searchcitizen.php" method="GET">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" name="name" id="name" autocomplete="off">
-              <label class="mdl-textfield__label" for="name"><?=$i18n->msg("name")?></label>
-            </div>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect"><?=$i18n->msg("search")?></button>
-          </form>
+          <h2><?=$name?></h2>
+          <div class="mdl-shadow--2dp info">The generated code is: <code><?=$code?></code></div>
+          <canvas id="qrcode"></canvas>
         </div>
       </div>
     </main>
   </div>
-  <?php
-  if (user::role() < 3) {
-    ?>
-    <dialog class="mdl-dialog" id="adduser">
-      <form action="newcitizen.php" method="POST" autocomplete="off">
-        <h4 class="mdl-dialog__title"><?=$i18n->msg("addcitizen_title")?></h4>
-        <div class="mdl-dialog__content">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" name="name" id="name" autocomplete="off">
-            <label class="mdl-textfield__label" for="name"><?=$i18n->msg("name")?></label>
-          </div>
-          <br>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" name="surname" id="surname" autocomplete="off">
-            <label class="mdl-textfield__label" for="surname"><?=$i18n->msg("surname")?></label>
-          </div>
-          <br>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" name="dni" id="dni" pattern="(\d{8})([a-zA-Z]{1})" maxlength="9" autocomplete="off">
-            <label class="mdl-textfield__label" for="dni"><?=$i18n->msg("dni")?></label>
-          </div>
-          <br>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="date" name="birthday" id="birthday" autocomplete="off">
-            <label class="mdl-textfield__label always-focused" for="birthday"><?=$i18n->msg("birthday")?></label>
-          </div>
-        </div>
-        <div class="mdl-dialog__actions">
-          <button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent"><?=$i18n->msg("add")?></button>
-          <button onclick="event.preventDefault(); document.querySelector('#adduser').close();" class="mdl-button mdl-js-button mdl-js-ripple-effect cancel"><?=$i18n->msg("cancel")?></button>
-        </div>
-      </form>
-    </dialog>
-    <?php
-  }
-
-  md::msg(array("citizenadded", "citizennew", "citizendelete", "empty", "usernametaken"));
-  ?>
+  <script>
+  qr.canvas({
+    canvas: document.querySelector("#qrcode"),
+    value: "<?=$code?>",
+    size: 8
+  });
+  </script>
 </body>
 </html>

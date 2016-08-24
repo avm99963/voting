@@ -48,13 +48,6 @@ $md_header_row_before = md::backBtn("voting.php?id=".$id);
     text-overflow: ellipsis;
   }
 
-  .info {
-    padding: 16px;
-    margin-bottom: 16px;
-    background-color: #81D4FA;
-    border-radius: 4px;
-  }
-
   @media (max-width: 750px) {
     .extra {
       display: none;

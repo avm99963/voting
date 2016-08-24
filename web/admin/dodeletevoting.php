@@ -13,7 +13,7 @@ if (user::role() != 0) {
   exit();
 }
 
-$id = (int)$_REQUEST["id"];
+$id = (int)$_POST["id"];
 
 if (empty($id)) {
   header("Location: votings.php");
@@ -32,9 +32,15 @@ if ($row["status"] != 0) {
   die("This voting is already published and therefore cannot be deleted.");
 }
 
-$sql = "DELETE FROM votings WHERE id = '".(INT)$_POST['id']."' LIMIT 1";
-if (mysqli_query($con, $sql)) {
-	header("Location: votings.php?msg=votingdelete");
-	} else {
-	die ("[err00] Error deleting voting: ".mysqli_error($con));
+$delete = array();
+$delete["votings"] = "DELETE FROM votings WHERE id = $id LIMIT 1";
+$delete["apikeys"] = "DELETE FROM apikeys WHERE voting = $id";
+$delete["voting_ballots"] = "DELETE FROM voting_ballots WHERE voting = $id LIMIT 1";
+
+foreach ($delete as $table => $sql) {
+  if (mysqli_query($con, $sql)) {
+  	header("Location: votings.php?msg=votingdelete");
+  } else {
+  	die ("[err00] Error deleting voting data from table '".$table."': ".mysqli_error($con));
+  }
 }

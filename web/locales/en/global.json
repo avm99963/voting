@@ -4,6 +4,7 @@
   "users":"Users",
   "votings":"Votings",
   "census":"Census",
+  "results":"Results",
   "logout":"Log out",
   "yes":"Yes",
   "no":"No",
@@ -32,5 +33,6 @@
   "msg_usernametaken":"Please, choose another username. This one is taken.",
   "msg_datediff":"The beginning date must be before the end date",
   "msg_apikeyrevoked":"API key revoked successfully",
-  "msg_filteredit":"Filters saved successfully"
+  "msg_filteredit":"Filters saved successfully",
+  "msg_activecode":"The entered DNI has an active code."
 }
