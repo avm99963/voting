@@ -32,46 +32,6 @@ $i18n = new i18n("adminvotings", 1);
     right: 25px;
   }
 
-  .mdl-list__item {
-    cursor: pointer;
-  }
-
-  .votingcontainer {
-    text-decoration: none!important;
-    color: black!important;
-  }
-
-  .voting {
-    position: relative;
-    display: block;
-    width: Calc(100% - 10px);
-    margin-bottom: 5px;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    padding: 5px;
-  }
-
-  .voting:hover {
-    background-color: #EEE;
-  }
-
-  .voting .icon {
-    float:left;
-    margin-right: 8px;
-  }
-
-  .voting .material-icons {
-    font-size: 40px;
-  }
-
-  .voting .title {
-    font-weight: bold;
-  }
-
-  .voting .description {
-    color: rgba(0, 0, 0, .54);
-  }
-
   .draft { border-left: 4px solid #BDBDBD; }
   .published { border-left: 4px solid #00E5FF; }
   .running { border-left: 4px solid #00E676; }
@@ -157,6 +117,11 @@ $i18n = new i18n("adminvotings", 1);
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <textarea class="mdl-textfield__input" name="description" rows="3" id="description" autocomplete="off"></textarea>
             <label class="mdl-textfield__label" for="description"><?=$i18n->msg("description")?></label>
+          </div>
+          <br>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <textarea class="mdl-textfield__input" name="votingdescription" rows="3" id="votingdescription" autocomplete="off"></textarea>
+            <label class="mdl-textfield__label" for="votingdescription"><?=$i18n->msg("votingdescription")?></label>
           </div>
           <br>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

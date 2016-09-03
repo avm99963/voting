@@ -11,7 +11,7 @@ $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 $realname = sanitizer::dbString($_POST['realname']);
 $type = (int)$_POST['type'];
 
-if (empty($username) || empty($_POST["password"]) || empty($realname) || empty($type)) {
+if (empty($username) || empty($_POST["password"]) || empty($realname) || $type < 0 || $type > user::$maxrole) {
   header("Location: users.php?msg=empty");
   die("[ERR_02] Some parameters are missing.");
 }

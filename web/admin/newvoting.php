@@ -13,6 +13,7 @@ if (user::role() != 0) {
 
 $name = sanitizer::dbString($_POST['name']);
 $description = sanitizer::dbString($_POST['description']);
+$votingdescription = sanitizer::dbString($_POST['votingdescription']);
 $datebegins = strtotime($_POST['datebegins']);
 $dateends = strtotime($_POST['dateends']);
 
@@ -26,7 +27,7 @@ if ($datebegins > $dateends) {
   die("[ERR_03] The beginning date must be before the end date.");
 }
 
-$sql6 = "INSERT INTO votings (name, description, datebegins, dateends, status) VALUES ('$name', '$description', $datebegins, $dateends, 0)";
+$sql6 = "INSERT INTO votings (name, description, votingdescription, datebegins, dateends, status) VALUES ('$name', '$description', '$votingdescription', $datebegins, $dateends, 0)";
 if (mysqli_query($con,$sql6)) {
   header("Location: votings.php?msg=votingadded");
   exit();

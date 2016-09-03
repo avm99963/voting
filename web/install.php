@@ -47,7 +47,9 @@
 						status INT(1),
 						creation INT(13),
 						usercreation INT(13),
-						apikeycreation INT(13)
+						apikeycreation INT(13),
+						uses INT(13),
+						usesdone INT(13)
 					)";
 					$sql["votings"] = "CREATE TABLE votings
 					(
@@ -55,10 +57,14 @@
 						PRIMARY KEY(id),
 						name VARCHAR(100),
 						description TEXT,
+						votingdescription TEXT,
+						maxvotingballots INT(3),
+						variable BOOLEAN,
 						datebegins INT(13),
 						dateends INT(13),
 						status INT(2),
-						filters TEXT
+						filters TEXT,
+						customhtml TEXT
 					)";
 					$sql["voting_ballots"] = "CREATE TABLE voting_ballots
 					(

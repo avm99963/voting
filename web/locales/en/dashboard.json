@@ -1,0 +1,7 @@
+{
+  "votingsExp":"Welcome to the votings dashboard. Below are listed the published votings. Click on any of them to see information about them, vote or check the results.",
+  "nopublishedvotings":"There are no published votings yet in this category.",
+  "upcomingvotings":"Upcoming votings",
+  "activevotings":"Active votings",
+  "pastvotings":"Past votings"
+}

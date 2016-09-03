@@ -4,6 +4,7 @@
 // Delete file when website is in production
 // --------------------------
 require_once("core.php");
+exit(); // UNCOMMENT THIS LINE WHEN YOU WANT TO UNINSTALL EVERYTHING. This is just so it doesn't get executed without wanting to.
 $result = mysqli_query($con, "SHOW TABLES FROM ".mysqli_real_escape_string($con, $nombre_db));
 while ($row = mysqli_fetch_array($result)) {
 	mysqli_query($con, "DROP TABLE ".$row[0]) or die("Error");

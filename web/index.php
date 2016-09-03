@@ -83,6 +83,7 @@ if (isset($_GET['msg']) && in_array($_GET['msg'], array("loginwrong", "empty", "
       </div>
       <div class="mdl-dialog__actions">
         <button onclick="event.preventDefault(); document.querySelector('#about').close();" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent"><?=$i18n->msg("ok")?></button>
+        <a href="admin/" class="mdl-button mdl-js-button mdl-js-ripple-effect">Admin dashboard</a>
       </div>
     </form>
   </dialog>

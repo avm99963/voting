@@ -116,6 +116,7 @@ $md_header_row_before = md::backBtn("votings.php");
             <?php if (user::role() == 0) { ?><a class="menulink" href="javascript:dynDialog.load('ajax/editvoting.php?id=<?=$id?>');"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=($row["status"] == 0 ? $i18n->msg("editvoting") : $i18n->msg("viewvotingdetails"))?></li><?php if (user::role() == 0) { ?></a><?php } ?>
             <?php if (user::role() == 0) { ?><a class="menulink" href="filtervoting.php?id=<?=$id?>"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=($row["status"] == 0 ? $i18n->msg("managefilters") : $i18n->msg("viewfilters"))?></li><?php if (user::role() == 0) { ?></a><?php } ?>
             <?php if (user::role() == 0) { ?><a class="menulink" href="apikeys.php?id=<?=$id?>"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=$i18n->msg("manageapikeys")?></li><?php if (user::role() == 0) { ?></a><?php } ?>
+            <?php if (user::role() == 0) { ?><a class="menulink" href="javascript:dynDialog.load('ajax/customhtml.php?id=<?=$id?>');"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=$i18n->msg("editcustomhtml")?></li><?php if (user::role() == 0) { ?></a><?php } ?>
             <?php
             if ($row["status"] == 0) {
               ?>
@@ -193,7 +194,7 @@ $md_header_row_before = md::backBtn("votings.php");
     <?php
   }
 
-  md::msg(array("votingnew", "votingpublished", "empty", "datediff", "ballotadded", "ballotnew", "ballotdelete"));
+  md::msg(array("votingnew", "votingpublished", "empty", "datediff", "ballotadded", "ballotnew", "ballotdelete", "customhtmlsuccess"));
   ?>
 </body>
 </html>

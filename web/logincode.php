@@ -34,9 +34,7 @@ $i18n = new i18n("logincode");
 		</form>
   </div>
   <?php
-  if (isset($msg) && !empty($msg)) {
-    md::snackbar($msg);
-  }
+  md::msg(array("empty", "codewrong"));
   ?>
 </body>
 </html>

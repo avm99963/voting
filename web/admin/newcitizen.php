@@ -43,6 +43,8 @@ if (mysqli_query($con,$sql6)) {
 } else {
   die ("[ERR_01]: Error adding citizen: " . mysqli_error($con) . "</p>");
 }
+
+$md_header_row_before = md::backBtn("census.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -65,7 +67,7 @@ if (mysqli_query($con,$sql6)) {
       <div class="page-content">
         <div class="main mdl-shadow--4dp">
           <h2><?=$name?></h2>
-          <div class="mdl-shadow--2dp info">The generated code is: <code><?=$code?></code></div>
+          <div class="mdl-shadow--2dp info"><?=$i18n->msg("codegenerated", array($code))?></div>
           <canvas id="qrcode"></canvas>
         </div>
       </div>

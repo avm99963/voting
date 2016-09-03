@@ -5,5 +5,17 @@
   "addcitizen_title":"Add citizen",
   "surname":"Surname",
   "dni":"DNI",
-  "birthday":"Birthday"
+  "birthday":"Birthday",
+  "codegenerated":"Great! The code was generated successfully. You can either scan the QR code below with the mobile app or manually enter the following code: <code>%0</code>",
+  "searchtitle":"Citizen search",
+  "searchtitle2":"Search for \"%0\" in the census",
+  "searchtooshort":"Your search terms should be at least 3 characters long.",
+  "searchresults":"Your search brought up a total of %0 results.",
+  "nosearchresults":"We're sorry, but your search didn't bring up any search results. Check the spelling, and remember that the order is NAME+SURNAME.",
+  "dni":"DNI",
+  "birthday":"Birthday",
+  "code":"Code",
+  "status":"Status",
+  "creationmethod":"Creation method",
+  "creator":"Creator"
 }

@@ -63,6 +63,12 @@ var dynDialog = {
     xhr("GET", url, "", function(response, status) {
       this.dialog.innerHTML = response;
       componentHandler.upgradeElements(this.dialog);
+      var script = this.dialog.querySelectorAll("dynscript");
+      if (script.length > 0) {
+        for (var i = 0; i < script.length; i++) {
+          eval(script[i].innerText);
+        }
+      }
       this.dialog.showModal();
     }.bind(this));
   },

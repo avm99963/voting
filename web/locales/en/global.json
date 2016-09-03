@@ -34,5 +34,7 @@
   "msg_datediff":"The beginning date must be before the end date",
   "msg_apikeyrevoked":"API key revoked successfully",
   "msg_filteredit":"Filters saved successfully",
-  "msg_activecode":"The entered DNI has an active code."
+  "msg_activecode":"The entered DNI has an active code.",
+  "msg_codewrong":"Code incorrect",
+  "msg_customhtmlsuccess":"Custom HTML edited successfully"
 }

@@ -19,4 +19,13 @@ class voting {
 
     return ($status == 1);
   }
+
+  public static function canvote($votingid, $userid="currentuser") {
+    global $_SESSION;
+    if ($userid == "currentuser") {
+      $userid = $_SESSION["citizenid"];
+    }
+    
+    return 0;
+  }
 }

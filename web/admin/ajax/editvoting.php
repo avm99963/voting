@@ -44,6 +44,11 @@ $row = mysqli_fetch_assoc($query);
     </div>
     <br>
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <textarea class="mdl-textfield__input" name="votingdescription" rows="3" id="votingdescription" autocomplete="off"<?=($row["status"] != 0 ? " readonly" : "")?>><?=$row["votingdescription"]?></textarea>
+      <label class="mdl-textfield__label" for="votingdescription"><?=$i18n->msg("votingdescription")?></label>
+    </div>
+    <br>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
       <input class="mdl-textfield__input" type="datetime-local" name="datebegins" id="datebegins" autocomplete="off" value="<?=date("Y-m-d\TH:i:s", $row["datebegins"])?>"<?=($row["status"] != 0 ? " readonly" : "")?>>
       <label class="mdl-textfield__label always-focused" for="datebegins"><?=$i18n->msg("datebegins")?></label>
     </div>

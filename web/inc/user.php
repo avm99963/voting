@@ -8,7 +8,6 @@ class user {
     $query = mysqli_query($con, "SELECT * FROM users WHERE username='".$usr."'");
     if (mysqli_num_rows($query)) {
       $row = mysqli_fetch_assoc($query) or die(mysqli_error($con));
-      print_r($row);
       if (password_verify($_POST["password"], $row["password"])) {
         $_SESSION['id'] = $row['id'];
         return 2;

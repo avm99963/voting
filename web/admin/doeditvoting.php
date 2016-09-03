@@ -34,6 +34,7 @@ if ($row["status"] != 0) {
 
 $name = sanitizer::dbString($_POST['name']);
 $description = sanitizer::dbString($_POST['description']);
+$votingdescription = sanitizer::dbString($_POST['votingdescription']);
 $datebegins = strtotime($_POST['datebegins']);
 $dateends = strtotime($_POST['dateends']);
 
@@ -47,7 +48,7 @@ if ($datebegins > $dateends) {
   die("[ERR_03] The beginning date must be before the end date.");
 }
 
-$sql6 = "UPDATE votings SET name='".$name."', description='".$description."', datebegins=".$datebegins.", dateends=$dateends WHERE id = ".$id." LIMIT 1";
+$sql6 = "UPDATE votings SET name='".$name."', description='".$description."', votingdescription='".$votingdescription."', datebegins=".$datebegins.", dateends=$dateends WHERE id = ".$id." LIMIT 1";
 
 if (mysqli_query($con, $sql6)) {
   header("Location: voting.php?id=".$id."&msg=votingnew");
