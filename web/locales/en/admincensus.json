@@ -17,5 +17,12 @@
   "code":"Code",
   "status":"Status",
   "creationmethod":"Creation method",
-  "creator":"Creator"
+  "creator":"Creator",
+  "method_0":"Website (user-made with DNI-E)",
+  "method_1":"Kiosk app (DNI-E)",
+  "method_2":"Census creator (manually, DNI/DNI-E)",
+  "status_0":"Unused",
+  "status_1":"Invalidated",
+  "status_2":"Used",
+  "usesforcode":"Uses for the generated code"
 }

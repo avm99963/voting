@@ -19,6 +19,7 @@ require("config.php");
 
 // Aquí se accede a la BD y a la sesión
 $con = @mysqli_connect($host_db, $usuario_db, $clave_db,$nombre_db) or die("Check Mysqli settings in config.php"); // Conectamos y seleccionamos BD
+mysqli_set_charset($con, "utf8");
 
 session_set_cookie_params(0, $conf["path"]);
 session_start();

@@ -33,7 +33,8 @@
 						description VARCHAR(200),
 						voting INT(13),
 						userid INT(13),
-						status INT(2)
+						status INT(2),
+						uses INT(13)
 					)";
 					$sql["generatedcodes"] = "CREATE TABLE generatedcodes
 					(
@@ -47,7 +48,6 @@
 						status INT(1),
 						creation INT(13),
 						usercreation INT(13),
-						apikeycreation INT(13),
 						uses INT(13),
 						usesdone INT(13)
 					)";

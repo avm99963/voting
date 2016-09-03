@@ -48,6 +48,10 @@ $md_header_row_before = md::backBtn("voting.php?id=".$id);
     text-overflow: ellipsis;
   }
 
+  .ellipsis.small {
+    width: 75px!important;
+  }
+
   @media (max-width: 750px) {
     .extra {
       display: none;
@@ -96,6 +100,7 @@ $md_header_row_before = md::backBtn("voting.php?id=".$id);
         					<th class='mdl-data-table__cell--non-numeric'><?=$i18n->msg("apikey")?></th>
         					<th class='mdl-data-table__cell--non-numeric extra'><?=$i18n->msg("description")?></th>
         					<th class='mdl-data-table__cell--non-numeric extra'><?=$i18n->msg("creator")?></th>
+                  <th class='mdl-data-table__cell--non-numeric extra'><?=$i18n->msg("uses")?></th>
                   <th class='mdl-data-table__cell--non-numeric extraextra'><?=$i18n->msg("status")?></th>
                   <th></th>
         				</tr>
@@ -103,7 +108,8 @@ $md_header_row_before = md::backBtn("voting.php?id=".$id);
         			<tbody>
             		<?php
             		while ($apikey = mysqli_fetch_assoc($query2)) {
-            			echo "<tr><td class='extra'>".$apikey['id']."</td><td class='mdl-data-table__cell--non-numeric'><div class='ellipsis' title='".$apikey['keytext']."'>".$apikey['keytext']."</div></td><td class='mdl-data-table__cell--non-numeric extra'><div class='ellipsis' title='".$apikey['description']."'>".$apikey['description']."</div></td><td class='mdl-data-table__cell--non-numeric extra'>".user::userData("name", $apikey["userid"])."</td><td class='mdl-data-table__cell--non-numeric extraextra'>".$i18n->msg("apikeystatus_".(int)$apikey["status"])."</td>";
+                  $name = user::userData("name", $apikey["userid"]);
+            			echo "<tr><td class='extra'>".$apikey['id']."</td><td class='mdl-data-table__cell--non-numeric'><div class='ellipsis' title='".$apikey['keytext']."'>".$apikey['keytext']."</div></td><td class='mdl-data-table__cell--non-numeric extra'><div class='ellipsis' title='".$apikey['description']."'>".$apikey['description']."</div></td><td class='mdl-data-table__cell--non-numeric extra'><div class='ellipsis small' title='".$name."'>".$name."</div></td><td class='extra'>".$apikey["uses"]."</td><td class='mdl-data-table__cell--non-numeric extraextra'>".$i18n->msg("apikeystatus_".(int)$apikey["status"])."</td>";
                   if (user::role() < 2 && $apikey['status'] == 0) {
                     echo "<td class='mdl-data-table__cell--non-numeric'><a href=\"javascript:dynDialog.load('ajax/revokeapikey.php?id=".$apikey['id']."');\"><i class='material-icons icon'>delete_forever</i></a></td></tr>";
                   } else {
@@ -134,6 +140,11 @@ $md_header_row_before = md::backBtn("voting.php?id=".$id);
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <textarea class="mdl-textfield__input" name="description" rows="3" id="description" autocomplete="off"></textarea>
               <label class="mdl-textfield__label" for="description"><?=$i18n->msg("description")?></label>
+            </div>
+            <br>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="number" min="1" name="uses" id="uses" autocomplete="off">
+              <label class="mdl-textfield__label" for="uses"><?=$i18n->msg("usespercode")?></label>
             </div>
           </div>
           <div class="mdl-dialog__actions">

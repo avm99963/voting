@@ -22,6 +22,11 @@ if (!mysqli_num_rows($query)) {
 $row = mysqli_fetch_assoc($query);
 
 $description = mysqli_real_escape_string($con, htmlspecialchars($_POST['description']));
+$uses = (int)$_POST["uses"];
+
+if ($uses < 1) {
+  header("Location: apikeys.php");
+}
 
 $apikey = mysqli_real_escape_string($con, random::generateCode(32)); // We generate a cryptographically secure 32-character long API key
 $query2 = mysqli_query($con, "SELECT * FROM votings WHERE keytext = '$apikey'");
@@ -31,7 +36,7 @@ while (mysqli_num_rows($query2)) {
   $query2 = mysqli_query($con, "SELECT * FROM votings WHERE keytext = '$apikey'");
 }
 
-$sql6 = "INSERT INTO apikeys (keytext, description, voting, userid, status) VALUES ('$apikey', '$description', $votingid, ".$_SESSION["id"].", 0)";
+$sql6 = "INSERT INTO apikeys (keytext, description, voting, userid, status, uses) VALUES ('$apikey', '$description', $votingid, ".$_SESSION["id"].", 0, ".$uses.")";
 if (mysqli_query($con,$sql6)) { // ADDING
   header("Location: apikeys.php?id=".$votingid."&keyid=".mysqli_insert_id($con));
   exit();

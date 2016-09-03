@@ -65,7 +65,7 @@ $md_header_row_before = md::backBtn("census.php");
                 <div class="voting mdl-js-ripple-effect">
                   <div class="text">
                     <span class="title"><?=$row["name"]?></span><br>
-                    <span class="description"><?=$row["dni"]?></span>
+                    <span class="description"><?=$row["dni"]?>, <?=date("d/m/Y", $row["birthday"])?></span>
                   </div>
                   <span class="mdl-ripple">
                 </div>

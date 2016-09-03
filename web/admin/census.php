@@ -73,6 +73,11 @@ $i18n = new i18n("admincensus", 1);
             <input class="mdl-textfield__input" type="date" name="birthday" id="birthday" autocomplete="off">
             <label class="mdl-textfield__label always-focused" for="birthday"><?=$i18n->msg("birthday")?></label>
           </div>
+          <br>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="number" min="1" name="uses" id="uses" autocomplete="off">
+            <label class="mdl-textfield__label" for="uses"><?=$i18n->msg("usesforcode")?></label>
+          </div>
         </div>
         <div class="mdl-dialog__actions">
           <button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent"><?=$i18n->msg("add")?></button>

@@ -52,5 +52,7 @@
   "publishvoting":"Publish voting",
   "deleteballot":"Delete ballot",
   "customhtml":"Custom HTML",
-  "enablecustomhtml":"Enable custom HTML"
+  "enablecustomhtml":"Enable custom HTML",
+  "usespercode":"Uses per generated code",
+  "uses":"Uses"
 }

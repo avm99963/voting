@@ -22,6 +22,12 @@ if (empty($_POST["name"]) || empty($_POST["surname"]) || empty($dni)) {
 
 $name = sanitizer::dbString($_POST['name']." ".$_POST["surname"]);
 
+$uses = (int)$_POST["uses"];
+
+if ($uses < 1) {
+  header("Location: apikeys.php");
+}
+
 if (preg_match("/(\d{8})([a-zA-Z]{1})/", $dni) === false) {
   die("Incorrect DNI");
   exit();
@@ -37,7 +43,7 @@ do {
   $query = mysqli_query($con, "SELECT id FROM generatedcodes WHERE code = '".$code."'");
 } while (mysqli_num_rows($query));
 
-$sql6 = "INSERT INTO generatedcodes (code, name, dni, birthday, method, status, creation, usercreation) VALUES ('$code', '$name', '$dni', $birthday, 2, 0, ".time().", ".$_SESSION["id"].")";
+$sql6 = "INSERT INTO generatedcodes (code, name, dni, birthday, method, status, creation, usercreation, uses, usesdone) VALUES ('$code', '$name', '$dni', $birthday, 2, 0, ".time().", ".$_SESSION["id"].", ".$uses.", 0)";
 if (mysqli_query($con,$sql6)) {
   $id = mysqli_insert_id($con);
 } else {
@@ -76,7 +82,7 @@ $md_header_row_before = md::backBtn("census.php");
   <script>
   qr.canvas({
     canvas: document.querySelector("#qrcode"),
-    value: "<?=$code?>",
+    value: "<?=generatedcodes::qrcode($code)?>",
     size: 8
   });
   </script>

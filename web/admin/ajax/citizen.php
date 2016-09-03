@@ -39,8 +39,8 @@ $row = mysqli_fetch_assoc($query);
     <li><b><?=$i18n->msg("dni")?></b>: <?=$row["dni"]?></li>
     <li><b><?=$i18n->msg("birthday")?></b>: <?=date("d/m/Y", $row["birthday"])?></li>
     <li><b><?=$i18n->msg("code")?></b>: <code><?=$row["code"]?></code></li>
-    <li><b><?=$i18n->msg("status")?></b>: <?=$row["status"]?></li>
-    <li><b><?=$i18n->msg("creationmethod")?></b>: <?=$row["method"]?></li>
+    <li><b><?=$i18n->msg("status")?></b>: <?=$i18n->msg("status_".$row["status"])?></li>
+    <li><b><?=$i18n->msg("creationmethod")?></b>: <?=$i18n->msg("method_".$row["method"])?></li>
     <?php
     if ($row["method"] == 2) {
       ?>
@@ -57,7 +57,7 @@ $row = mysqli_fetch_assoc($query);
 <dynscript>
 qr.canvas({
   canvas: document.querySelector("#qrcode"),
-  value: "<?=$row["code"]?>",
+  value: "<?=generatedcodes::qrcode($row["code"])?>",
   size: 4,
   foreground: "rgba(0,0,0,.54)"
 });
