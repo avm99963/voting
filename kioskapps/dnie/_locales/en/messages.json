@@ -100,5 +100,11 @@
   },
   "reading": {
     "message": "Reading your DNIe..."
+  },
+  "pinTitle": {
+    "message": "PIN"
+  },
+  "pinExp": {
+    "message": "Please enter the PIN of your DNI:"
   }
 }

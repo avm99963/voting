@@ -7,6 +7,23 @@
     <script src="pkijs/asn1.js"></script>
     <script src="bower_components/kjur-jsrsasign/jsrsasign-latest-all-min.js"></script>
     <script src="bower_components/kjur-jsrsasign/x509-1.1.js"></script>
+
+    <script src="biginteger/BigInteger.min.js"></script>
+
+    <script src="jsbn/jsbn.js"></script>
+    <script src="jsbn/jsbn2.js"></script>
+    <script src="jsbn/rsa.js"></script>
+    <script src="jsbn/rsa2.js"></script>
+
+    <script src="bower_components/jsencrypt/bin/jsencrypt.min.js"></script>
+
+    <script src="bower_components/js-sha1/build/sha1.min.js"></script>
+
+    <script src="bower_components/cryptojslib/rollups/tripledes.js"></script>
+    <script src="bower_components/cryptojslib/components/tripledes.js"></script>
+    <script src="bower_components/cryptojslib/components/pad-nopadding.js"></script>
+    <script src="tdes.js"></script>
+
     <script src="app.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,11 +42,11 @@
     <div class="login mdl-shadow--4dp" id="login">
       <h2 data-i18n="htmlTitle"></h2>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="url" name="api" id="api" autocomplete="off" value="http://192.168.1.38/voting/web/api/api.php">
+        <input class="mdl-textfield__input" type="url" name="api" id="api" autocomplete="off" value="http://192.168.1.39/voting/web/api/api.php">
         <label class="mdl-textfield__label" for="api" data-i18n="htmlApiURL"></label>
       </div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" name="secretKey" id="secretKey" autocomplete="off" value="cO8m6YGXhUNRPMikMhP3PWnvAjNzfNs9">
+        <input class="mdl-textfield__input" type="text" name="secretKey" id="secretKey" autocomplete="off" value="i0TzhTsDaPuiqiOGKpzAgLtcQw4EDwAZ">
         <label class="mdl-textfield__label" for="secretKey" data-i18n="htmlSecretKey"></label>
       </div>
       <p><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" data-i18n="htmlSetUp" id="setup"></button></p>
@@ -85,5 +102,18 @@
       <div class="mdl-snackbar__text"></div>
       <button class="mdl-snackbar__action"></button>
     </div>
+    <dialog class="mdl-dialog" id="pinDialog">
+      <h4 class="mdl-dialog__title" data-i18n="pinTitle"></h4>
+      <div class="mdl-dialog__content">
+        <p data-i18n="pinExp"></p>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="password" name="pin" id="pin" autocomplete="off">
+          <label class="mdl-textfield__label" for="pin"></label>
+        </div>
+      </div>
+      <div class="mdl-dialog__actions">
+        <button type="submit" id="pinok" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">OK</button>
+      </div>
+    </dialog>
   </body>
 </html>
