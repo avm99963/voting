@@ -106,5 +106,8 @@
   },
   "pinExp": {
     "message": "Please enter the PIN of your DNI:"
+  },
+  "errorSecureChannel": {
+    "message": "An error occurred while establishing a secure channel. Please, try again."
   }
 }
