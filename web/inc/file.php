@@ -22,11 +22,11 @@ class file {
   public static function save($file, $contents, $overwrite=false) {
     if ($overwrite === false) {
       $file = generateRandomName($file);
-      while (file_exists($this->uploadsFolder."/".$file)) {
+      while (file_exists(file::$uploadsFolder."/".$file)) {
         $file = generateRandomName($file);
       }
     }
-    if (file_put_contents($this->uploadsFolder."/".$file, $contents)) {
+    if (file_put_contents(file::$uploadsFolder."/".$file, $contents)) {
       return $file;
     } else {
       return false;
@@ -34,12 +34,12 @@ class file {
   }
 
   public static function fileExists($file) {
-    return file_exists($this->uploadsFolder."/".$file);
+    return file_exists(file::$uploadsFolder."/".$file);
   }
 
   public static function remove($file) {
     if (file::fileExists($file)) {
-      unlink($this->uploadsFolder."/".$file);
+      unlink(file::$uploadsFolder."/".$file);
       return true;
     } else {
       return false;
@@ -47,6 +47,6 @@ class file {
   }
 
   public static function read($file) {
-    return file_get_contents($this->uploadsFolder."/".$file);
+    return file_get_contents(file::$uploadsFolder."/".$file);
   }
 }

@@ -73,6 +73,9 @@ $md_header_row_before = md::backBtn("votings.php");
     padding: 8px;
     width: Calc(100% - 16px);
   }
+  .ballot.dark-text .actions {
+    border-top: 1px solid rgba(0, 0, 0, 0.2)!important;
+  }
   .ballot .actions .material-icons {
     padding-right: 10px;
   }
@@ -80,6 +83,12 @@ $md_header_row_before = md::backBtn("votings.php");
   .ballot .actions,
   .ballot .actions .mdl-button {
     color: #fff;
+  }
+
+  .ballot.dark-text .title,
+  .ballot.dark-text .actions,
+  .ballot.dark-text .actions .mdl-button {
+    color: rgba(0, 0, 0, .87)!important;
   }
 
   .ballot .actions .alignright {
@@ -115,25 +124,21 @@ $md_header_row_before = md::backBtn("votings.php");
           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu">
             <?php if (user::role() == 0) { ?><a class="menulink" href="javascript:dynDialog.load('ajax/editvoting.php?id=<?=$id?>');"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=($row["status"] == 0 ? $i18n->msg("editvoting") : $i18n->msg("viewvotingdetails"))?></li><?php if (user::role() == 0) { ?></a><?php } ?>
             <?php if (user::role() == 0) { ?><a class="menulink" href="filtervoting.php?id=<?=$id?>"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=($row["status"] == 0 ? $i18n->msg("managefilters") : $i18n->msg("viewfilters"))?></li><?php if (user::role() == 0) { ?></a><?php } ?>
-            <?php if (user::role() == 0) { ?><a class="menulink" href="apikeys.php?id=<?=$id?>"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=$i18n->msg("manageapikeys")?></li><?php if (user::role() == 0) { ?></a><?php } ?>
+            <?php if (user::role() < 2) { ?><a class="menulink" href="apikeys.php?id=<?=$id?>"><?php } ?><li<?=(user::role() > 1 ? " disabled" : "")?> class="mdl-menu__item"><?=$i18n->msg("manageapikeys")?></li><?php if (user::role() < 2) { ?></a><?php } ?>
             <?php if (user::role() == 0) { ?><a class="menulink" href="javascript:dynDialog.load('ajax/customhtml.php?id=<?=$id?>');"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=$i18n->msg("editcustomhtml")?></li><?php if (user::role() == 0) { ?></a><?php } ?>
-            <?php
-            if ($row["status"] == 0) {
-              ?>
-              <?php if (user::role() == 0) { ?><a class="menulink" href="javascript:dynDialog.load('ajax/deletevoting.php?id=<?=$id?>');"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=$i18n->msg("deletevoting")?></li><?php if (user::role() == 0) { ?></a><?php } ?>
-              <?php
-            }
-            ?>
+            <?php if (user::role() == 0) { ?><a class="menulink" href="javascript:dynDialog.load('ajax/votingscenario.php?id=<?=$id?>');"><?php } ?><li<?=(user::role() != 0 ? " disabled" : "")?> class="mdl-menu__item"><?=$i18n->msg("votingscenario")?></li><?php if (user::role() == 0) { ?></a><?php } ?>
+            <?php if (user::role() == 0 && $row["status"] == 0) { ?><a class="menulink" href="javascript:dynDialog.load('ajax/deletevoting.php?id=<?=$id?>');"><?php } ?><li<?=((user::role() != 0 || $row["status"] != 0) ? " disabled" : "")?> class="mdl-menu__item"><?=$i18n->msg("deletevoting")?></li><?php if (user::role() == 0 && $row["status"] == 0) { ?></a><?php } ?>
           </ul>
           <h2><?=$row["name"]?></h2>
-          <p><?=$row["description"]?></p>
+          <p><?=$row["votingdescription"]?></p>
           <div class="mdl-grid">
             <?php
             $query2 = mysqli_query($con, "SELECT * FROM voting_ballots WHERE voting = ".$id);
             if (mysqli_num_rows($query2)) {
               while ($ballot = mysqli_fetch_assoc($query2)) {
+                $hsl = hex2hsl($ballot["color"]);
                 ?>
-                <div class="mdl-cell mdl-cell--4-col ballot mdl-shadow--2dp" style="background-color: #<?=$ballot["color"]?>;">
+                <div class="mdl-cell mdl-cell--4-col ballot mdl-shadow--2dp<?=($hsl[2] > 0.5 ? " dark-text" : "")?>" style="background-color: #<?=$ballot["color"]?>;">
                   <div class="title mdl-card--expand">
                     <h4>
                       <?=$ballot["name"]?>

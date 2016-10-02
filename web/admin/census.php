@@ -39,7 +39,7 @@ $i18n = new i18n("admincensus", 1);
           <form action="searchcitizen.php" method="GET">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" type="text" name="name" id="name" autocomplete="off">
-              <label class="mdl-textfield__label" for="name"><?=$i18n->msg("name")?></label>
+              <label class="mdl-textfield__label" for="name"><?=$i18n->msg("nameordni")?></label>
             </div>
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect"><?=$i18n->msg("search")?></button>
           </form>

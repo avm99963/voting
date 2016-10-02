@@ -48,6 +48,7 @@ $row = mysqli_fetch_assoc($query);
       <?php
     }
     ?>
+    <li><b><?=$i18n->msg("used")?></b>: <?=$i18n->msg("outof", array($row["usesdone"], $row["uses"]))?></li>
   </ul>
   <canvas id="qrcode"></canvas>
 </div>

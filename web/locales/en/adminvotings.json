@@ -54,5 +54,8 @@
   "customhtml":"Custom HTML",
   "enablecustomhtml":"Enable custom HTML",
   "usespercode":"Uses per generated code",
-  "uses":"Uses"
+  "uses":"Uses",
+  "votingscenario":"Voting scenario",
+  "maxvotingballots":"Max number of ballots per citizen",
+  "variableopt":"Users can submit less ballots than the max value"
 }

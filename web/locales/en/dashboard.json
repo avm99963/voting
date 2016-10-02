@@ -3,5 +3,17 @@
   "nopublishedvotings":"There are no published votings yet in this category.",
   "upcomingvotings":"Upcoming votings",
   "activevotings":"Active votings",
-  "pastvotings":"Past votings"
+  "pastvotings":"Past votings",
+  "votingstatus_0":"The voting hasn't started yet.",
+  "votingstatus_1":"The voting is running.",
+  "votingstatus_2":"The voting has already finished.",
+  "dates":"Dates",
+  "fromto":"Voting active from <b>%0</b> to <b>%1</b>",
+  "results":"Results",
+  "noresults":"There are no results available.",
+  "votestatus_0":"You can't vote because this voting is not currently running.",
+  "votestatus_1":"You can't vote because you aren't in the voters whitelist.",
+  "votestatus_2":"You can't vote because you are in the voters blacklist.",
+  "votestatus_3":"You can't vote because you aren't old enough to vote.",
+  "votetitle":"Vote"
 }

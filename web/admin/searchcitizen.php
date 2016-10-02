@@ -56,7 +56,7 @@ $md_header_row_before = md::backBtn("census.php");
           if (strlen($name) < 3 || strlen($_GET["name"]) < 3) {
             die($i18n->msg("searchtooshort"));
           }
-          $query = mysqli_query($con, "SELECT * FROM generatedcodes WHERE name LIKE '%".$name."%'");
+          $query = mysqli_query($con, "SELECT * FROM generatedcodes WHERE name LIKE '%".$name."%' OR dni LIKE '%".$name."%'");
           if (mysqli_num_rows($query)) {
             echo "<p>".$i18n->msg("searchresults", array(mysqli_num_rows($query)))."</p>";
             while ($row = mysqli_fetch_assoc($query)) {

@@ -17,13 +17,19 @@ class api {
       return false;
     }
 
-    $query = mysqli_query($con, "SELECT id FROM apikeys WHERE keytext = '".mysqli_real_escape_string($con, $apikey)."' AND status = 0");
+    $query = mysqli_query($con, "SELECT id, voting FROM apikeys WHERE keytext = '".mysqli_real_escape_string($con, $apikey)."' AND status = 0");
 
     if (!mysqli_num_rows($query)) {
       return false;
     }
 
     $row = mysqli_fetch_assoc($query);
+
+    $query2 = mysqli_query($con, "SELECT id FROM votings WHERE id = ".$row["voting"]." AND status = 1");
+
+    if (!mysqli_num_rows($query2)) {
+      return false;
+    }
 
     $this->apikeyid = $row["id"];
 
@@ -37,7 +43,7 @@ class api {
       return false;
     }
 
-    $query = mysqli_query($con, "SELECT name FROM votings WHERE status = 1 AND datebegins > ".time()." ORDER BY datebegins ASC LIMIT 1");
+    $query = mysqli_query($con, "SELECT name FROM votings INNER JOIN apikeys ON votings.id = apikeys.voting WHERE apikeys.id = ".$this->apikeyid." LIMIT 1");
 
     if (mysqli_num_rows($query)) {
       $row = mysqli_fetch_assoc($query);
@@ -50,7 +56,7 @@ class api {
 
       return $return;
     } else {
-      return $this->error(4, "There are no published votings in the future.");
+      return $this->error(4, "Unexpected error: did not find the voting.");
     }
   }
 

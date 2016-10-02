@@ -75,6 +75,25 @@
 						voting INT(13),
 						color VARCHAR(6)
 					)";
+					$sql["ballots"] = "CREATE TABLE ballots
+					(
+						id INT(13) NOT NULL AUTO_INCREMENT,
+						PRIMARY KEY(id),
+						ballot INT(13),
+						voting INT(13),
+						hash VARCHAR(128)
+					)";
+					$sql["voted"] = "CREATE TABLE voted
+					(
+						id INT(13) NOT NULL UNIQUE,
+						PRIMARY KEY(id),
+						method INT(3),
+						generatedcode INT(13),
+						name TEXT,
+						dni VARCHAR(9),
+						birthday INT(13),
+						voting INT(13)
+					)";
 					$username = mysqli_real_escape_string($con, $_POST['username']);
 					$password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 					$name = mysqli_real_escape_string($con, $_POST['name']);

@@ -23,7 +23,7 @@ if (!mysqli_num_rows($query)) {
   die("This voting does not exist");
 }
 
-$html = ($_POST["enabled"] ? $_POST["customhtml"] : "");
+$html = mysqli_real_escape_string($con, ($_POST["enabled"] ? $_POST["customhtml"] : ""));
 
 $sql = "UPDATE votings SET customhtml='$html' WHERE id=$id";
 if (mysqli_query($con, $sql)) {

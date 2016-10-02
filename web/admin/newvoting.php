@@ -27,7 +27,7 @@ if ($datebegins > $dateends) {
   die("[ERR_03] The beginning date must be before the end date.");
 }
 
-$sql6 = "INSERT INTO votings (name, description, votingdescription, datebegins, dateends, status) VALUES ('$name', '$description', '$votingdescription', $datebegins, $dateends, 0)";
+$sql6 = "INSERT INTO votings (name, description, votingdescription, datebegins, dateends, status, maxvotingballots, variable) VALUES ('$name', '$description', '$votingdescription', $datebegins, $dateends, 0, 1, 0)";
 if (mysqli_query($con,$sql6)) {
   header("Location: votings.php?msg=votingadded");
   exit();

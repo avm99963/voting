@@ -24,5 +24,8 @@
   "status_0":"Unused",
   "status_1":"Invalidated",
   "status_2":"Used",
-  "usesforcode":"Uses for the generated code"
+  "usesforcode":"Uses for the generated code",
+  "used":"Times used",
+  "outof":"%0 out of %1",
+  "nameordni":"Name or DNI"
 }
