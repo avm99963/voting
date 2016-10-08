@@ -81,7 +81,7 @@ $md_header_row_before = md::backBtn("dashboard.php");
             <p><?=$i18n->msg("noresults")?></p>
             <?php
           } else {
-
+            // @TODO: Write voting results code
           }
           ?>
         </div>

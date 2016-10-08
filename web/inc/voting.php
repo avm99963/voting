@@ -38,6 +38,10 @@ class voting {
 
     $row = mysqli_fetch_assoc($query);
 
+    if ($row["status"] != 1) {
+      return 0;
+    }
+
     $time = time();
 
     if ($time < $row["datebegins"]) {
@@ -66,8 +70,14 @@ class voting {
         if ($filters["age"]["enabled"] == 1) {
           // Check user age
 
+          $birthday = citizen::userData("birthday");
+
+          if ($birthday === false) {
+            return -3;
+          }
+
           // Code extracted from http://stackoverflow.com/questions/3776682/php-calculate-age
-          $birthDate = explode("/", date("m/d/Y", citizen::userData("birthday")));
+          $birthDate = explode("/", date("m/d/Y", $birthday));
           $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
             ? ((date("Y") - $birthDate[2]) - 1)
             : (date("Y") - $birthDate[2]));

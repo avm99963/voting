@@ -54,46 +54,6 @@ $md_header_row_before = md::backBtn("votings.php");
   .menulink {
     text-decoration: none;
   }
-
-  .ballot {
-    position: relative;
-    height: 200px;
-  }
-
-  .ballot .title {
-    padding: 16px;
-  }
-  .ballot .title h4 {
-    margin-top: 0;
-  }
-  .ballot .actions {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    position: absolute;
-    bottom: 0;
-    padding: 8px;
-    width: Calc(100% - 16px);
-  }
-  .ballot.dark-text .actions {
-    border-top: 1px solid rgba(0, 0, 0, 0.2)!important;
-  }
-  .ballot .actions .material-icons {
-    padding-right: 10px;
-  }
-  .ballot .title,
-  .ballot .actions,
-  .ballot .actions .mdl-button {
-    color: #fff;
-  }
-
-  .ballot.dark-text .title,
-  .ballot.dark-text .actions,
-  .ballot.dark-text .actions .mdl-button {
-    color: rgba(0, 0, 0, .87)!important;
-  }
-
-  .ballot .actions .alignright {
-    float: right;
-  }
   </style>
 </head>
 <body class="mdl-color--green">

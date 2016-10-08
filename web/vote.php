@@ -37,12 +37,24 @@ $md_header_row_before = md::backBtn("voting.php?id=".$row["id"]);
   <title><?=$row["name"]?> – <?php echo $conf["appname"]; ?></title>
   <?php include(__DIR__."/includes/citizenhead.php"); ?>
 
+  <script>var maxvotingballots = <?=($row["maxvotingballots"])?>, variable = <?=($row["variable"] == 1 ? "true" : "false")?>;</script>
+  <script src="js/vote.js"></script>
   <style>
-  #actions {
-    margin-top: 16px;
-    margin-left: 16px;
-    margin-bottom: 16px;
-    float: right;
+  .votebtn {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .ballot.dark-text .votebtn {
+    background-color: rgba(0, 0, 0, 0.15)!important;
+  }
+
+  .ballot.dark-text .votebtn:hover {
+    background-color: rgba(0, 0, 0, 0.1)!important;
+  }
+
+  .mdl-switch {
+    margin-top: 4px;
+    width: auto;
   }
   </style>
 </head>
@@ -57,6 +69,45 @@ $md_header_row_before = md::backBtn("voting.php?id=".$row["id"]);
             ?>
             <h2><?=$i18n->msg("votetitle")?> - <?=$row["name"]?></h2>
             <p><?=$row["votingdescription"]?></p>
+            <div class="mdl-grid">
+              <?php
+              $query2 = mysqli_query($con, "SELECT * FROM voting_ballots WHERE voting = ".$id);
+              if (mysqli_num_rows($query2)) {
+                while ($ballot = mysqli_fetch_assoc($query2)) {
+                  $hsl = hex2hsl($ballot["color"]);
+                  ?>
+                  <div class="mdl-cell mdl-cell--4-col ballot mdl-shadow--2dp<?=($hsl[2] > 0.5 ? " dark-text" : "")?>" style="background-color: #<?=$ballot["color"]?>;">
+                    <div class="title mdl-card--expand">
+                      <h4>
+                        <?=$ballot["name"]?>
+                      </h4>
+                    </div>
+                    <div class="actions mdl-card--border">
+                      <?php
+                      if ($row["maxvotingballots"] > 1) {
+                        ?>
+                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-<?=$ballot["id"]?>">
+                          <input type="checkbox" id="switch-<?=$ballot["id"]?>" data-ballotid="<?=$ballot["id"]?>" class="mdl-switch__input">
+                        </label>
+                        <?php
+                      } else {
+                        ?>
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect votebtn" onclick="vote(<?=$ballot["id"]?>);">
+                          <?=$i18n->msg("vote")?>
+                        </a>
+                        <?php
+                      }
+                      ?>
+                      <div class="alignright">
+                        <?php if (!empty($ballot["description"])) { ?><a href="javascript:dynDialog.load('ajax/ballot.php?id=<?=$ballot["id"]?>');" class="mdl-button mdl-js--button mdl-button--icon"><i class="material-icons">expand_more</i></a><?php } ?>
+                      </div>
+                    </div>
+                  </div>
+                  <?php
+                }
+              }
+              ?>
+              </div>
             <?php
           } else {
             echo $row["customhtml"];
