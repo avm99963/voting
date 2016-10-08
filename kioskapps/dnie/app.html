@@ -26,6 +26,10 @@
 
     <script src="forge/js/forge.bundle.js"></script>
 
+    <script src="bower_components/kjur-jsrsasign/asn1-1.0.js"></script>
+
+    <script src="bower_components/pako/dist/pako.min.js"></script>
+
     <script src="app.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,7 +48,7 @@
     <div class="login mdl-shadow--4dp" id="login">
       <h2 data-i18n="htmlTitle"></h2>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="url" name="api" id="api" autocomplete="off" value="http://192.168.1.39/voting/web/api/api.php">
+        <input class="mdl-textfield__input" type="url" name="api" id="api" autocomplete="off" value="http://localhost/voting/web/api/api.php">
         <label class="mdl-textfield__label" for="api" data-i18n="htmlApiURL"></label>
       </div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

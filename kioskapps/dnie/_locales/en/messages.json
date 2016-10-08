@@ -102,12 +102,24 @@
     "message": "Reading your DNIe..."
   },
   "pinTitle": {
-    "message": "PIN"
+    "message": "DNIe PIN"
   },
   "pinExp": {
-    "message": "Please enter the PIN of your DNI:"
+    "message": "Please enter your PIN:"
   },
   "errorSecureChannel": {
     "message": "An error occurred while establishing a secure channel. Please, try again."
+  },
+  "errorIncorrectPIN": {
+    "message": "Your PIN is incorrect. You have $i$ attempts left.",
+    "placeholders": {
+      "i": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "errorAuthenticationLocked": {
+    "message": "Your DNI is locked. Please, unlock it in a police station."
   }
 }

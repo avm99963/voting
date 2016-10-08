@@ -1,5 +1,5 @@
 window.atimeout = null;
-var smartcardconnectorid = "kccifahimnddhgjicmldpjinclohoekf", port, channelid, hContext, szGroups, szReader, hCard, readerStates = [], serial, idesp, version, caint, publickeycaroot, rndifd, rndicc, kicc, kifd, kifdicc, kenc, ssc;
+var smartcardconnectorid = "kccifahimnddhgjicmldpjinclohoekf", port, channelid, hContext, szGroups, szReader, hCard = null, readerStates = [], serial, seriali = 0, idesp, version, caint, publickeycaroot, rndifd, rndicc, kicc, kifd, kifdicc, kenc, ssc, name, dni, birthday;
 
 // Function which returns the first HTML element that matches the CSS selector specified in 'selector'
 function $(selector) {
@@ -67,6 +67,7 @@ var pages = {
     this.actualPage = page;
   },
   showPINDialog: function() {
+    console.info("Waiting for PIN entry.");
     $("#pinDialog").showModal();
   }
 };
@@ -148,8 +149,8 @@ function error(msg, detail, nontranslatable = false) {
 }
 
 // Function which shows a snackbar message in the bottom of the screen
-function snackbar(msg) {
-  $(".mdl-snackbar").MaterialSnackbar.showSnackbar({"message": chrome.i18n.getMessage(msg)});
+function snackbar(msg, array=null) {
+  $(".mdl-snackbar").MaterialSnackbar.showSnackbar({"message": chrome.i18n.getMessage(msg, array), timeout: 5000});
 }
 
 // Function which sends an unencrypted (insecure) APDU command to the smart card
@@ -160,7 +161,9 @@ function SCardTransmit(port, request_id, hCard, cmd) {
 function calculateMac(ssc, input) {
   var x = input.match(/.{1,16}/g);
 
+  console.group("MAC calculation (ssc: "+ssc+")");
   console.log(x);
+  console.groupCollapsed("DES and final TDES");
 
   var y = ssc, ciphered;
 
@@ -180,7 +183,7 @@ function calculateMac(ssc, input) {
 
     console.log("DES("+y+"): "+ciphered);
 
-    y = bigInt(ciphered, 16).xor(bigInt(x[i], 16)).toString(16);
+    y = int2hex(bigInt(ciphered, 16).xor(bigInt(x[i], 16)));
     console.log(ciphered+" ^ "+x[i]+" = "+y);
   }
 
@@ -194,6 +197,11 @@ function calculateMac(ssc, input) {
   });
   tdes.update(plaintext);
   tdes.finish();
+
+  console.log("TDES("+y+"): "+tdes.output.toHex().substr(0, 8));
+
+  console.groupEnd();
+  console.groupEnd();
 
   return tdes.output.toHex().substr(0, 8);
 }
@@ -232,127 +240,196 @@ function removepadding7816(hex) {
 }
 
 // Function which sends an encrypted (secure) APDU command to the smart card
-function SecureSCardTransmit(port, request_id, hCard, cla, ins, p1p2, data, le) {
-  if (request_id < 100) {
-    console.error("Requests IDs under 100 are reserved for insecure requests. Please, use a request ID within the range [100, inf)");
+function SecureSCardTransmit(port, request_id, hCard, cla, ins, p1p2, data, le="") {
+  console.log("SSC is: "+ssc);
+  if (request_id < 100 || request_id > 199) {
+    console.error("Requests IDs under 100 are reserved for insecure requests and request IDs over 199 are reserved for the responses of secure requests. Please, use a request ID within the range [100, 199]");
     return false;
   }
+
+  console.info("Beginning to arrange secure APDU #"+request_id);
 
   if (data.length > 0) {
     data = padding7816(data);
 
     console.log(data);
+
+    var key = forge.util.hexToBytes(kenc+kenc.substr(0, 16));
+    var iv = forge.util.hexToBytes("0000000000000000");
+    var plaintext = forge.util.createBuffer(hexStringToByte(data));
+
+    var tdes = forge.cipher.createCipher('3DES-CBC', key);
+    tdes.start({
+      iv: iv
+    });
+    tdes.update(plaintext);
+    tdes.finish();
+
+    ciphereddata = tdes.output.toHex().substr(0, data.length);
+
+    console.log(tdes.output.toHex());
+
+    var encryptedapdu = "01"+ciphereddata;
+
+    encryptedapdu = "87"+int2hex(encryptedapdu.length/2)+encryptedapdu;
   }
-
-  var key = forge.util.hexToBytes(kenc+kenc.substr(0, 16));
-  var iv = forge.util.hexToBytes("0000000000000000");
-  var plaintext = forge.util.createBuffer(hexStringToByte(data));
-
-  var tdes = forge.cipher.createCipher('3DES-CBC', key);
-  tdes.start({
-    iv: iv
-  });
-  tdes.update(plaintext);
-  tdes.finish();
-
-  ciphereddata = tdes.output.toHex().substr(0, 32);
-
-  console.log(tdes.output.toHex());
-
-  var encryptedapdu = "01"+ciphereddata;
-
-  encryptedapdu = "87"+(encryptedapdu.length/2).toString(16)+encryptedapdu;
 
   cla = int2hex((parseInt(cla, 16) | 0x0c));
 
   var header = padding7816(cla+ins+p1p2);
 
-  var all = padding7816(header+encryptedapdu);
+  var all = (data.length > 0 ? header+encryptedapdu : header);
+
+  if (le.length > 0) {
+    var letlv = "9701"+le;
+    all += letlv;
+    console.log("LETV", letlv);
+  }
+
+  all = padding7816(all);
+
   console.log(all);
 
-  ssc = (bigInt(ssc, 16).add(1)).toString(16);
+  ssc = int2hex((bigInt(ssc, 16).add(1)), false);
 
   var mac = calculateMac(ssc, all);
 
   var mactlv = "8e04"+mac;
 
-  var cmd = cla+ins+p1p2+(encryptedapdu.length/2)+encryptedapdu+le+mactlv;
-  console.log(cla+" || "+ins+" || "+p1p2+" || "+(encryptedapdu.length/2)+" || "+encryptedapdu+" || "+le+" || "+mactlv);
-  console.log(cmd);
+  var followinglength = ((data.length > 0 ? encryptedapdu.length : 0)+(le.length > 0 ? letlv.length : 0)+mactlv.length)/2;
+
+  var cmd = cla+ins+p1p2+int2hex(followinglength)+(data.length > 0 ? encryptedapdu : "")+(le.length > 0 ? letlv : "")+mactlv;
 
   var arraycmd = hexStringToArray(cmd);
+
+  console.log(cmd);
   console.log(arraycmd);
 
+  console.info("Sending request #"+request_id);
   SCardTransmit(port, request_id, hCard, arraycmd);
 }
 
 function decryptAPDU(encryptedapdu) {
   encryptedapdu = array2hexstring(encryptedapdu);
 
-  // Error checking
-  if (encryptedapdu == "6688" || encryptedapdu == "6987" || encryptedapdu == "6988") {
-    snackbar("errorTransactionFailed");
-    pages.changePage("welcome");
-    return false;
+  console.info("Beginning to decrypt encrypted APDU.");
+  console.log("Encrypted APDU: ", encryptedapdu);
+
+  if (encryptedapdu.substr(0, 2) == "87") {
+    if (encryptedapdu.substr(0, 4) == "8781") {
+      var l = parseInt(encryptedapdu.substr(4, 2), 16)*2;
+      console.warn("HEEY, l = "+l);
+
+      var datatlv = encryptedapdu.substr(0, (l+6));
+      var responsetlv = encryptedapdu.substr((l+6), 8);
+      var mactlv = encryptedapdu.substr((l+14), 12);
+
+      var macinput = padding7816(datatlv+responsetlv);
+    } else {
+      var l = parseInt(encryptedapdu.substr(2, 2), 16)*2;
+
+      var datatlv = encryptedapdu.substr(0, (l+4));
+      var responsetlv = encryptedapdu.substr((l+4), 8);
+      var mactlv = encryptedapdu.substr((l+12), 12);
+
+      var macinput = padding7816(datatlv+responsetlv);
+    }
+  } else {
+    var l = false;
+
+    var datatlv = false;
+    var responsetlv = encryptedapdu.substr(0, 8);
+    var mactlv = encryptedapdu.substr(8, 12);
+
+    var macinput = padding7816(responsetlv);
   }
 
-  var l = parseInt(encryptedapdu.substr(2, 2), 16)*2;
-
-  var datatlv = encryptedapdu.substr(0, (l+4));
-  var responsetlv = encryptedapdu.substr((l+4), 8);
-  var mactlv = encryptedapdu.substr((l+12), 12);
-
-  var macinput = padding7816(datatlv+responsetlv);
-
-  ssc = (bigInt(ssc, 16).add(1)).toString(16);
+  ssc = int2hex(bigInt(ssc, 16).add(1), false);
 
   var calculatedmac = calculateMac(ssc, macinput);
   var mac = mactlv.substr(4);
 
   if (mac != calculatedmac) {
+    console.group("MAC error");
     console.log(mac);
     console.log(calculatedmac);
     console.error("Macs don't match, APDU not correctly ciphered");
+    console.groupEnd();
     snackbar("generalError");
-    pages.changePage("welcome");
+    // @TODO: UNCOMMENT THE FOLLOWING LINES IN PRODUCTION
+    //pages.changePage("welcome");
+    //return false;
   }
 
-  var data = datatlv.substr(6);
+  if (datatlv !== false) {
+    console.log("datatlv", datatlv);
 
-  console.log(data);
+    if (encryptedapdu.substr(0, 4) == "8781") {
+      var data = datatlv.substr(8);
+    } else {
+      var data = datatlv.substr(6);
+    }
 
-  var key = forge.util.hexToBytes(kenc+kenc.substr(0, 16));
-  var iv = forge.util.hexToBytes("0000000000000000");
-  var ciphereddata = forge.util.createBuffer(hexStringToByte(data));
+    console.log(data, "(length: "+data.length+")");
 
-  var tdes = forge.cipher.createDecipher('3DES-CBC', key);
-  tdes.start({
-    iv: iv
-  });
-  tdes.update(ciphereddata);
-  tdes.finish();
+    console.log(kenc);
 
-  var plaindatawithpadding = tdes.output.toHex().substr(0, 64);
-  console.log(plaindatawithpadding);
+    var key = forge.util.hexToBytes(kenc+(kenc.substr(0, 16)));
+    var iv = forge.util.hexToBytes("0000000000000000");
+    var ciphereddata = forge.util.createBuffer(hexStringToByte(data));
 
-  var plaindata = removepadding7816(plaindatawithpadding);
-  console.log(plaindata);
+    var tdes = forge.cipher.createDecipher('3DES-CBC', key);
+    tdes.start({
+      iv: iv
+    });
+    tdes.update(ciphereddata);
+    tdes.finish();
+
+    var plaindatawithpadding = tdes.output.toHex().substr(0, data.length);
+    console.log(plaindatawithpadding);
+
+    var plaindata = removepadding7816(plaindatawithpadding);
+    console.log("plaindata", plaindata);
+  } else {
+    var plaindata = "";
+  }
 
   var response = responsetlv.substr(4);
 
-  return {
-    reponse: response,
+  var object = {
+    response: response,
     data: plaindata
   };
+
+  console.log("Plain text APDU response:", object);
+  console.info("Finished decrypting encrypted APDU.");
+
+  return object;
+}
+
+function constructInsecureAPDU(cla, ins, p1p2, data, le="") {
+  return hexStringToArray(cla+ins+p1p2+(data.length > 0 ? int2hex(data.length/2)+data : "")+le);
 }
 
 // Uncomment the following lines only for testing purposes
-//kenc = "598f26e36e11a8ec14b81e19bda223ca";
-//kmac = "5de2939a1ea03a930b88206d8f73e8a7";
-//ssc = "d31ac8ec7ba0fe6e";
-//SecureSCardTransmit("", 100, "", "00", "a4", "0400", "4d61737465722e46696c65", "");
-//SecureSCardTransmit("", 100, "", "00", "20", "0000", "43525950544f4b49", "");
-//console.log(decryptAPDU("872101bb10c8915f0ddb630cf38ed799a202647ca47449d279139fc226d25c20765645990290008e049aa777079000"));
+// kenc = "598f26e36e11a8ec14b81e19bda223ca";
+// kmac = "5de2939a1ea03a930b88206d8f73e8a7";
+// ssc = "d31ac8ec7ba0fe75";
+// SecureSCardTransmit("", 100, "", "00", "a4", "0400", "4d61737465722e46696c65", "");
+// SecureSCardTransmit("", 100, "", "00", "20", "0000", "43525950544f4b49", "");
+// console.log(decryptAPDU(hexStringToArray("872101bb10c8915f0ddb630cf38ed799a202647ca47449d279139fc226d25c20765645990290008e049aa777079000")));
+
+// kenc = "7417bb2816a4f434576ca3f9f1e60394";
+// kmac = "44ba2c2af154f187503b715447574951";
+// ssc = "f9a9e516abf048b5";
+// console.log(decryptAPDU(hexStringToArray("990269838e0456035b0f9000")));
+
+// var cla = "00";
+// var ins = "c0";
+// var p1p2 = "0000";
+// var data = "";
+// var le = "0e";
+// SecureSCardTransmit("", 100, "", cla, ins, p1p2, data, le);
 
 function hi(int) {
   var hex = int.toString(16);
@@ -368,6 +445,8 @@ function lo(int) {
   return parseInt(tmp.substr(-2, 2), 16);
 }
 
+var debugdata = [];
+
 var file = {
   locked: false,
   path: null,
@@ -375,35 +454,85 @@ var file = {
   offset: null,
   stream: [],
   operation: null,
-  readFile: function(hCard, path, operation) {
-    console.info("Starting to read file with path:", path);
+  secure: null,
+  readFile: function(hCard, path, operation, secure = false) {
     this.operation = operation;
     if (this.locked === false) {
       this.path = path;
-      var cmd = [0x00, 0xA4, 0x04, 0x00, 0x0B, 0x4D, 0x61, 0x73, 0x74, 0x65, 0x72, 0x2E, 0x46, 0x69, 0x6C, 0x65];
-      SCardTransmit(port, 5, hCard, cmd);
+      this.secure = secure;
+      console.info((this.secure === true ? "[S] " : "")+"Starting to read file with path:", path);
+      var cla = "00";
+      var ins = "a4";
+      var p1p2 = "0400";
+      var data = "4d61737465722e46696c65";
+      if (this.secure === true) {
+        SecureSCardTransmit(port, 105, hCard, cla, ins, p1p2, data, "");
+        console.log(array2hexstring(constructInsecureAPDU(cla, ins, p1p2, data)));
+      } else {
+        var cmd = constructInsecureAPDU(cla, ins, p1p2, data);
+        SCardTransmit(port, 5, hCard, cmd);
+      }
       return true;
     } else {
-      console.error("There's a file being read, so the operation to "+hcard+" with path ", path, "couldn't procede.");
+      console.error("There's a file being read, so the operation to "+hCard+" with path ", path, "couldn't procede.");
       return false;
     }
   },
   followUp: function(payload) {
     //console.info(payload);
     if (this.path.length >= 2) {
-      var following = [0x00, 0xA4, 0x00, 0x00, 0x02, this.path.shift(), this.path.shift()];
-      SCardTransmit(port, 6, hCard, following);
+      var cla = "00";
+      var ins = "a4";
+      var p1p2 = "0000";
+      var data = int2hex(this.path.shift())+int2hex(this.path.shift());
+      console.info((this.secure === true ? "[S] " : "")+"Browsing to "+data);
+      if (this.secure === true) {
+        // HEADER[0ca40000], LC[11], TLV[87, 09, 01476098e7eca1b806], TLV[8e, 04, a27e1b5c]
+        // HEADER[0ca40000], LC[11], TLV[87, 09, 01a56c61aecee78d47], TLV[8e, 04, b088c2fa]
+
+        // HEADER[0ca40000], LC[11], TLV[87, 09, 01251c58d6b01d4e09], TLV[8e, 04, fb732ce1]
+        // The above cmd is the example one.
+        //console.log(array2hexstring(constructInsecureAPDU(cla, ins, p1p2, data)));
+        SecureSCardTransmit(port, 106, hCard, cla, ins, p1p2, data, "");
+      } else {
+        var following = constructInsecureAPDU(cla, ins, p1p2, data);
+        SCardTransmit(port, 6, hCard, following);
+      }
     } else {
-      console.info("Sending GET RESPONSE");
-      var cmd = [0x00, 0xC0, 0x00, 0x00, 0x0E];
-      SCardTransmit(port, 7, hCard, cmd);
+      if (this.secure === true) {
+        console.info("[S] Sending READ BINARY", [cla, ins, p1p2, data, le]);
+
+        var plaindata = hexStringToArray(payload.data);
+
+        this.filesize = (plaindata[7] * 256) + plaindata[8];
+        console.log("Filesize: "+this.filesize);
+        this.offset = 0;
+
+        var cla = "00";
+        var ins = "b0";
+        var p1p2 = array2hexstring([hi(this.offset), lo(this.offset)]);
+        var data = "";
+        var le = int2hex(Math.min((this.filesize - this.offset), 0xEF));
+
+        SecureSCardTransmit(port, 108, hCard, cla, ins, p1p2, data, le);
+      } else {
+        console.info("Sending GET RESPONSE");
+
+        var cla = "00";
+        var ins = "c0";
+        var p1p2 = "0000";
+        var data = "";
+        var le = "0e";
+        var following = constructInsecureAPDU(cla, ins, p1p2, data, le);
+        SCardTransmit(port, 7, hCard, following);
+      }
     }
   },
   responseGotten: function(payload) {
     //console.log(payload);
     this.filesize = (payload[2][7] * 256) + payload[2][8];
     this.offset = 0;
-    //console.log(this.filesize);
+    console.log("Filesize: "+this.filesize);
     var cmd = [0x00, 0xB0, hi(this.offset), lo(this.offset), Math.min((this.filesize - this.offset), 0xFF)];
     console.info("Sending READ BINARY", cmd);
     SCardTransmit(port, 8, hCard, cmd);
@@ -413,8 +542,15 @@ var file = {
     this.stream = this.stream.concat(newdata);
     this.offset += 255;
     if (this.offset < this.filesize) {
-      var cmd = [0x00, 0xB0, hi(this.offset), lo(this.offset), Math.min((this.filesize - this.offset), 0xFF)];
-      console.info("Sending READ BINARY", cmd);
+      var cla = "00";
+      var ins = "b0";
+      var p1p2 = array2hexstring([hi(this.offset), lo(this.offset)]);
+      var data = "";
+      var le = int2hex(Math.min((this.filesize - this.offset), 0xFF));
+
+      console.info("Sending READ BINARY", [cla, ins, p1p2, data, le]);
+
+      var cmd = constructInsecureAPDU(cla, ins, p1p2, data, le);
       SCardTransmit(port, 8, hCard, cmd);
     } else {
       var stream = this.stream;
@@ -425,6 +561,54 @@ var file = {
       this.stream = [];
       this.operation = null;
       this.locked = false;
+      this.secure = null;
+      fileRead(stream, operation);
+    }
+  },
+  secureBinaryRead: function(payload) {
+    if (payload.response.substr(0, 2) == "6c") {
+      console.warn("Hey, we're being very brave here. Retrying with corrected response length.");
+      var cla = "00";
+      var ins = "b0";
+      var p1p2 = array2hexstring([hi(this.offset), lo(this.offset)]);
+      var data = "";
+      var le = payload.response.substr(2, 2);
+      console.info((this.secure === true ? "[S] " : "")+"Sending READ BINARY", [cla, ins, p1p2, data, le]);
+      SecureSCardTransmit(port, 108, hCard, cla, ins, p1p2, data, le);
+      return;
+    }
+
+    debugdata.push(payload.data);
+    console.warn("Length of chunk: "+(payload.data.length / 2));
+    var data = hexStringToArray(payload.data);
+    var newdata = data.splice(0, data.length-2);
+    this.stream = this.stream.concat(newdata);
+    this.offset += 0xEF;
+    if (this.offset < this.filesize) {
+      var cla = "00";
+      var ins = "b0";
+      var p1p2 = array2hexstring([hi(this.offset), lo(this.offset)]);
+      var data = "";
+      var le = int2hex(Math.min((this.filesize - this.offset), 0xEF));
+
+      console.info((this.secure === true ? "[S] " : "")+"Sending READ BINARY", [cla, ins, p1p2, data, le]);
+
+      if (this.secure === true) {
+        SecureSCardTransmit(port, 108, hCard, cla, ins, p1p2, data, le);
+      } else {
+        var cmd = constructInsecureAPDU(cla, ins, p1p2, data, le);
+        SCardTransmit(port, 8, hCard, cmd);
+      }
+    } else {
+      var stream = this.stream;
+      var operation = this.operation;
+      this.path = null;
+      this.filesize = null;
+      this.offset = null;
+      this.stream = [];
+      this.operation = null;
+      this.locked = false;
+      this.secure = null;
       fileRead(stream, operation);
     }
   }
@@ -433,7 +617,7 @@ var file = {
 // From http://stackoverflow.com/questions/3745666/how-to-convert-from-hex-to-ascii-in-javascript and adapted
 function hex2a(stream) {
     var hex = stream.map(function (int) {
-      return int.toString(16);
+      return int.toString(16); // @TODO: Check if this is correct and we don't need 'return int2hex(int);' instead.
     }).join("");
     var str = '';
     for (var i = 0; i < hex.length; i += 2)
@@ -451,7 +635,7 @@ function hexs2a(hex) {
 function ascii2hex(ascii) {
   var arr = [];
   for (var i = 0, l = ascii.length; i < l; i++) {
-    var hex = pad(Number(ascii.charCodeAt(i)).toString(16), 2);
+    var hex = int2hex(Number(ascii.charCodeAt(i)));
     arr.push(hex);
   }
   return arr.join('');
@@ -507,7 +691,55 @@ function fileRead(stream, operation) {
 
     $("#dataIDESP").innerText = idesp;
 
+    //return; // @TODO: DELETE THIS LINE WHEN FINISHING WITH THE file OBJECT SECURING
+
+    file.readFile(hCard, [0x50, 0x15, 0x60, 0x04], 4);
+  } else if (operation == 4) {
+    var string = array2hexstring(stream);
+    console.log(string);
+
+    if (string == "0".repeat(string.length)) {
+      // @TODO: NO CERTIFICATES IN DNI, get out of here
+      console.error("No certificates in DNIe");
+      return;
+    }
+
+    //var asn1 = org.pkijs.fromDER(stream);
+    //console.log(asn1);
+
+    var dump = ASN1HEX.dump(string);
+
+    console.log(dump);
+
+    name = (/ObjectIdentifier commonName (.*)\n(.*)UTF8String '(.*) \(AUTENTICACIÓN\)'/gi).exec(dump)[3];
+    dni = (/ObjectIdentifier \(2 5 4 5\)\n(.*)PrintableString '(.*)'/gi).exec(dump)[2];
+    console.log("Name: "+name);
+    console.log("DNI: "+dni);
+
     secureChannel.establishSecureChannel();
+  } else if (operation == 105) {
+    var hex = stream.map(function (int) {
+      var string = int.toString(16);
+      return ('00'+string).substring(string.length);
+    }).join("");
+
+    console.log(hex);
+
+    // Olis, soy Pako, un kani xungo k ba a desimflar el arxivo comprimio.
+    // En realidad Pako es el nombre de una libreria que vamos a usar para descomprimir el certificado de autenticacion. Aunque parece un nombre de cani...
+
+    var output = array2hexstring(Array.from(pako.inflate(stream.slice(8))));
+    console.log(output);
+
+    console.log(ASN1HEX.dump(output));
+
+    var pem = KJUR.asn1.ASN1Util.getPEMStringFromHex(output, "CERTIFICATE");
+
+    console.log(pem);
+
+    var cert = X509.getPublicKeyFromCertPEM(pem);
+
+    console.log(cert);
   } else {
     console.warn("Unknown file operation.");
   }
@@ -559,14 +791,14 @@ function array2hexstring(array) {
   }
 
   array = array.map(function(int) {
-    return pad(int.toString(16), 2);
+    return int2hex(int);
   });
   return array.join("");
 }
 
-function int2hex(int) {
+function int2hex(int, pad=true) {
   var hex = int.toString(16);
-  if (hex.length % 2 == 1) {
+  if (hex.length % 2 == 1 && pad === true) {
     hex = "0"+hex;
   }
   return hex;
@@ -651,12 +883,12 @@ var secureChannel = {
     var privateexp = bigInt("18B44A3D155C61EBF4E3261C8BB157E36F63FE30E9AF28892B59E2ADEB18CC8C8BAD284B9165819CA4DEC94AA06B69BCE81706D1C1B668EB128695E5F7FEDE18A908A3011A646A481D3EA71D8A387D474609BD57A882B182E047DE80E04B4221416BD39DFA1FAC0300641962ADB109E28CAF50061B68C9CABD9B00313C0F46ED", 16);
 
     var sigmin = RSA.decrypt(bigInt(hex, 16), privateexp, modulus);
-    console.log(sigmin.toString(16));
+    console.log(int2hex(sigmin));
 
-    var nicc = bigInt(publickeycaroot.n.toString(16), 16);
+    var nicc = bigInt(int2hex(publickeycaroot.n), 16);
 
     var sig = RSA.decrypt(sigmin, bigInt(publickeycaroot.e), nicc);
-    var sig16 = sig.toString(16);
+    var sig16 = int2hex(sig);
     console.log(sig16);
 
     if (sig16.substr(0, 2).toLowerCase() != "6a" || sig16.substr(-2).toLowerCase() != "bc") {
@@ -665,7 +897,7 @@ var secureChannel = {
       var sigtmp = nicc.subtract(sigmin);
 
       sig = RSA.decrypt(sigtmp, bigInt(publickeycaroot.e), nicc);
-      sig16 = sig.toString(16);
+      sig16 = int2hex(sig);
     }
 
     console.log(sig16);
@@ -730,24 +962,24 @@ var secureChannel = {
     var d = bigInt("18B44A3D155C61EBF4E3261C8BB157E36F63FE30E9AF28892B59E2ADEB18CC8C8BAD284B9165819CA4DEC94AA06B69BCE81706D1C1B668EB128695E5F7FEDE18A908A3011A646A481D3EA71D8A387D474609BD57A882B182E047DE80E04B4221416BD39DFA1FAC0300641962ADB109E28CAF50061B68C9CABD9B00313C0F46ED", 16);
     var sig = RSA.encrypt(bigInt(plaintext, 16), n, d);
 
-    console.log(sig.toString(16));
+    console.log(int2hex(sig));
 
     var nifd = n;
 
     var nifdsig = nifd.subtract(sig);
 
-    console.log(nifdsig.toString(16));
+    console.log(int2hex(nifdsig));
 
     var sigmin = bigInt.min(sig, nifdsig);
 
-    console.log(sigmin.toString(16));
+    console.log(int2hex(sigmin));
 
     console.log(publickeycaroot);
 
-    var nicc = bigInt(publickeycaroot.n.toString(16), 16);
-    var data = RSA.encrypt(sigmin, nicc, bigInt(publickeycaroot.e)).toString(16);
+    var nicc = bigInt(int2hex(publickeycaroot.n), 16);
+    var data = int2hex(RSA.encrypt(sigmin, nicc, bigInt(publickeycaroot.e)));
 
-    console.log(data.toString(16));
+    console.log(data);
 
     var cmd = [0x00, 0x82, 0x00, 0x00, 0x80].concat(hexStringToArray(data));
 
@@ -765,7 +997,7 @@ var secureChannel = {
     console.log(bigkifd);
     console.log(bigkicc);
 
-    kifdicc = bigkifd.xor(bigkicc).toString(16);
+    kifdicc = int2hex(bigkifd.xor(bigkicc));
 
     console.log(kifdicc);
 
@@ -781,13 +1013,21 @@ var secureChannel = {
     kmac = hash.substr(0, 32);
     console.log("kmac: "+kmac);
 
-    ssc = rndicc.substr(-4)+array2hexstring(rndifd).substr(-4);
+    ssc = (rndicc.substr(-8))+(array2hexstring(rndifd).substr(-8));
 
     console.log("ssc: "+ssc);
 
     pages.showPINDialog();
   },
   step11: function(pin) {
+    if (pin.length < 1) {
+      console.error("Wait, PIN is empty...");
+      snackbar("generalError");
+      pages.changePage("welcome");
+      return;
+    }
+
+    //SecureSCardTransmit(port, 101, hCard, "00", "a4", "0400", "4d61737465722e46696c65", "");
     SecureSCardTransmit(port, 101, hCard, "00", "20", "0000", ascii2hex(pin), "");
   }
 };
@@ -912,6 +1152,8 @@ function init() {
         if (msg.data.payload[0] == -2146434967) {
           pages.changePage("welcome");
           snackbar("errorCardRemoved");
+        } else if (msg.data.payload[0] == -2146435060) {
+          snackbar("errorCardRemoved");
         } else if (msg.data.payload[0] == -2146435050) {
           pages.changePage("welcome");
           snackbar("errorTransactionFailed");
@@ -934,7 +1176,6 @@ function init() {
           //extPostMessage(port, 3, "SCardConnect", [hContext, szReader, 3, 3]);
         } else if (msg.data.request_id == 3) {
           hCard = msg.data.payload[1];
-          dwActiveProtocol = msg.data.payload[2];
           extPostMessage(port, 4, "SCardGetStatusChange", [hContext, 30000, [{"reader_name": szReader, "current_state": 16}]]);
         } else if (msg.data.request_id == 4) {
           var payload = msg.data.payload;
@@ -945,7 +1186,7 @@ function init() {
             if (payload[1][0].atr[0] == 59 && payload[1][0].atr[1] == 127 && payload[1][0].atr[3] == 0 && payload[1][0].atr[4] == 0 && payload[1][0].atr[5] == 0 && payload[1][0].atr[6] == 106 && payload[1][0].atr[7] == 68 && payload[1][0].atr[8] == 78 && payload[1][0].atr[9] == 73 && payload[1][0].atr[10] == 101) {
               if ((payload[1][0].atr[18] == 144 && payload[1][0].atr[19] == 0) || (payload[1][0].atr[18] == 101 && payload[1][0].atr[19] == 129)) {
                 pages.changePage("reading");
-                loadDniData();
+                extPostMessage(port, 34, "SCardReconnect", [hCard, 3, 3, 1]);
                 if (payload[1][0].atr[18] == 101 && payload[1][0].atr[19] == 129) {
                   snackbar("warningOutdatedDNIE");
                 }
@@ -1024,21 +1265,85 @@ function init() {
             snackbar("errorSecureChannel");
             pages.changePage("welcome");
           }
+        } else if (msg.data.request_id == 33) {
+          extPostMessage(port, 4, "SCardGetStatusChange", [hContext, 30000, [{"reader_name": szReader, "current_state": 16}]]);
+        } else if (msg.data.request_id == 34) {
+          loadDniData();
         } else if (msg.data.request_id == 96) {
           serial = msg.data.payload[2];
           serial.splice(-2, 2);
+          if (serial.length < 1) {
+            if (seriali == 3) {
+              console.error("Oops, serial is returned blank 3 times in a row");
+              snackbar("generalError");
+              pages.changePage("welcome");
+              return;
+            } else {
+              seriali++;
+              SCardTransmit(port, 96, hCard, [0x90, 0xB8, 0x00, 0x00, 0x00, 0x00, 0x07]);
+              return;
+            }
+          }
           console.log("Serial is ",serial);
           file.readFile(hCard, [0x00, 0x06], 1);
         } else if (msg.data.request_id == 98) {
           $("#msgerrordetail").innerText = msg.data.payload[0];
           pages.changePage("error");
-        } else if (msg.data.request_id == 101) {
-          // From now on the responses are encrypted/secure APDU, so decrypt them:
+          return;
+        } else if (msg.data.request_id >= 100 && msg.data.request_id < 200) {
+          // These requests are encrypted/secure APDUs, so send a get response command if everythin's all right:
+          encryptedapdu = array2hexstring(msg.data.payload[2]);
+
+          // Error checking
+          if (encryptedapdu == "6688" || encryptedapdu == "6987" || encryptedapdu == "6988") {
+            snackbar("errorTransactionFailed");
+            pages.changePage("welcome");
+            return false;
+          }
+
+          if (msg.data.payload[2][0] != 0x61) {
+            console.warn("Hey, response code is "+encryptedapdu+" but we will procede.");
+          }
+
+          SCardTransmit(port, (msg.data.request_id+1000), hCard, [0x00, 0xc0, 0x00, 0x00, msg.data.payload[2][1]]);
+        } else if (msg.data.request_id == 1101) {
           var response = decryptAPDU(msg.data.payload[2]);
           console.log(response);
 
-          if (response !== false) {
-            pages.changePage("data");
+          if (response === false) {
+            return;
+          }
+
+          var responsearray = hexStringToArray(response.response);
+          if (responsearray[0] == 0x90) {
+            console.info("Correct PIN :D");
+            file.readFile(hCard, [0x60, 0x61, 0x70, 0x05], 105, true);
+          } else if (responsearray[0] == 0x63) {
+            var attemptsleft = response.response.substr(3, 1);
+            console.warn("Incorrect PIN. "+attemptsleft+" attemps left.");
+            snackbar("errorIncorrectPIN", attemptsleft);
+            pages.changePage("welcome");
+            return false;
+          } else if (responsearray[0] == 0x69 && responsearray[1] == 0x83) {
+            console.error("Authentication method blocked.");
+            snackbar("errorAuthenticationLocked");
+            pages.changePage("welcome");
+            return false;
+          } else {
+            console.error("Unknown error while verifying CHV:",responsearray);
+            snackbar("generalError");
+            pages.changePage("welcome");
+            return false;
+          }
+        } else if (msg.data.request_id == 1105 || msg.data.request_id == 1106) {
+          var decrypted = decryptAPDU(msg.data.payload[2]);
+          if (decrypted !== false) {
+            file.followUp(decrypted);
+          }
+        } else if (msg.data.request_id == 1108) {
+          var decrypted = decryptAPDU(msg.data.payload[2]);
+          if (decrypted !== false) {
+            file.secureBinaryRead(decrypted);
           }
         }
       }
