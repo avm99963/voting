@@ -21,10 +21,9 @@ class file {
 
   public static function save($file, $contents, $overwrite=false) {
     if ($overwrite === false) {
-      $file = generateRandomName($file);
-      while (file_exists(file::$uploadsFolder."/".$file)) {
-        $file = generateRandomName($file);
-      }
+      do {
+        $file = file::generateRandomName("random.json");
+      } while (file::fileExists($file));
     }
     if (file_put_contents(file::$uploadsFolder."/".$file, $contents)) {
       return $file;

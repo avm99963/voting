@@ -87,11 +87,177 @@ class voting {
           }
         }
       }
+
+      $query2 = mysqli_query($con, "SELECT id FROM voted WHERE voting = ".(int)$votingid." AND dni = '".citizen::userData("dni")."'");
+
+      if (mysqli_num_rows($query2) > 0) {
+        return -4;
+      }
+
+      if (citizen::method() == citizen::CODE && citizen::usesLeft() < 1) {
+        return -5;
+      }
+
       return 1;
     } else {
       return 0;
     }
 
     return 0;
+  }
+
+  public static function doVote($voting, $votes) {
+    global $_SESSION;
+    global $con;
+
+    if (voting::canVote($voting) < 1) {
+      return array("error" => 0);
+    }
+
+    if (count($votes) !== count(array_unique($votes))) {
+      return array("error" => 0);
+    }
+
+    $maxvotes = voting::votingData("maxvotingballots", $voting);
+    $variable = voting::votingData("variable", $voting);
+
+    if (count($votes) > $maxvotes) {
+      return array("error" => 0);
+    }
+
+    if ($variable == 1 && count($votes) != $maxvotes) {
+      return array("error" => 0);
+    }
+
+    $name = sanitizer::dbString(citizen::userData("name"));
+    $dni = sanitizer::dbString(citizen::userData("dni"));
+
+    $ballots = array();
+
+    foreach ($votes as $vote) {
+      $query = mysqli_query($con, "SELECT id, name, voting FROM voting_ballots WHERE id = ".(int)$vote);
+
+      if (!mysqli_num_rows($query)) {
+        return array("error" => 0);
+      }
+
+      $row = mysqli_fetch_assoc($query);
+
+      if ($row["voting"] != $voting) {
+        return array("error" => 0);
+      }
+
+      do {
+        $row["shahash"] = crypto::shavote($dni, $row["name"]);
+
+        $query2 = mysqli_query($con, "SELECT id FROM ballots WHERE shahash = '".$row["shahash"]["hash"]."'");
+      } while (mysqli_num_rows($query2));
+
+      $ballots[] = $row;
+    }
+
+    if (citizen::method() == citizen::CODE) {
+      $method = 0; // code
+      $generatedcode = $_SESSION["citizenid"];
+      $birthday = sanitizer::dbString(citizen::userData("birthday"));
+
+      // We increment the uses count for the generated code.
+      if (!mysqli_query($con, "UPDATE generatedcodes SET usesdone = usesdone + 1 WHERE id = ".$_SESSION["citizenid"]." LIMIT 1")) {
+        return array("error" => 1);
+      }
+    } else {
+      return array("error" => 0);
+    }
+
+    do {
+      $id = random_int(1, 999999999);
+      $idquery = mysqli_query($con, "SELECT id FROM voted WHERE id = ".$id);
+    } while (mysqli_num_rows($idquery));
+
+    // Submitting into people who voted table
+    if (!mysqli_query($con, "INSERT INTO voted (id, method, generatedcode, name, dni, birthday, voting) VALUES ($id, $method, $generatedcode, '$name', '$dni', $birthday, $voting)")) {
+      die(mysqli_error($con));
+      return array("error" => 2);
+    }
+
+    $return = array("done" => "ok", "ballots" => array());
+
+    // Submitting ballots
+    foreach ($ballots as $ballot) {
+      if (!mysqli_query($con, "INSERT INTO ballots (ballot, voting, shahash) VALUES (".$ballot["id"].", ".(int)$voting.", '".mysqli_real_escape_string($con, $ballot["shahash"]["hash"])."')")) {
+        return array("error" => 3);
+      }
+      $return["ballots"][] = array("ballot" => $ballot["id"], "name" => $ballot["name"], "salt" => $ballot["shahash"]["salt"]);
+    }
+
+    return $return;
+  }
+
+  public static function generateResults($voting) {
+    global $con;
+
+    $query = mysqli_query($con, "SELECT id FROM voting_defaultresults WHERE voting = ".(int)$voting);
+
+    if (mysqli_num_rows($query)) {
+      return true;
+    } else {
+      $query2 = mysqli_query($con, "SELECT ballot, COUNT(*) FROM ballots WHERE voting = ".(int)$voting." GROUP BY ballot");
+
+      $votes = array();
+
+      while ($row2 = mysqli_fetch_row($query2)) {
+        $votes[$row2[0]] = $row2[1];
+      }
+
+      $query3 = mysqli_query($con, "SELECT id, name FROM voting_ballots WHERE voting = ".(int)$voting);
+
+      $allballots = array();
+
+      if (mysqli_num_rows($query3)) {
+        while ($row3 = mysqli_fetch_assoc($query3)) {
+          if (!isset($votes[$row3["id"]])) {
+            $votes[$row3["id"]] = 0;
+          }
+
+          $allballots[$row3["id"]] = $row3["name"];
+        }
+      }
+
+      $count = json_encode($votes);
+
+      $query4 = mysqli_query($con, "SELECT ballot, shahash FROM ballots WHERE voting = ".(int)$voting);
+
+      $submittedballots = array();
+
+      while ($row4 = mysqli_fetch_assoc($query4)) {
+        $submittedballots[] = array("ballot" => $row4["ballot"], "shahash" => $row4["shahash"]);
+      }
+
+      $jsonfile = json_encode(array("available_ballots" => $allballots, "submitted_ballots" => $submittedballots));
+
+      if (!file::canUpload()) {
+        die("Please, assign upload permissions to PHP for the uploads folder.");
+      }
+
+      $filename = file::save("ballot.json", $jsonfile);
+
+      if (mysqli_query($con, "INSERT INTO voting_defaultresults (voting, generated, results, ballotsfile) VALUES (".(int)$voting.", 1, '".mysqli_real_escape_string($con, $count)."', '".mysqli_real_escape_string($con, $filename)."')")) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
+  public static function defaultResults($voting) {
+    global $con;
+
+    $query = mysqli_query($con, "SELECT * FROM voting_defaultresults WHERE voting = ".(int)$voting." LIMIT 1");
+
+    if (!mysqli_num_rows($query)) {
+      return false;
+    }
+
+    return mysqli_fetch_assoc($query);
   }
 }

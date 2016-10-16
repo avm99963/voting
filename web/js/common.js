@@ -28,7 +28,11 @@ function xhr(method, url, params, callback) {
   if (method == "POST") {
     http.open(method, url, true);
   } else {
-    http.open(method, url+"?"+params, true);
+    if (params != "") {
+      http.open(method, url+"?"+params, true);
+    } else {
+      http.open(method, url, true);
+    }
   }
 	http.onload = function() {
     if(this.status != 200) {

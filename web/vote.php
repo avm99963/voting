@@ -56,12 +56,25 @@ $md_header_row_before = md::backBtn("voting.php?id=".$row["id"]);
     margin-top: 4px;
     width: auto;
   }
+
+  .multivote {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+  }
   </style>
 </head>
 <body class="mdl-color--green">
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
     <?php require(__DIR__."/includes/citizenmdnav.php"); ?>
     <main class="mdl-layout__content">
+      <?php
+      if ($row["maxvotingballots"] > 1) {
+        ?>
+        <button id="multivote" class="multivote mdl-button md-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent"><i class="material-icons">send</i><span class="mdl-ripple"></span></button>
+        <?php
+      }
+      ?>
       <div class="page-content">
         <div class="main mdl-shadow--4dp">
           <?php

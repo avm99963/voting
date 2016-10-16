@@ -37,5 +37,7 @@
   "msg_activecode":"The entered DNI has an active code.",
   "msg_codewrong":"Code incorrect",
   "msg_customhtmlsuccess":"Custom HTML edited successfully",
-  "msg_scenariosuccess":"Voting scenario saved successfully"
+  "msg_scenariosuccess":"Voting scenario saved successfully",
+  "msg_resultgenerated":"Result generated successfully",
+  "msg_resultnotgenerated":"An error occurred while generating the result"
 }

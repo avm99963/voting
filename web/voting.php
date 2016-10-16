@@ -74,6 +74,9 @@ $md_header_row_before = md::backBtn("dashboard.php");
 
           if ($status < 2) {
             $noresults = true;
+          } else {
+            $results = voting::defaultResults($row["id"]);
+            $noresults = ($results === false ? true : false);
           }
 
           if ($noresults === true) {
@@ -81,7 +84,77 @@ $md_header_row_before = md::backBtn("dashboard.php");
             <p><?=$i18n->msg("noresults")?></p>
             <?php
           } else {
-            // @TODO: Write voting results code
+            $count = json_decode($results["results"], true);
+
+            $array = array();
+            $colors = array();
+            foreach ($count as $id => $amount) {
+              $ballot_q = mysqli_query($con, "SELECT name, color FROM voting_ballots WHERE id = ".(int)$id);
+
+              if (!mysqli_num_rows($ballot_q)) {
+                die("The database is corrupted.");
+              }
+
+              $row_q = mysqli_fetch_assoc($ballot_q);
+
+              if ($row["maxvotingballots"] == 1) {
+                $array[] = "['".$row_q["name"]."', $amount]";
+                $colors[] = "'#".$row_q["color"]."'";
+              } else {
+                $array[] = "['".$row_q["name"]."', $amount, '#".$row_q["color"]."']";
+              }
+            }
+            ?>
+            <p><a href="download.php?voting=<?=$row["id"]?>" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-button--raised" download>Download all ballots</a></p>
+            <div id="chart" style="max-width: 100%!important; width: 500px; height: 300px;"></div>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <?php
+            if ($row["maxvotingballots"] == 1) {
+              ?>
+              <script type="text/javascript">
+                google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+                function drawChart() {
+
+                  var data = google.visualization.arrayToDataTable([
+                    ['Ballot', 'Count'],<?=implode(",", $array);?>
+                  ]);
+
+                  var options = {
+                    title: 'Vote count',
+                    colors: [<?=implode(",", $colors)?>]
+                  };
+
+                  var chart = new google.visualization.PieChart(document.getElementById('chart'));
+
+                  chart.draw(data, options);
+                }
+              </script>
+              <?php
+            } else {
+              ?>
+              <script type="text/javascript">
+                google.charts.load('current', {'packages':['corechart', 'bar']});
+                google.charts.setOnLoadCallback(drawChart);
+                function drawChart() {
+                  var data = google.visualization.arrayToDataTable([
+                    ['Ballot', 'Count', { role: 'style' }],<?=implode(",", $array)?>
+                  ]);
+
+                  var options = {
+                    chart: {
+                      title: 'Vote count'
+                    },
+                    bars: 'vertical' // Required for Material Bar Charts.
+                  };
+
+                  var chart = new google.visualization.BarChart(document.getElementById('chart'));
+
+                  chart.draw(data, options);
+                }
+              </script>
+              <?php
+            }
           }
           ?>
         </div>
@@ -95,7 +168,7 @@ $md_header_row_before = md::backBtn("dashboard.php");
     <?php
   }
 
-  md::msg(array("votestatus_0", "votestatus_1", "votestatus_2", "votestatus_3"));
+  md::msg(array("votestatus_0", "votestatus_1", "votestatus_2", "votestatus_3", "votestatus_4", "votestatus_5"));
   ?>
 </body>
 </html>

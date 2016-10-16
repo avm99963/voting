@@ -1,5 +1,9 @@
 <?php
 class citizen {
+  const CODE = 1;
+  const DNIE = 1;
+  const OTHER = -1;
+
   public static function codeLogin($code) {
     global $con;
     global $_SESSION;
@@ -49,6 +53,27 @@ class citizen {
       return true;
     } else {
       return false;
+    }
+  }
+
+  public static function method() {
+    global $_SESSION;
+    if ($_SESSION["citizenloginmethod"] == "CODE") {
+      return citizen::CODE;
+    } elseif ($_SESSION["citizenloginmethod"] == "DNIE") {
+      return citizen::DNIE;
+    } else {
+      return citizen::OTHER;
+    }
+  }
+
+  public static function usesLeft() {
+    if (citizen::method() == citizen::CODE) {
+      return (int)citizen::userData("uses") - (int)citizen::userData("usesdone");
+    } elseif (citizen::method() == citizen::DNIE) {
+      return 1;
+    } else {
+      return 0;
     }
   }
 }

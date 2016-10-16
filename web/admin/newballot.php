@@ -44,7 +44,7 @@ if (isset($_POST["ballot"])) { // EDITING
   }
 }
 
-$name = sanitizer::dbString($_POST['name']);
+$name = sanitizer::dbString(trim($_POST['name']));
 $description = mysqli_real_escape_string($con, $purifier->purify($_POST['description']));
 $color = sanitizer::dbString(str_replace("#", "", $_POST['color']));
 

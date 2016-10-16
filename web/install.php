@@ -81,7 +81,7 @@
 						PRIMARY KEY(id),
 						ballot INT(13),
 						voting INT(13),
-						hash VARCHAR(128)
+						shahash VARCHAR(128)
 					)";
 					$sql["voted"] = "CREATE TABLE voted
 					(
@@ -93,6 +93,16 @@
 						dni VARCHAR(9),
 						birthday INT(13),
 						voting INT(13)
+					)";
+
+					$sql["voting_defaultresults"] = "CREATE TABLE voting_defaultresults
+					(
+						id INT(13) NOT NULL AUTO_INCREMENT,
+						PRIMARY KEY(id),
+						voting INT(13),
+						generated INT(1),
+						results TEXT,
+						ballotsfile VARCHAR(100)
 					)";
 					$username = mysqli_real_escape_string($con, $_POST['username']);
 					$password = password_hash($_POST["password"], PASSWORD_DEFAULT);

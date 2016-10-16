@@ -13,6 +13,8 @@ if (citizen::loggedIn()) {
 </header>
 <div class="mdl-layout__drawer">
   <span class="mdl-layout-title"><?=$conf["appname"]?></span>
+  <div class="mdl-layout-title" style="font-size: 13px; line-height: 17px;"><?=citizen::userData("name")?></div>
+  <div class="mdl-layout-title" style="font-size: 13px; line-height: 17px; color: rgba(0, 0, 0, .54);"><?=citizen::userData("dni")?></div>
   <nav class="mdl-navigation">
     <a class="mdl-navigation__link" href="dashboard.php"><i class="material-icons">account_balance</i> <?=$i18n->msg("votings")?></a>
     <a class="mdl-navigation__link" class="mdl-navigation__link" href="logout.php"><i class="material-icons">power_settings_new</i> <?=$i18n->msg("logout")?></a>
