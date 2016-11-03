@@ -23,10 +23,13 @@ if (isset($_REQUEST["apikey"]) && $api->init($_REQUEST["apikey"])) {
       break;
 
       case "addcensus":
-      $return = $api->error(-1, "UNDER DEVELOPMENT");
+      $name = $_POST["name"];
+      $dni = $_POST["dni"];
+      $return = $api->add_census($name, $dni);
+      break;
 
       default:
-      $return = $api->error(3, "Action not recognised");
+      $return = $api->error(3, "Action '".$_REQUEST["action"]."' not recognised");
     }
   } else {
     $return = $api->error(2, "Action not defined");

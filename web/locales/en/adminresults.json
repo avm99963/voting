@@ -2,5 +2,12 @@
   "suggestedactions":"Suggested actions",
   "nosuggestedactions":"There are no suggested actions for now.",
   "generateresult":"Generate default results for the voting <b>%0</b>",
-  "generatedresults":"Generated results"
+  "generatedresults":"Generated results",
+  "newresult_title": "Generate new results",
+  "methods": "Methods",
+  "resultsmethod_0": "Majority",
+  "resultsmethod_1": "Relative majority",
+  "resultsmethod_2": "Absolute majority",
+  "resultsmethod_3": "Quality majority",
+  "resultsmethod_4": "D'Hondt method"
 }

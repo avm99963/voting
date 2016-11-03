@@ -1,0 +1,12 @@
+{
+  "source-providers": [
+    {
+      "in": ". as current",
+      "exclude": ["bower_components", "lib"],
+      "name": "/\\.php/"
+    }
+  ],
+  "plugins": [],
+  "analysers": [],
+  "services": []
+}

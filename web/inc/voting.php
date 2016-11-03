@@ -47,6 +47,16 @@ class voting {
     if ($time < $row["datebegins"]) {
       return 0;
     } elseif ($time < $row["dateends"]) {
+      $query2 = mysqli_query($con, "SELECT id FROM voted WHERE voting = ".(int)$votingid." AND dni = '".citizen::userData("dni")."'");
+
+      if (mysqli_num_rows($query2) > 0) {
+        return -4;
+      }
+
+      if (citizen::method() == citizen::CODE && citizen::usesLeft() < 1) {
+        return -5;
+      }
+
       if (!isset($row["filters"]) || $row["filters"] == "") {
         return true;
       } else {
@@ -86,16 +96,6 @@ class voting {
             return -3;
           }
         }
-      }
-
-      $query2 = mysqli_query($con, "SELECT id FROM voted WHERE voting = ".(int)$votingid." AND dni = '".citizen::userData("dni")."'");
-
-      if (mysqli_num_rows($query2) > 0) {
-        return -4;
-      }
-
-      if (citizen::method() == citizen::CODE && citizen::usesLeft() < 1) {
-        return -5;
       }
 
       return 1;

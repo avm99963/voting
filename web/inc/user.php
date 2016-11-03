@@ -1,6 +1,9 @@
 <?php
 class user {
   private static $role = null;
+  const CENSUS_CREATOR = 2;
+  const TOKEN_CREATOR = 1;
+  const ADMIN = 0;
 
   public static function login($usr, $pwd) {
     global $con;

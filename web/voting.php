@@ -105,7 +105,7 @@ $md_header_row_before = md::backBtn("dashboard.php");
               }
             }
             ?>
-            <p><a href="download.php?voting=<?=$row["id"]?>" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-button--raised" download>Download all ballots</a></p>
+            <p><a href="download.php?well=voting&id=<?=$row["id"]?>" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-button--raised" download>Download all ballots</a></p>
             <div id="chart" style="max-width: 100%!important; width: 500px; height: 300px;"></div>
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             <?php

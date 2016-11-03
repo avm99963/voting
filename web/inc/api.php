@@ -1,6 +1,7 @@
 <?php
 class api {
   private $apikeyid = -1;
+  private $uses = 0;
 
   public function init($apikey) {
     global $con;
@@ -17,7 +18,7 @@ class api {
       return false;
     }
 
-    $query = mysqli_query($con, "SELECT id, voting FROM apikeys WHERE keytext = '".mysqli_real_escape_string($con, $apikey)."' AND status = 0");
+    $query = mysqli_query($con, "SELECT id, voting, uses FROM apikeys WHERE keytext = '".mysqli_real_escape_string($con, $apikey)."' AND status = 0");
 
     if (!mysqli_num_rows($query)) {
       return false;
@@ -32,6 +33,7 @@ class api {
     }
 
     $this->apikeyid = $row["id"];
+    $this->uses = $row["uses"];
 
     return true;
   }
@@ -57,6 +59,37 @@ class api {
       return $return;
     } else {
       return $this->error(4, "Unexpected error: did not find the voting.");
+    }
+  }
+
+  public function add_census($name, $dni) {
+    global $con;
+
+    $birthday = 0;
+    $name = sanitizer::dbString($name);
+    $dni = sanitizer::dbString($dni);
+    $birthday = 0;
+
+    if (preg_match("/(\d{8})([a-zA-Z]{1})/", $dni) === false) {
+      $this->error(1, "Incorrect DNI");
+    }
+
+    do {
+      $code = mysqli_real_escape_string($con, random::generateCode(16));
+      $query = mysqli_query($con, "SELECT id FROM generatedcodes WHERE code = '".$code."'");
+    } while (mysqli_num_rows($query));
+
+    $sql6 = "INSERT INTO generatedcodes (code, name, dni, birthday, method, status, creation, uses, usesdone) VALUES ('$code', '$name', '$dni', $birthday, 1, 0, ".time().", ".$this->uses.", 0)";
+    if (mysqli_query($con,$sql6)) {
+      $return = array();
+
+      $return["status"] = "ok";
+      $return["payload"] = array();
+      $return["payload"]["code"] = $code;
+
+      return $return;
+    } else {
+      $this->error(1, "An unexpected error occurred while generating the code.");
     }
   }
 

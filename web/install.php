@@ -104,6 +104,14 @@
 						results TEXT,
 						ballotsfile VARCHAR(100)
 					)";
+
+					$sql["voting_results"] = "CREATE TABLE voting_results
+					(
+						id INT(13) NOT NULL AUTO_INCREMENT,
+						PRIMARY KEY(id),
+						voting INT(13),
+						results TEXT
+					)";
 					$username = mysqli_real_escape_string($con, $_POST['username']);
 					$password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 					$name = mysqli_real_escape_string($con, $_POST['name']);
