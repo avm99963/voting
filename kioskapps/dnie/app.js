@@ -74,7 +74,8 @@ var pages = {
 
 var api = {
   request: function(action, method, data, callback) {
-    var params = ((data === "") ? "" : "&")+"apikey="+encodeURIComponent(sessionStorage.secretKey)+"&action="+encodeURIComponent(action);
+    var params = data+((data === "") ? "" : "&")+"apikey="+encodeURIComponent(sessionStorage.secretKey)+"&action="+encodeURIComponent(action);
+    console.log(params);
     xhr(method, sessionStorage.apiurl, params, function(response, status) {
       var json = JSON.parse(response);
 
@@ -95,7 +96,7 @@ function reset() {
   sessionStorage.code = "";
   $("#dataName").innerText = "";
   $("#dataDni").innerText = "";
-  $("#dataBirthday").innerText = "";
+  //$("#dataBirthday").innerText = "";
   $("#dataIDESP").innerText = "";
 
   $("#pin").value = "";
@@ -1074,17 +1075,17 @@ function init() {
     $("#reset").style.display = "none";
     $("#dataNext").disabled = true;
 
-    // Add XHR to save data, and when ended change page. I will just do a timeout here to show it:
-    window.atimeout = window.setTimeout(function() {
-      sessionStorage.code = "QWERTYUIOP";
+    api.request("addcensus", "POST", "name="+encodeURIComponent(name)+"&dni="+encodeURIComponent(dni), function(message, status) {
+      sessionStorage.code = message.payload.code;
       qr.canvas({
         canvas: $("#qrPlaceholder"),
         value: sessionStorage.code,
         size: 8
       });
+      $("#manualcode").innerHTML = sessionStorage.code;
       $("#showcodeIntro").innerHTML = chrome.i18n.getMessage("showcodeIntro"); // When in PRODUCTION, it can also be showcodeIntroAgain, in case the code is regenerated
       pages.changePage("showcode");
-    }, 1000);
+    });
   });
 
   $("#showcodeDone").addEventListener("click", function() {
@@ -1317,7 +1318,12 @@ function init() {
           var responsearray = hexStringToArray(response.response);
           if (responsearray[0] == 0x90) {
             console.info("Correct PIN :D");
-            file.readFile(hCard, [0x60, 0x61, 0x70, 0x05], 105, true);
+
+            $("#dataName").innerText = name;
+            $("#dataDni").innerText = dni;
+
+            pages.changePage("data");
+            // file.readFile(hCard, [0x60, 0x61, 0x70, 0x05], 105, true); // THIS WOULD HAVE TO WORK IN THEORY BUT I DISABLE IT BECAUSE IT DOESN'T WORK
           } else if (responsearray[0] == 0x63) {
             var attemptsleft = response.response.substr(3, 1);
             console.warn("Incorrect PIN. "+attemptsleft+" attemps left.");
